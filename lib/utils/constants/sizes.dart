@@ -24,7 +24,7 @@ class TSizes {
   static const double buttonElevation = 4.0;
 
   // AppBar height
-  static const double appBarHeight = 56.0;
+  static const double appBarHeight = 51.0;
 
   // Image sizes
   static const double imageThumbSize = 80.0;
@@ -32,7 +32,7 @@ class TSizes {
   // Default spacing between sections
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;
-  static const double spaceBtwSections = 32.0;
+  static const double spaceBtwSections = 27.0;
 
   // Border radius
   static const double borderRadiusSm = 4.0;
@@ -49,7 +49,7 @@ class TSizes {
 
   // Input field
   static const double inputFieldRadius = 12.0;
-  static const double spaceBtwInputFields = 16.0;
+  static const double spaceBtwInputFields = 11.0;
 
   // Card sizes
   static const double cardRadiusLg = 16.0;

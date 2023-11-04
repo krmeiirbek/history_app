@@ -10,20 +10,27 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  ## -- STATE MANAGEMENT
+  get: ^4.6.6
+  get_storage: ^2.1.1
   logger: ^2.0.2+1
   http: ^1.1.0
   intl: ^0.18.1
-  flutter_native_splash: ^2.3.5
-  smooth_page_indicator: ^1.1.0
   url_launcher: ^6.2.1
 
-
+  ## -- ICON PACKAGES
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.2
 
+  ## -- OnBoarding PACKAGES
+  smooth_page_indicator: ^1.1.0
+  flutter_native_splash: ^2.3.5
 
-  get: ^4.6.6
-  get_storage: ^2.1.1
+  ## -- FIREBASE PACKAGES
+  firebase_core: ^2.21.0
+  firebase_auth: ^4.12.1
+  cloud_firestore: ^4.12.2
 
 dev_dependencies:
   flutter_test:

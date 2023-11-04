@@ -28,7 +28,8 @@ class TSizes {
 
   // AppBar height
   static const double appBarHeight = 51.0;
-
+  // SizeBox width
+  static const double sizeBoxWidth = 180.0;
   // Image sizes
   static const double imageThumbSize = 80.0;
   static const double imageTHomeSize = 100.0;
@@ -46,6 +47,8 @@ class TSizes {
 
   // Divider height
   static const double dividerHeight = 1.0;
+  // Spread radius
+  static const double spreadRadius = 1.0;
 
   // Product item dimensions
   static const double productImageSize = 120.0;

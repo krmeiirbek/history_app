@@ -66,7 +66,8 @@ class TTexts {
 
   // -- Home
   static const String historyOfKazakhstanTitle = "History of Kazakhstan";
-  static const String historyOfKazakhstanSubTitle = "Test ENT";
+  static const String historyOfKazakhstanSubTitle =
+      "Thematic tests on the history of Kazakhstan";
   static const String worldHistoryTitle = "World history";
-  static const String worldHistorySubTitle = "Test ENT";
+  static const String worldHistorySubTitle = "Thematic tests on world history ";
 }

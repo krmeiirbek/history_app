@@ -30,8 +30,8 @@ class HomeButtons extends StatelessWidget {
           boxShadow: const [
             BoxShadow(
               color: Colors.grey,
-              blurRadius: 10,
-              spreadRadius: 1,
+              blurRadius: TSizes.borderRadiusLg,
+              spreadRadius: TSizes.spreadRadius,
               offset: Offset(4, 4),
             )
           ],
@@ -55,17 +55,23 @@ class HomeButtons extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: TSizes.fontSizeLg,
+                    SizedBox(
+                      width: TSizes.sizeBoxWidth,
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: TSizes.fontSizeLg,
+                        ),
                       ),
                     ),
                     const SizedBox(height: TSizes.defaultBtwItems),
-                    Text(
-                      subTitle,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    SizedBox(
+                      width: TSizes.sizeBoxWidth,
+                      child: Text(
+                        subTitle,
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
                     ),
                   ],
                 )

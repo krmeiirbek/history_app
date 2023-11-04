@@ -28,4 +28,9 @@ class TImages {
       "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration =
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
+
+  // Buttons
+  static const String historyOfKazakhstan =
+      "assets/images/buttons/history_of_kazakhstan.png";
+  static const String worldHistory = "assets/images/buttons/world_history.png";
 }

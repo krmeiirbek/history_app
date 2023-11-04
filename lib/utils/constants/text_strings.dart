@@ -65,6 +65,8 @@ class TTexts {
   static const String popularProducts = "Popular Products";
 
   // -- Home
-  static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Kazybek";
+  static const String historyOfKazakhstanTitle = "History of Kazakhstan";
+  static const String historyOfKazakhstanSubTitle = "Test ENT";
+  static const String worldHistoryTitle = "World history";
+  static const String worldHistorySubTitle = "Test ENT";
 }

@@ -31,6 +31,7 @@ dependencies:
   firebase_core: ^2.21.0
   firebase_auth: ^4.12.1
   cloud_firestore: ^4.12.2
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
@@ -45,9 +46,11 @@ flutter:
   assets:
     - assets/logos/
     - assets/icons/brands/
-    - assets/images/on_boarding_images/
+    - assets/images/content/
+    - assets/icons/categories/
     - assets/images/animations/
-    - assets/images/buttons/
+    - assets/icons/payment_methods/
+    - assets/images/on_boarding_images/
 
 
   fonts:

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496589995566",
+    "project_id": "history-app-264cd",
+    "storage_bucket": "history-app-264cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496589995566:android:8e56970130224f49e129bf",
+        "android_client_info": {
+          "package_name": "com.krmeiirbek.historyApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLMaV1qjhQRMTnmyM-JRMq_Xcpo1l5iog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

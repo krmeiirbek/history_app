@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/common/widgets/home/home_buttons.dart';
 import 'package:history_app/common/widgets/images/t_circular_image.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/features/education/screens/chapters/chapters.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/constants/sizes.dart';
@@ -64,7 +67,7 @@ class HomeScreen extends StatelessWidget {
               title: TTexts.historyOfKazakhstanTitle,
               subTitle: TTexts.historyOfKazakhstanSubTitle,
               image: TImages.historyOfKazakhstan,
-              onPressed: () {},
+              onPressed: () => Get.to(() =>  Chapters()),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
 

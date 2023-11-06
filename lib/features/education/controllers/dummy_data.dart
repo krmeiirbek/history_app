@@ -13,6 +13,7 @@ class TDummyData {
     phoneNumber: '+77775552001',
     password: '',
     profilePicture: TImages.user,
+    balance: 1000,
   );
 
   /// -- history

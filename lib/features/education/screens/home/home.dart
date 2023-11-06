@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     actions: [
                       Row(
                         children: [
-                          Text("🌕 1000",
+                          Text("🌕 ${TDummyData.user.balance}",
                             style: Theme.of(context).textTheme.titleSmall!.apply(
                                 color: TColors.white,
                             ),

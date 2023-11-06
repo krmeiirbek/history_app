@@ -8,6 +8,7 @@ class UserModel {
   final String phoneNumber;
   final String password;
   final String profilePicture;
+  final int balance;
 
   UserModel({
     this.id,
@@ -17,6 +18,7 @@ class UserModel {
     required this.phoneNumber,
     required this.password,
     required this.profilePicture,
+    required this.balance,
   });
 
   /// Helpers
@@ -31,5 +33,6 @@ class UserModel {
         phoneNumber: '',
         password: '',
         profilePicture: '',
+        balance: 0,
       );
 }

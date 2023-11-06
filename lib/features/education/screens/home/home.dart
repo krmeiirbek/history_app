@@ -33,6 +33,16 @@ class HomeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white),
                     ),
                     actions: [
+                      Row(
+                        children: [
+                          Text("🌕 1000",
+                            style: Theme.of(context).textTheme.titleSmall!.apply(
+                                color: TColors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 10),
                       Hero(
                         tag: 'avatar',
                         child: TCircularImage(

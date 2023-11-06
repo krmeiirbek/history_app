@@ -5,7 +5,7 @@ import 'package:history_app/common/widgets/custom_shapes/containers/primary_head
 import 'package:history_app/common/widgets/texts/section_heading.dart';
 import 'package:history_app/common/widgets/user/user_profile_card.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
-import 'package:history_app/features/education/screens/order/order.dart';
+import 'package:history_app/features/education/screens/history/history.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
 import 'package:history_app/features/personalization/screens/settings/widgets/settings_menu.dart';
 import 'package:history_app/utils/constants/colors.dart';

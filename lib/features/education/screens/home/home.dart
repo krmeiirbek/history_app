@@ -73,9 +73,11 @@ class HomeScreen extends StatelessWidget {
               title: TTexts.historyOfKazakhstanTitle,
               subTitle: TTexts.historyOfKazakhstanSubTitle,
               image: TImages.historyOfKazakhstan,
-              onPressed: () => Get.to(() => Chapters(
-                    chapter: ChapterModelOfTheHistoryOfKazakhstan,
-                  )),
+              onPressed: () => Get.to(
+                () => Chapters(
+                  chapter: ChapterModelOfTheHistoryOfKazakhstan,
+                ),
+              ),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
 
@@ -84,9 +86,11 @@ class HomeScreen extends StatelessWidget {
               title: TTexts.worldHistoryTitle,
               subTitle: TTexts.worldHistorySubTitle,
               image: TImages.worldHistory,
-              onPressed: () => Get.to(() => Chapters(
-                    chapter: ChapterModelOfTheWorldHistory,
-                  )),
+              onPressed: () => Get.to(
+                () => Chapters(
+                  chapter: ChapterModelOfTheWorldHistory,
+                ),
+              ),
             ),
           ],
         ),

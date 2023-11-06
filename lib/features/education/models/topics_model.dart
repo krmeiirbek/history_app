@@ -5,7 +5,9 @@ class TopicsModel {
   TopicsModel({required this.id, required this.title});
 }
 
-List topicsModel1 = [
+/// History of Kazakhstan topicsModel
+
+List topicsModelHK1 = [
   TopicsModel(id: '1', title: 'title'),
   TopicsModel(id: '2', title: 'text'),
   TopicsModel(id: '3', title: 'test'),
@@ -13,7 +15,7 @@ List topicsModel1 = [
   TopicsModel(id: '5', title: 'final'),
 ];
 
-List topicsModel2 = [
+List topicsModelHK2 = [
   TopicsModel(id: '1', title: 'var'),
   TopicsModel(id: '2', title: 'text'),
   TopicsModel(id: '3', title: 'title'),
@@ -22,7 +24,33 @@ List topicsModel2 = [
   TopicsModel(id: '6', title: 'final'),
 ];
 
-List topicsModel3 = [
+List topicsModelHK3 = [
   TopicsModel(id: '1', title: 'text'),
   TopicsModel(id: '2', title: 'text'),
+];
+
+/// World History topicsModel
+
+List topicsModelWH1 = [
+  TopicsModel(id: '1', title: 'title'),
+  TopicsModel(id: '2', title: 'text'),
+];
+
+List topicsModelWH2 = [
+  TopicsModel(id: '1', title: 'var'),
+  TopicsModel(id: '2', title: 'text'),
+  TopicsModel(id: '6', title: 'final'),
+];
+
+List topicsModelWH3 = [
+  TopicsModel(id: '1', title: 'text'),
+  TopicsModel(id: '2', title: 'text'),
+  TopicsModel(id: '3', title: 'title'),
+  TopicsModel(id: '4', title: 'var'),
+];
+List topicsModelWH4 = [
+  TopicsModel(id: '1', title: 'text'),
+  TopicsModel(id: '2', title: 'text'),
+  TopicsModel(id: '4', title: 'var'),
+  TopicsModel(id: '5', title: 'final'),
 ];

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
 
-class HomeButtons extends StatelessWidget {
+class BookButtons extends StatelessWidget {
   final String title;
   final String subTitle;
   final String image;
   final void Function()? onPressed;
 
-  const HomeButtons({
+  const BookButtons({
     super.key,
     required this.title,
     required this.subTitle,
@@ -20,11 +20,11 @@ class HomeButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Container(
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: MediaQuery.of(context).size.height * 0.2,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(0),
-        color: dark ? Colors.grey[900]: Colors.white,
+        color: dark ? Colors.grey[900]: kDefaultIconLightColor,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
@@ -51,7 +51,7 @@ class HomeButtons extends StatelessWidget {
             ),
             const SizedBox(width: TSizes.spaceBtwItems),
             Expanded(
-              flex: 4,
+              flex: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class HomeButtons extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: TSizes.defaultBtwItems),
+                  const SizedBox(height: TSizes.spaceBtwItems),
                   SizedBox(
                     width: TSizes.sizeBoxWidth,
                     child: Text(

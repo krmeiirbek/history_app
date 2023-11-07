@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:history_app/utils/constants/colors.dart';
+import 'package:history_app/common/widgets/appbar/appbar.dart';
 import '../../../utils/constants/sizes.dart';
 
 class TopicsList extends StatelessWidget {
@@ -10,17 +10,15 @@ class TopicsList extends StatelessWidget {
     required this.topics,
   });
 
-  var topics;
+  dynamic topics;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: TAppBar(
         title: Text(
           "Topics",
-          style: Theme.of(context).textTheme.headlineMedium!.apply(
-                color: TColors.black,
-              ),
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
       body: Padding(

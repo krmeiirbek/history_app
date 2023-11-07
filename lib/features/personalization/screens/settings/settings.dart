@@ -12,7 +12,6 @@ import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
-
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -33,12 +32,16 @@ class SettingsScreen extends StatelessWidget {
                     showBackArrowIcon: false,
                     title: Text(
                       'Account',
-                      style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .apply(color: TColors.white),
                     ),
                   ),
                   TUserProfileCard(
                     user: TDummyData.user,
-                    actionButtonOnPressed: () => Get.to(() => const ProfileScreen()),
+                    actionButtonOnPressed: () =>
+                        Get.to(() => const ProfileScreen()),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
@@ -72,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
                       icon: Iconsax.notification,
                       title: 'Notifications',
                       subTitle: 'Set any kind of notification message',
-                      onPressed: (){}),
+                      onPressed: () {}),
                   const TSettingsMenu(
                       icon: Iconsax.security_card,
                       title: 'Account Privacy',
@@ -81,7 +84,9 @@ class SettingsScreen extends StatelessWidget {
                   /// -- Logout Button
                   const SizedBox(height: TSizes.spaceBtwSections),
                   SizedBox(
-                      width: double.infinity, child: OutlinedButton(onPressed: () {}, child: const Text('Logout'))),
+                      width: double.infinity,
+                      child: OutlinedButton(
+                          onPressed: () {}, child: const Text('Logout'))),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                 ],
               ),

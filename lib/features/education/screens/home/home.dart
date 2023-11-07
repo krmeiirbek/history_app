@@ -5,8 +5,8 @@ import 'package:history_app/common/widgets/custom_shapes/containers/primary_head
 import 'package:history_app/common/widgets/home/home_buttons.dart';
 import 'package:history_app/common/widgets/images/t_circular_image.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
-import 'package:history_app/features/education/models/chapter_model.dart';
-import 'package:history_app/features/education/screens/chapters/chapters.dart';
+import 'package:history_app/features/education/models/book_model.dart';
+import 'package:history_app/features/education/screens/list_books/list_books.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/constants/sizes.dart';
@@ -74,21 +74,30 @@ class HomeScreen extends StatelessWidget {
               subTitle: TTexts.historyOfKazakhstanSubTitle,
               image: TImages.historyOfKazakhstan,
               onPressed: () => Get.to(
-                () => Chapters(
-                  chapter: ChapterModelOfTheHistoryOfKazakhstan,
+                () => ListBooks(
+                  title: TTexts.historyOfKazakhstanTitle,
+                  subTitle: bookModelHK,
+                  image: bookModelHK,
+                  itemCount: bookModelHK.length,
+                  id: 1,
                 ),
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
 
             /// Button WORLD HISTORY
+
             HomeButtons(
               title: TTexts.worldHistoryTitle,
               subTitle: TTexts.worldHistorySubTitle,
               image: TImages.worldHistory,
               onPressed: () => Get.to(
-                () => Chapters(
-                  chapter: ChapterModelOfTheWorldHistory,
+                () => ListBooks(
+                  title: TTexts.worldHistoryTitle,
+                  subTitle: bookModelWH,
+                  image: bookModelWH,
+                  itemCount: bookModelWH.length,
+                  id: 2,
                 ),
               ),
             ),

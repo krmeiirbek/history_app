@@ -1,23 +1,25 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
+import 'package:history_app/features/education/screens/question/question.dart';
 import '../../../utils/constants/sizes.dart';
 
-class TopicsList extends StatelessWidget {
-  TopicsList({
+class VersionList extends StatelessWidget {
+  VersionList({
     super.key,
-    required this.topics,
+    required this.version,
   });
 
-  dynamic topics;
+  dynamic version;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
         title: Text(
-          "Topics",
+          "Version",
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
@@ -26,21 +28,23 @@ class TopicsList extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (_, index) {
             return ListTile(
-              onTap: (){},
+              onTap: () => Get.to(
+                () =>  const Question(),
+              ),
               leading: Text(
-                topics[index].id,
+                '${index + 1}',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
                     .apply(fontSizeDelta: TSizes.dividerHeight),
               ),
               title: Text(
-                topics[index].title,
+                version[index].title,
               ),
             );
           },
           separatorBuilder: (_, index) => const Divider(height: 1),
-          itemCount: topics.length,
+          itemCount: version.length,
         ),
       ),
     );

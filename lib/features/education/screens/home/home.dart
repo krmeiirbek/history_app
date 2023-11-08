@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
               subTitle: TTexts.historyOfKazakhstanSubTitle,
               image: TImages.historyOfKazakhstan,
               onPressed: () => Get.to(
-                () => ListBooks(
+                () => ListBooksScreen(
                   title: TTexts.historyOfKazakhstanTitle,
                   subTitle: bookModelHK,
                   image: bookModelHK,
@@ -92,7 +92,7 @@ class HomeScreen extends StatelessWidget {
               subTitle: TTexts.worldHistorySubTitle,
               image: TImages.worldHistory,
               onPressed: () => Get.to(
-                () => ListBooks(
+                () => ListBooksScreen(
                   title: TTexts.worldHistoryTitle,
                   subTitle: bookModelWH,
                   image: bookModelWH,

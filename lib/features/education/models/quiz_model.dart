@@ -9,5 +9,6 @@ class QuizModel {
     required this.items,
   });
 
-  static QuizModel empty() => QuizModel(quizId: '', items: []);
+  static QuizModel empty() => QuizModel(quizId: '1', items: [
+  ]);
 }

@@ -8,14 +8,14 @@ import 'package:history_app/features/education/screens/chapters/chapters.dart';
 import 'package:history_app/features/education/screens/list_books/widgets/list_books_buttons.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
-class ListBooks extends StatelessWidget {
+class ListBooksScreen extends StatelessWidget {
   final String title;
   final dynamic subTitle;
   final dynamic image;
   final int itemCount;
   final int id;
 
-  ListBooks({
+  ListBooksScreen({
     super.key,
     required this.title,
     required this.subTitle,
@@ -25,13 +25,13 @@ class ListBooks extends StatelessWidget {
   });
 
   final chapterHK = [
-    ChapterModelHK_5,
-    ChapterModelHK_6,
-    ChapterModelHK_7,
-    ChapterModelHK_8,
-    ChapterModelHK_9,
-    ChapterModelHK_10,
-    ChapterModelHK_11,
+    HK_ChapterModelClass_5,
+    HK_ChapterModelClass_6,
+    HK_ChapterModelClass_7,
+    HK_ChapterModelClass_8,
+    HK_ChapterModelClass_9,
+    HK_ChapterModelClass_10,
+    HK_ChapterModelClass_11,
   ];
 
   @override

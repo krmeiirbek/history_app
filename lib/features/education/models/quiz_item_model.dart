@@ -19,5 +19,6 @@ class QuizItemModel {
     this.title,
   });
 
-  static QuizItemModel empty() => QuizItemModel(subjectId: '', chapterId: '', titleId: '');
+  static QuizItemModel empty() =>
+      QuizItemModel(subjectId: '', chapterId: '', titleId: '', );
 }

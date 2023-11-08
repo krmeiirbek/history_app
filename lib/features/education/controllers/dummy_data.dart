@@ -30,19 +30,19 @@ class TDummyData {
         price: 500,
         subjectName: 'World History',
         chapterName: 'Middle west',
-        title: 'Ottoman Empires'
+        title: 'Ottoman Empires',
       ),
     ),
     HistoryModel(
       id: 'CWT0025',
       item: QuizItemModel(
-          subjectId: 'historyOfKazakh',
-          chapterId: 'chapterId',
-          titleId: 'titleId',
-          price: 500,
-          subjectName: 'History Of Kazakhstan',
-          chapterName: 'Tas dauiri',
-          title: 'Paleolit'
+        subjectId: 'historyOfKazakh',
+        chapterId: 'chapterId',
+        titleId: 'titleId',
+        price: 500,
+        subjectName: 'History Of Kazakhstan',
+        chapterName: 'Tas dauiri',
+        title: 'Paleolit',
       ),
       orderDate: DateTime(2023, 10, 2),
       maxPoint: 40,

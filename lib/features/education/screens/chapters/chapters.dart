@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
-import 'package:history_app/common/widgets/topics_list/topics_list.dart';
+import 'package:history_app/common/widgets/version_list/version_list.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class Chapters extends StatelessWidget {
@@ -32,13 +32,13 @@ class Chapters extends StatelessWidget {
             itemBuilder: (_, index) {
               return ListTile(
                 onTap: () => Get.to(
-                  () => TopicsList(
-                    topics: chapter[index].topic,
+                  () => VersionList(
+                    version: chapter[index].topic,
                   ),
                 ),
                 leading: Image(image: AssetImage(chapter[index].image)),
                 title: Text(
-                  '${chapter[index].id}-chapter',
+                  '${index + 1}-chapter',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!

@@ -9,142 +9,145 @@ class QuestionBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = QuestionController.instance;
-    return SafeArea(
-      top: false,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Obx(() => Padding(
-                padding: const EdgeInsets.all(TSizes.defaultSpace),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      controller.questions[controller.questionId.value].question,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: TSizes.defaultBtwItems),
-                    Text(
-                      '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    ...controller.questions[controller.questionId.value].options
-                        .map(
-                          (option) => Obx(() => InkWell(
-                        highlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        onTap: () {
-                          controller.selectOption(option);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 10,
-                          ),
-                          margin: const EdgeInsets.only(top: 10),
-                          decoration: BoxDecoration(
-                            color: controller.selectedOptions.contains(option)
-                                ? Theme.of(context).colorScheme.primary
-                                : null,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                          child: Text(
-                            option.answer,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: TSizes.xs),
+      child: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Obx(() => Padding(
+                  padding: const EdgeInsets.all(TSizes.defaultSpace),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.questions[controller.questionId.value].question,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
-                      )),
-                    ),
-                  ],
-                ),
-              )),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: controller.prevQuestion,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Theme.of(context).colorScheme.primary),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.arrow_back_ios_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 16,
+                      ),
+                      const SizedBox(height: TSizes.defaultBtwItems),
+                      Text(
+                        '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.w400,
                         ),
-                        const SizedBox(width: 20),
-                        Text(
-                          "Алдыңғы",
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w600,
-                            color: Theme.of(context).colorScheme.primary,
+                      ),
+                      ...controller.questions[controller.questionId.value].options
+                          .map(
+                            (option) => Obx(() => InkWell(
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          onTap: () {
+                            controller.selectOption(option);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 10,
+                            ),
+                            margin: const EdgeInsets.only(top: 10),
+                            decoration: BoxDecoration(
+                              color: controller.selectedOptions.contains(option)
+                                  ? Theme.of(context).colorScheme.primary
+                                  : null,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.primary,
                               ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: controller.nextQuestion,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Theme.of(context).colorScheme.primary),
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Келесі",
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            ),
+                            child: Text(
+                              option.answer,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 20),
-                        const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                      ],
+                        )),
+                      ),
+                    ],
+                  ),
+                )),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: controller.prevQuestion,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).colorScheme.primary),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.arrow_back_ios_outlined,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 16,
+                          ),
+                          const SizedBox(width: 20),
+                          Text(
+                            "Алдыңғы",
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                Expanded(
+                  child: InkWell(
+                    onTap: controller.nextQuestion,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Theme.of(context).colorScheme.primary),
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Келесі",
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 20),
+                          const Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -13,8 +13,11 @@ class QuestionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = QuestionController.instance;
     return TPrimaryHeaderContainer(
-      child: SafeArea(
-        child: Obx(() => Column(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: TSizes.xl),
+        child: SafeArea(
+          child: Obx(
+            () => Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,11 +47,10 @@ class QuestionHeader extends StatelessWidget {
                         },
                         child: Text(
                           "Тестті аяқтау",
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                color: Colors.orange,
+                                fontWeight: FontWeight.w900,
+                              ),
                         ),
                       ),
                     ],
@@ -78,8 +80,8 @@ class QuestionHeader extends StatelessWidget {
                               border: controller.questionId.value == index
                                   ? null
                                   : Border.all(
-                                      color: Theme.of(context)
-                                          .unselectedWidgetColor,
+                                      color:
+                                          Theme.of(context).unselectedWidgetColor,
                                     ),
                             ),
                             child: Center(
@@ -106,7 +108,9 @@ class QuestionHeader extends StatelessWidget {
                   ),
                 ),
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

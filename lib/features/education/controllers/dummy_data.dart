@@ -1,5 +1,7 @@
 import 'package:history_app/features/education/models/book_model.dart';
 import 'package:history_app/features/education/models/chapter_model.dart';
+import 'package:history_app/features/education/models/option_model.dart';
+import 'package:history_app/features/education/models/question_model.dart';
 
 import '../../../utils/constants/image_strings.dart';
 import '../../personalization/models/user_model.dart';
@@ -110,7 +112,140 @@ class TDummyData {
       price: 500,
       discount: 0,
       title: '1 нұсқа',
-      questions: [],
+      questions: questions,
+    ),
+  ];
+
+  static final List<QuestionModel> questions = [
+    QuestionModel(
+      questionId: '1',
+      question: 'What is your name?',
+      options: [
+        OptionModel(
+          optionId: 'A',
+          answer: 'Zak',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'B',
+          answer: 'Kazybek',
+          isCorrect: true,
+        ),
+        OptionModel(
+          optionId: 'C',
+          answer: 'Tom',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'D',
+          answer: 'Jerry',
+          isCorrect: false,
+        ),
+      ],
+    ),
+    QuestionModel(
+      questionId: '2',
+      question: 'Who was the first president of the United States?',
+      options: [
+        OptionModel(
+          optionId: 'A',
+          answer: 'Thomas Jefferson',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'B',
+          answer: 'Benjamin Franklin',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'C',
+          answer: 'John Adams',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'D',
+          answer: 'George Washington',
+          isCorrect: true,
+        ),
+      ],
+    ),
+    QuestionModel(
+      questionId: '3',
+      question: 'When did the American Civil War end?',
+      options: [
+        OptionModel(
+          optionId: 'A',
+          answer: 'July 4, 1776',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'B',
+          answer: 'November 11, 1918',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'C',
+          answer: 'April 9, 1865',
+          isCorrect: true,
+        ),
+        OptionModel(
+          optionId: 'D',
+          answer: 'December 7, 1941',
+          isCorrect: false,
+        ),
+      ],
+    ),
+    QuestionModel(
+      questionId: '4',
+      question: 'What is the chemical symbol for gold?',
+      options: [
+        OptionModel(
+          optionId: 'A',
+          answer: 'Ag',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'B',
+          answer: 'Pt',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'C',
+          answer: 'Hg',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'D',
+          answer: 'Au',
+          isCorrect: true,
+        ),
+      ],
+    ),
+    QuestionModel(
+      questionId: '5',
+      question: 'Who developed the theory of relativity?',
+      options: [
+        OptionModel(
+          optionId: 'A',
+          answer: 'Isaac Newton',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'B',
+          answer: 'Galileo Galilei',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'C',
+          answer: 'Marie Curie',
+          isCorrect: false,
+        ),
+        OptionModel(
+          optionId: 'D',
+          answer: 'Albert Einstein',
+          isCorrect: true,
+        ),
+      ],
     ),
   ];
 }

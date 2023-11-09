@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/features/education/models/quiz_model.dart';
+import 'package:history_app/features/education/screens/question/question.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class QuizzesScreen extends StatelessWidget {
@@ -25,9 +27,9 @@ class QuizzesScreen extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (_, index) {
             return ListTile(
-              // onTap: () => Get.to(
-              //   () =>  const Question(),
-              // ),
+              onTap: () => Get.to(
+                () =>  const QuestionScreen(),
+              ),
               leading: Text(
                 '${index + 1}',
                 style: Theme.of(context).textTheme.bodyLarge!.apply(

@@ -70,7 +70,7 @@ class THistoryListItems extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${history.item.subjectName}\n${history.item.chapterName}\n${history.item.title}',
+                                history.item.title,
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.labelLarge,

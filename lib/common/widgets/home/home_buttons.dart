@@ -4,14 +4,12 @@ import 'package:history_app/utils/helpers/helper_functions.dart';
 
 class HomeButtons extends StatelessWidget {
   final String title;
-  final String subTitle;
   final String image;
   final void Function()? onPressed;
 
   const HomeButtons({
     super.key,
     required this.title,
-    required this.subTitle,
     required this.image,
     this.onPressed,
   });
@@ -24,7 +22,7 @@ class HomeButtons extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(0),
-        color: dark ? Colors.grey[900]: Colors.white,
+        color: dark ? Colors.grey[900] : Colors.white,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
@@ -63,15 +61,6 @@ class HomeButtons extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: TSizes.fontSizeLg,
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: TSizes.defaultBtwItems),
-                  SizedBox(
-                    width: TSizes.sizeBoxWidth,
-                    child: Text(
-                      subTitle,
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ],

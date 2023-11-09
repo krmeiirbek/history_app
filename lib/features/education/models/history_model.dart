@@ -1,15 +1,16 @@
 import '../../../utils/helpers/helper_functions.dart';
-import 'quiz_item_model.dart';
+import 'quiz_model.dart';
+
 
 class HistoryModel {
-  final String id;
+  final String historyId;
   final DateTime orderDate;
   final int maxPoint;
   final int resultPoint;
-  final QuizItemModel item;
+  final QuizModel item;
 
   HistoryModel({
-    required this.id,
+    required this.historyId,
     required this.item,
     required this.orderDate,
     required this.maxPoint,

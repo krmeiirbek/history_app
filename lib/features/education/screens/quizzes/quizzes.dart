@@ -1,25 +1,22 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
-import 'package:history_app/features/education/screens/question/question.dart';
-import '../../../utils/constants/sizes.dart';
+import 'package:history_app/features/education/models/quiz_model.dart';
+import 'package:history_app/utils/constants/sizes.dart';
 
-class VersionList extends StatelessWidget {
-  VersionList({
+class QuizzesScreen extends StatelessWidget {
+  const QuizzesScreen({
     super.key,
-    required this.version,
+    required this.quizzes,
   });
 
-  dynamic version;
+  final List<QuizModel> quizzes;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
         title: Text(
-          "Version",
+          "Нұсқалар",
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
@@ -28,23 +25,22 @@ class VersionList extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (_, index) {
             return ListTile(
-              onTap: () => Get.to(
-                () =>  const Question(),
-              ),
+              // onTap: () => Get.to(
+              //   () =>  const Question(),
+              // ),
               leading: Text(
                 '${index + 1}',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .apply(fontSizeDelta: TSizes.dividerHeight),
+                style: Theme.of(context).textTheme.bodyLarge!.apply(
+                  fontSizeDelta: TSizes.dividerHeight,
+                ),
               ),
               title: Text(
-                version[index].title,
+                quizzes[index].title,
               ),
             );
           },
           separatorBuilder: (_, index) => const Divider(height: 1),
-          itemCount: version.length,
+          itemCount: quizzes.length,
         ),
       ),
     );

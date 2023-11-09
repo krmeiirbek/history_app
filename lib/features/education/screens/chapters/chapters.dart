@@ -1,22 +1,25 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
-import 'package:history_app/common/widgets/version_list/version_list.dart';
+import 'package:history_app/features/education/models/chapter_model.dart';
+import 'package:history_app/features/education/screens/quizzes/quizzes.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
-class Chapters extends StatelessWidget {
-  Chapters({super.key, required this.chapter});
+class ChaptersScreen extends StatelessWidget {
+  final List<ChapterModel> chapters;
 
-  dynamic chapter;
+  const ChaptersScreen({
+    super.key,
+    required this.chapters,
+  });
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
         title: Text(
-          "Chapters",
+          "Тараулар",
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
@@ -26,26 +29,26 @@ class Chapters extends StatelessWidget {
           padding: const EdgeInsets.only(top: TSizes.defaultSpace),
           child: ListView.separated(
             shrinkWrap: true,
-            itemCount: chapter.length,
+            itemCount: chapters.length,
             physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (_, index) => const Divider(height: 5),
             itemBuilder: (_, index) {
               return ListTile(
                 onTap: () => Get.to(
-                  () => VersionList(
-                    version: chapter[index].topic,
+                  () => QuizzesScreen(
+                    quizzes: chapters[index].quizzes,
                   ),
                 ),
-                leading: Image(image: AssetImage(chapter[index].image)),
+                leading: Image(image: AssetImage(chapters[index].image)),
                 title: Text(
-                  '${index + 1}-chapter',
+                  '${index + 1}-тарау',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
                       .apply(fontSizeDelta: -0.1, fontWeightDelta: 1),
                 ),
                 subtitle: Text(
-                  chapter[index].title,
+                  chapters[index].title,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!

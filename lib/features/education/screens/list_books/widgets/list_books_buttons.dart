@@ -4,14 +4,12 @@ import 'package:history_app/utils/helpers/helper_functions.dart';
 
 class BookButtons extends StatelessWidget {
   final String title;
-  final String subTitle;
   final String image;
   final void Function()? onPressed;
 
   const BookButtons({
     super.key,
     required this.title,
-    required this.subTitle,
     required this.image,
     this.onPressed,
   });
@@ -63,15 +61,6 @@ class BookButtons extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: TSizes.fontSizeLg,
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwItems),
-                  SizedBox(
-                    width: TSizes.sizeBoxWidth,
-                    child: Text(
-                      subTitle,
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ],

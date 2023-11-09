@@ -1,14 +1,23 @@
-import 'quiz_item_model.dart';
+import 'question_model.dart';
 
 class QuizModel {
-  String quizId;
-  List<QuizItemModel> items;
+  final String quizId;
+  final String chapterId;
+  final String bookId;
+  final String subjectId;
+  final double price;
+  final double discount; // 0-100
+  final String title;
+  final List<QuestionModel> questions;
 
   QuizModel({
     required this.quizId,
-    required this.items,
+    required this.chapterId,
+    required this.bookId,
+    required this.subjectId,
+    required this.price,
+    required this.discount,
+    required this.title,
+    required this.questions,
   });
-
-  static QuizModel empty() => QuizModel(quizId: '1', items: [
-  ]);
 }

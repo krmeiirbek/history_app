@@ -47,7 +47,7 @@ class QuestionHeader extends StatelessWidget {
                           Get.off(
                             () => const ResultPage(),
                             arguments: {
-                              "questions": controller.questions,
+                              "quiz": controller.quizModel,
                               "selectedOptions": controller.selectedOptions,
                             },
                           );

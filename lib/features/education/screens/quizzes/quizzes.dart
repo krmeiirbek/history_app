@@ -27,6 +27,7 @@ class QuizzesScreen extends GetView<QuizController> {
             return ListTile(
               onTap: () => Get.to(
                 () =>  const QuestionScreen(),
+                arguments: controller.quizzes[index],
               ),
               leading: Text(
                 '${index + 1}',

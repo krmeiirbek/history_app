@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
 import 'package:history_app/features/education/models/option_model.dart';
+import 'package:history_app/features/education/models/quiz_model.dart';
 
 class QuestionController extends GetxController {
   static QuestionController get instance => Get.find();
@@ -10,6 +11,7 @@ class QuestionController extends GetxController {
   final time = 0.obs;
   late Timer timer;
   final questionId = 0.obs;
+  late QuizModel quizModel;
 
   final questions = TDummyData.questions;
   final selectedOptions = <RxList<OptionModel>>[].obs;
@@ -17,6 +19,8 @@ class QuestionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    quizModel = Get.arguments as QuizModel;
+    quizModel.copyWith(questions: questions);
     startTimer();
     for(final _ in questions){
       selectedOptions.add(<OptionModel>[].obs);

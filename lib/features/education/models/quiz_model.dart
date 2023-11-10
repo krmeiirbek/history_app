@@ -20,4 +20,25 @@ class QuizModel {
     required this.title,
     required this.questions,
   });
+
+  QuizModel copyWith({
+    String? quizId,
+    String? chapterId,
+    String? bookId,
+    String? subjectId,
+    double? price,
+    double? discount,
+    String? title,
+    List<QuestionModel>? questions,
+  }) =>
+      QuizModel(
+        quizId: quizId ?? this.quizId,
+        chapterId: chapterId ?? this.chapterId,
+        bookId: bookId ?? this.bookId,
+        subjectId: subjectId ?? this.subjectId,
+        price: price ?? this.price,
+        discount: discount ?? this.discount,
+        title: title ?? this.title,
+        questions: questions ?? this.questions,
+      );
 }

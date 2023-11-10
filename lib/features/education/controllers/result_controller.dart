@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
+import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/features/education/models/history_model.dart';
 import 'package:history_app/features/education/models/option_model.dart';
 import 'package:history_app/features/education/models/question_model.dart';
+import 'package:history_app/features/education/models/quiz_model.dart';
 
 class ResultController extends GetxController {
   final loading = false.obs;
+  late QuizModel quiz;
   late List<QuestionModel> questions;
   late List<List<OptionModel>> selectedOptions;
   final maxPoint = 0.obs;
@@ -13,10 +17,13 @@ class ResultController extends GetxController {
   void onInit() {
     super.onInit();
     loading.value = true;
-    questions = Get.arguments["questions"] as List<QuestionModel>;
-    selectedOptions = Get.arguments["selectedOptions"] as List<List<OptionModel>>;
+    quiz = Get.arguments["quiz"] as QuizModel;
+    questions = quiz.questions;
+    selectedOptions =
+        Get.arguments["selectedOptions"] as List<List<OptionModel>>;
     loading.value = false;
     esepteu();
+    saveToHistory();
   }
 
   void esepteu() {
@@ -54,5 +61,17 @@ class ResultController extends GetxController {
         }
       }
     }
+  }
+
+  void saveToHistory() {
+    TDummyData.histories.add(
+      HistoryModel(
+        historyId: '',
+        item: quiz,
+        orderDate: DateTime.now(),
+        maxPoint: maxPoint.value,
+        resultPoint: resultPoint.value,
+      ),
+    );
   }
 }

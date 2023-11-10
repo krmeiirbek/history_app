@@ -18,62 +18,78 @@ class QuestionBody extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Obx(() => Padding(
-                  padding: const EdgeInsets.all(TSizes.defaultSpace),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.questions[controller.questionId.value].question,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: TSizes.defaultBtwItems),
-                      Text(
-                        '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      ...controller.questions[controller.questionId.value].options
-                          .map(
-                            (option) => Obx(() => InkWell(
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          onTap: () {
-                            controller.selectOption(option);
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 8,
-                              horizontal: 10,
-                            ),
-                            margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              color: controller.selectedOptions.contains(option)
-                                  ? Theme.of(context).colorScheme.primary
-                                  : null,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                            child: Text(
-                              option.answer,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
+                      padding: const EdgeInsets.all(TSizes.defaultSpace),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          controller.questions[controller.questionId.value]
+                                      .image !=
+                                  null
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(controller
+                                          .questions[
+                                              controller.questionId.value]
+                                          .image!),
+                                    ),
+                                  ),
+                                  height: 200,
+                                )
+                              : const SizedBox.shrink(),
+                          const SizedBox(height: TSizes.defaultBtwItems),
+                          Text(
+                            '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                           ),
-                        )),
+                          ...controller
+                              .questions[controller.questionId.value].options
+                              .map(
+                            (option) => Obx(() => InkWell(
+                                  highlightColor: Colors.transparent,
+                                  splashColor: Colors.transparent,
+                                  onTap: () {
+                                    controller.selectOption(option);
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8,
+                                      horizontal: 10,
+                                    ),
+                                    margin: const EdgeInsets.only(top: 10),
+                                    decoration: BoxDecoration(
+                                      color: controller.selectedOptions
+                                              .contains(option)
+                                          ? Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                          : null,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      option.answer,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                    ),
+                                  ),
+                                )),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )),
+                    )),
               ),
             ),
             Row(
@@ -101,9 +117,12 @@ class QuestionBody extends StatelessWidget {
                           const SizedBox(width: 20),
                           Text(
                             "Алдыңғы",
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(
                                   fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                           ),
                         ],
@@ -128,10 +147,11 @@ class QuestionBody extends StatelessWidget {
                         children: [
                           Text(
                             "Келесі",
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
                           ),
                           const SizedBox(width: 20),
                           const Icon(

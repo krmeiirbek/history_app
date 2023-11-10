@@ -119,26 +119,27 @@ class TDummyData {
   static final List<QuestionModel> questions = [
     QuestionModel(
       questionId: '1',
-      question: 'What is your name?',
+      question: 'Which city is known as the "City of Apples" and is a major cultural and economic center in Kazakhstan?',
+      image: 'assets/images/buttons/img.png',
       options: [
         OptionModel(
           optionId: 'A',
-          answer: 'Zak',
-          isCorrect: false,
-        ),
-        OptionModel(
-          optionId: 'B',
-          answer: 'Kazybek',
+          answer: 'Almaty',
           isCorrect: true,
         ),
         OptionModel(
+          optionId: 'B',
+          answer: 'Astana',
+          isCorrect: false,
+        ),
+        OptionModel(
           optionId: 'C',
-          answer: 'Tom',
+          answer: 'Karaganda',
           isCorrect: false,
         ),
         OptionModel(
           optionId: 'D',
-          answer: 'Jerry',
+          answer: 'Shymkent',
           isCorrect: false,
         ),
       ],

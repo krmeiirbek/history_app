@@ -28,13 +28,17 @@ class QuestionBody extends StatelessWidget {
                               ? Container(
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(controller
-                                          .questions[
-                                              controller.questionId.value]
-                                          .image!),
+                                      image: AssetImage(
+                                        controller
+                                            .questions[
+                                                controller.questionId.value]
+                                            .image!,
+                                      ),
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  height: 200,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.6,
                                 )
                               : const SizedBox.shrink(),
                           const SizedBox(height: TSizes.defaultBtwItems),

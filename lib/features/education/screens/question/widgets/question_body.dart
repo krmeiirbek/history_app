@@ -56,7 +56,8 @@ class QuestionBody extends StatelessWidget {
                                   highlightColor: Colors.transparent,
                                   splashColor: Colors.transparent,
                                   onTap: () {
-                                    controller.selectOption(option);
+                                    controller.selectOption(
+                                        option, controller.questionId.value);
                                   },
                                   child: Container(
                                     width: double.infinity,
@@ -66,7 +67,8 @@ class QuestionBody extends StatelessWidget {
                                     ),
                                     margin: const EdgeInsets.only(top: 10),
                                     decoration: BoxDecoration(
-                                      color: controller.selectedOptions
+                                      color: controller.selectedOptions[
+                                                  controller.questionId.value]
                                               .contains(option)
                                           ? Theme.of(context)
                                               .colorScheme

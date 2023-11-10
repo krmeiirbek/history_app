@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
-import 'package:history_app/features/education/models/chapter_model.dart';
+import 'package:history_app/features/education/controllers/chapter_controller.dart';
 import 'package:history_app/features/education/screens/quizzes/quizzes.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
-class ChaptersScreen extends StatelessWidget {
-  final List<ChapterModel> chapters;
-
+class ChaptersScreen extends GetView<ChapterController> {
   const ChaptersScreen({
     super.key,
-    required this.chapters,
   });
-
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ChapterController());
     return Scaffold(
       appBar: TAppBar(
         title: Text(
@@ -29,17 +26,15 @@ class ChaptersScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: TSizes.defaultSpace),
           child: ListView.separated(
             shrinkWrap: true,
-            itemCount: chapters.length,
+            itemCount: controller.chapters.length,
             physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (_, index) => const Divider(height: 5),
             itemBuilder: (_, index) {
               return ListTile(
                 onTap: () => Get.to(
-                  () => QuizzesScreen(
-                    quizzes: chapters[index].quizzes,
-                  ),
+                  () => const QuizzesScreen(),
                 ),
-                leading: Image(image: AssetImage(chapters[index].image)),
+                leading: Image(image: AssetImage(controller.chapters[index].image)),
                 title: Text(
                   '${index + 1}-тарау',
                   style: Theme.of(context)
@@ -48,7 +43,7 @@ class ChaptersScreen extends StatelessWidget {
                       .apply(fontSizeDelta: -0.1, fontWeightDelta: 1),
                 ),
                 subtitle: Text(
-                  chapters[index].title,
+                  controller.chapters[index].title,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!

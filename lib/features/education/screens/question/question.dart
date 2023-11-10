@@ -4,20 +4,25 @@ import 'package:history_app/features/education/controllers/question_controller.d
 import 'package:history_app/features/education/screens/question/widgets/question_body.dart';
 import 'package:history_app/features/education/screens/question/widgets/question_header.dart';
 
-class QuestionScreen extends StatelessWidget {
+class QuestionScreen extends GetView<QuestionController> {
   const QuestionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(QuestionController());
-    return const Scaffold(
-      body: Column(
-        children: [
-          QuestionHeader(),
-          Expanded(
-            child: QuestionBody(),
-          ),
-        ],
+    Get.put(QuestionController());
+    return Scaffold(
+      body: WillPopScope(
+        onWillPop: () async {
+          return true;
+        },
+        child: const Column(
+          children: [
+            QuestionHeader(),
+            Expanded(
+              child: QuestionBody(),
+            ),
+          ],
+        ),
       ),
     );
   }

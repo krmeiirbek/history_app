@@ -39,10 +39,9 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "🌕 ${TDummyData.user.balance}",
-                          style:
-                              Theme.of(context).textTheme.titleSmall!.apply(
-                                    color: TColors.white,
-                                  ),
+                          style: Theme.of(context).textTheme.titleSmall!.apply(
+                                color: TColors.white,
+                              ),
                         ),
                       ],
                     ),
@@ -70,9 +69,8 @@ class HomeScreen extends StatelessWidget {
                 title: TDummyData.subjects[index].title,
                 image: TDummyData.subjects[index].image,
                 onPressed: () => Get.to(
-                      () => ListBooksScreen(
-                    books: TDummyData.subjects[index].books,
-                        title: TDummyData.subjects[index].title,
+                  () => ListBooksScreen(
+                    title: TDummyData.subjects[index].title,
                   ),
                 ),
               ),

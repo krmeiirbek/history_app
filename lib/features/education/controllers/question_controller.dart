@@ -12,12 +12,15 @@ class QuestionController extends GetxController {
   final questionId = 0.obs;
 
   final questions = TDummyData.questions;
-  final selectedOptions = <OptionModel>[].obs;
+  final selectedOptions = <RxList<OptionModel>>[].obs;
 
   @override
   void onInit() {
     super.onInit();
     startTimer();
+    for(final _ in questions){
+      selectedOptions.add(<OptionModel>[].obs);
+    }
   }
 
   void startTimer() {
@@ -36,11 +39,11 @@ class QuestionController extends GetxController {
     questionId.value = index;
   }
 
-  void selectOption(OptionModel option) {
-    if (selectedOptions.contains(option)) {
-      selectedOptions.remove(option);
+  void selectOption(OptionModel option, int index) {
+    if (selectedOptions[index].contains(option)) {
+      selectedOptions[index].remove(option);
     } else {
-      selectedOptions.add(option);
+      selectedOptions[index].add(option);
     }
   }
 

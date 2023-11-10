@@ -94,7 +94,7 @@ class THistoryListItems extends StatelessWidget {
                           percent: history.resultPoint/history.maxPoint,
                           center: Text("${((history.resultPoint/history.maxPoint)*100).toStringAsFixed(2)}%\n${history.resultPoint}/${history.maxPoint}"),
                           progressColor: Colors.green,
-                        )
+                        ),
                       ],
                     ),
                   ),

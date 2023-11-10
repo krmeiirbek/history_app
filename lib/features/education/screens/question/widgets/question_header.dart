@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/features/education/controllers/question_controller.dart';
+import 'package:history_app/features/education/screens/result/result.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class QuestionHeader extends StatelessWidget {
@@ -43,14 +44,21 @@ class QuestionHeader extends StatelessWidget {
                       const Spacer(),
                       InkWell(
                         onTap: () {
-                          Get.back();
+                          Get.off(
+                            () => const ResultPage(),
+                            arguments: {
+                              "questions": controller.questions,
+                              "selectedOptions": controller.selectedOptions,
+                            },
+                          );
                         },
                         child: Text(
                           "Тестті аяқтау",
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                color: Colors.orange,
-                                fontWeight: FontWeight.w900,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                         ),
                       ),
                     ],
@@ -80,8 +88,8 @@ class QuestionHeader extends StatelessWidget {
                               border: controller.questionId.value == index
                                   ? null
                                   : Border.all(
-                                      color:
-                                          Theme.of(context).unselectedWidgetColor,
+                                      color: Theme.of(context)
+                                          .unselectedWidgetColor,
                                     ),
                             ),
                             child: Center(

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
-import 'package:history_app/features/education/models/quiz_model.dart';
+import 'package:history_app/features/education/controllers/quiz_controller.dart';
 import 'package:history_app/features/education/screens/question/question.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
-class QuizzesScreen extends StatelessWidget {
+class QuizzesScreen extends GetView<QuizController> {
   const QuizzesScreen({
     super.key,
-    required this.quizzes,
   });
-
-  final List<QuizModel> quizzes;
 
   @override
   Widget build(BuildContext context) {
+    Get.put(QuizController());
     return Scaffold(
       appBar: TAppBar(
         title: Text(
@@ -37,12 +35,12 @@ class QuizzesScreen extends StatelessWidget {
                 ),
               ),
               title: Text(
-                quizzes[index].title,
+                controller.quizzes[index].title,
               ),
             );
           },
           separatorBuilder: (_, index) => const Divider(height: 1),
-          itemCount: quizzes.length,
+          itemCount: controller.quizzes.length,
         ),
       ),
     );

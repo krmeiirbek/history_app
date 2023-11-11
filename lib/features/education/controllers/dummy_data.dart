@@ -114,12 +114,23 @@ class TDummyData {
       title: '1 нұсқа',
       questions: questions,
     ),
+    QuizModel(
+      quizId: 'quizId',
+      chapterId: 'chapterId',
+      bookId: 'bookId',
+      subjectId: 'subjectId',
+      price: 500,
+      discount: 0,
+      title: '2 нұсқа',
+      questions: questions,
+    ),
   ];
 
   static final List<QuestionModel> questions = [
     QuestionModel(
       questionId: '1',
-      question: 'Which city is known as the "City of Apples" and is a major cultural and economic center in Kazakhstan?',
+      question:
+          'Which city is known as the "City of Apples" and is a major cultural and economic center in Kazakhstan?',
       image: 'assets/images/buttons/img.png',
       options: [
         OptionModel(

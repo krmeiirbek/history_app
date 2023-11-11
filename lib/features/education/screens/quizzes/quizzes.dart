@@ -14,9 +14,11 @@ class QuizzesScreen extends GetView<QuizController> {
     Get.put(QuizController());
     return Scaffold(
       appBar: TAppBar(
-        title: Text(
-          "Нұсқалар",
-          style: Theme.of(context).textTheme.headlineMedium,
+        title: SizedBox(
+          child: Text(
+            "Нұсқалар",
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
       ),
       body: const TQuizBody(),

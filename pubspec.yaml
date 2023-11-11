@@ -49,14 +49,9 @@ flutter:
     - assets/logos/
     - assets/lottie/
     - assets/images/buttons/
-    - assets/icons/brands/
     - assets/images/content/
     - assets/images/buttons/
-    - assets/icons/categories/
-    - assets/images/animations/
     - assets/icons/payment_methods/
-    - assets/images/on_boarding_images/
-
 
   fonts:
     - family: Poppins

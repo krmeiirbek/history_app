@@ -1,7 +1,7 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:history_app/features/authentication/screens/login/login.dart';
 import 'package:history_app/navigation_menu.dart';
 import 'package:history_app/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 
@@ -23,7 +23,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const OnBoardingScreen())
+        ? Get.offAll(() => const LoginScreen())
         : Get.offAll(() => NavigationController());
   }
 
@@ -64,7 +64,7 @@ class AuthenticationRepository extends GetxController {
           email: email, password: password);
       firebaseUser.value != null
           ? Get.offAll(() => NavigationController())
-          : Get.to(() => const OnBoardingScreen());
+          : Get.to(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
 
@@ -80,6 +80,9 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (_) {}
   }
 

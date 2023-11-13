@@ -36,6 +36,7 @@ class TDummyData {
         quizId: '',
         bookId: '',
         discount: 0,
+        isBuy: false,
         questions: [],
       ),
     ),
@@ -112,6 +113,7 @@ class TDummyData {
       price: 500,
       discount: 0,
       title: '1 нұсқа',
+      isBuy: true,
       questions: questions,
     ),
     QuizModel(
@@ -122,6 +124,7 @@ class TDummyData {
       price: 500,
       discount: 0,
       title: '2 нұсқа',
+      isBuy: false,
       questions: questions,
     ),
   ];

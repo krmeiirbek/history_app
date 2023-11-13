@@ -17,85 +17,83 @@ class QuestionBody extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                child: Obx(() => Padding(
-                      padding: const EdgeInsets.all(TSizes.defaultSpace),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          controller.questions[controller.questionId.value]
-                                      .image !=
-                                  null
-                              ? Container(
+                child: Obx(
+                  () => Padding(
+                    padding: const EdgeInsets.all(TSizes.defaultSpace),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        controller.questions[controller.questionId.value]
+                                    .image !=
+                                null
+                            ? Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      controller
+                                          .questions[
+                                              controller.questionId.value]
+                                          .image!,
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                height: MediaQuery.of(context).size.width * 0.6,
+                              )
+                            : const SizedBox.shrink(),
+                        const SizedBox(height: TSizes.defaultBtwItems),
+                        Text(
+                          '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        ...controller
+                            .questions[controller.questionId.value].options
+                            .map(
+                          (option) => Obx(() => InkWell(
+                                highlightColor: Colors.transparent,
+                                splashColor: Colors.transparent,
+                                onTap: () {
+                                  controller.selectOption(
+                                      option, controller.questionId.value);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 8,
+                                    horizontal: 10,
+                                  ),
+                                  margin: const EdgeInsets.only(top: 10),
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        controller
-                                            .questions[
+                                    color: controller.selectedOptions[
                                                 controller.questionId.value]
-                                            .image!,
-                                      ),
-                                      fit: BoxFit.cover,
+                                            .contains(option)
+                                        ? Theme.of(context).colorScheme.primary
+                                        : null,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  height:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                )
-                              : const SizedBox.shrink(),
-                          const SizedBox(height: TSizes.defaultBtwItems),
-                          Text(
-                            '${controller.questionId.value + 1}. ${controller.questions[controller.questionId.value].question}',
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                          ),
-                          ...controller
-                              .questions[controller.questionId.value].options
-                              .map(
-                            (option) => Obx(() => InkWell(
-                                  highlightColor: Colors.transparent,
-                                  splashColor: Colors.transparent,
-                                  onTap: () {
-                                    controller.selectOption(
-                                        option, controller.questionId.value);
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8,
-                                      horizontal: 10,
-                                    ),
-                                    margin: const EdgeInsets.only(top: 10),
-                                    decoration: BoxDecoration(
-                                      color: controller.selectedOptions[
-                                                  controller.questionId.value]
-                                              .contains(option)
-                                          ? Theme.of(context)
-                                              .colorScheme
-                                              .primary
-                                          : null,
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      option.answer,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                    ),
+                                  child: Text(
+                                    option.answer,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                   ),
-                                )),
-                          ),
-                        ],
-                      ),
-                    )),
+                                ),
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
             Row(

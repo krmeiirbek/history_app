@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:history_app/features/education/controllers/balance_controller.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
 import 'package:history_app/features/education/controllers/quiz_controller.dart';
 import 'package:history_app/features/education/screens/question/question.dart';
@@ -12,6 +13,8 @@ class TQuizBody extends GetView<QuizController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(BalanceController());
+    final balanceController = BalanceController.instance;
     final dark = THelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.all(TSizes.defaultBtwItems),
@@ -20,10 +23,34 @@ class TQuizBody extends GetView<QuizController> {
         itemCount: controller.quizzes.length,
         itemBuilder: (_, index) {
           return ListTile(
-            onTap: () => Get.to(
-              () => const QuestionScreen(),
-              arguments: controller.quizzes[index],
-            ),
+            onTap: () {
+              if (balanceController.quizzes[index].isBuy == false) {
+                showDialog(
+                  context: _,
+                  builder: (_) => AlertDialog(
+                    actions: [
+                      InkWell(
+                        onTap: (){},
+                        child: const Text('Жоқ'),
+                      ),
+                      const SizedBox(width: 150),
+                      InkWell(
+                        onTap: () {},
+                        child: const Text('Иә'),
+                      ),
+                    ],
+                    title: const Text("data"),
+                    contentPadding: const EdgeInsets.all(TSizes.xl),
+                    content: const Text("data"),
+                  ),
+                );
+              } else {
+                () => Get.to(
+                      () => const QuestionScreen(),
+                      arguments: controller.quizzes[index],
+                    );
+              }
+            },
             leading: Text(
               '${index + 1}',
               style: Theme.of(context).textTheme.bodyLarge!.apply(
@@ -38,12 +65,14 @@ class TQuizBody extends GetView<QuizController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "🌕  ${TDummyData.quizzes[index].price}",
-                    style: Theme.of(context).textTheme.titleSmall!.apply(
-                          color: dark ? TColors.white : TColors.black,
-                        ),
-                  ),
+                  balanceController.quizzes[index].isBuy == false
+                      ? Text(
+                          "🌕  ${TDummyData.quizzes[index].price}",
+                          style: Theme.of(context).textTheme.titleSmall!.apply(
+                                color: dark ? TColors.white : TColors.black,
+                              ),
+                        )
+                      : const Text(' '),
                   const SizedBox(width: TSizes.vl),
                   Flexible(
                     child: Divider(
@@ -53,7 +82,9 @@ class TQuizBody extends GetView<QuizController> {
                       endIndent: 5,
                     ),
                   ),
-                  const Icon(Icons.lock_outline),
+                  balanceController.quizzes[index].isBuy == false
+                      ? const Icon(Icons.lock_outline, size: 25)
+                      : const Icon(Icons.lock_open, size: 25),
                   Flexible(
                     child: Divider(
                       color: dark ? TColors.darkGrey : TColors.black,

@@ -8,6 +8,7 @@ class QuizModel {
   final double price;
   final double discount; // 0-100
   final String title;
+  final bool isBuy;
   final List<QuestionModel> questions;
 
   QuizModel({
@@ -18,6 +19,7 @@ class QuizModel {
     required this.price,
     required this.discount,
     required this.title,
+    required this.isBuy,
     required this.questions,
   });
 
@@ -29,6 +31,7 @@ class QuizModel {
     double? price,
     double? discount,
     String? title,
+    bool? isBuy,
     List<QuestionModel>? questions,
   }) =>
       QuizModel(
@@ -40,5 +43,6 @@ class QuizModel {
         discount: discount ?? this.discount,
         title: title ?? this.title,
         questions: questions ?? this.questions,
+        isBuy: isBuy ?? this.isBuy,
       );
 }

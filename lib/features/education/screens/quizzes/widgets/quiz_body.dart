@@ -21,7 +21,7 @@ class TQuizBody extends GetView<QuizController> {
         itemBuilder: (_, index) {
           return ListTile(
             onTap: () {
-              if (TDummyData.quizzes[index].isBuy == false) {
+              if (controller.quizzes[index].isBuy == false) {
                 showDialog(
                   context: _,
                   builder: (_) => AlertDialog(
@@ -40,7 +40,8 @@ class TQuizBody extends GetView<QuizController> {
                     ],
                     title: const Text("Сатып алу"),
                     contentPadding: const EdgeInsets.all(TSizes.xl),
-                    content: const Text("Бұл нұсқаны сатып алсаныз,    тест тапсыра аласыз!"),
+                    content: const Text(
+                        "Бұл нұсқаны сатып алсаныз,    тест тапсыра аласыз!"),
                   ),
                 );
               } else {
@@ -64,14 +65,14 @@ class TQuizBody extends GetView<QuizController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TDummyData.quizzes[index].isBuy == false
+                  controller.quizzes[index].isBuy == false
                       ? Text(
                           "🌕  ${TDummyData.quizzes[index].price}",
                           style: Theme.of(context).textTheme.titleSmall!.apply(
                                 color: dark ? TColors.white : TColors.black,
                               ),
                         )
-                      : const Text(' '),
+                      : const Text('    '),
                   const SizedBox(width: TSizes.vl),
                   Flexible(
                     child: Divider(
@@ -81,7 +82,7 @@ class TQuizBody extends GetView<QuizController> {
                       endIndent: 5,
                     ),
                   ),
-                  TDummyData.quizzes[index].isBuy == false
+                  controller.quizzes[index].isBuy == false
                       ? const Icon(Icons.lock_outline, size: 25)
                       : const Icon(Icons.lock_open, size: 25),
                   Flexible(

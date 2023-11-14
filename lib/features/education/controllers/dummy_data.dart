@@ -19,9 +19,9 @@ class TDummyData {
     phoneNumber: '+77775552001',
     password: '',
     profilePicture: TImages.user,
-    balance: 400,
+    balance: 600,
     sandyq: [
-      'quizId2',
+
     ],
   ).obs;
 

@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:history_app/features/education/models/book_model.dart';
 import 'package:history_app/features/education/models/chapter_model.dart';
 import 'package:history_app/features/education/models/option_model.dart';
@@ -11,15 +12,18 @@ import '../models/subject_model.dart';
 
 class TDummyData {
   /// -- User
-  static final UserModel user = UserModel(
+  static final user = UserModel(
     firstName: 'Kazybek',
     lastName: 'Meiirbek',
     email: 'support@kazmei.com',
     phoneNumber: '+77775552001',
     password: '',
     profilePicture: TImages.user,
-    balance: 1000,
-  );
+    balance: 400,
+    sandyq: [
+      'quizId2',
+    ],
+  ).obs;
 
   /// -- history
   static final List<HistoryModel> histories = [
@@ -106,7 +110,7 @@ class TDummyData {
 
   static final List<QuizModel> quizzes = [
     QuizModel(
-      quizId: 'quizId',
+      quizId: 'quizId1',
       chapterId: 'chapterId',
       bookId: 'bookId',
       subjectId: 'subjectId',
@@ -117,7 +121,7 @@ class TDummyData {
       questions: questions,
     ),
     QuizModel(
-      quizId: 'quizId',
+      quizId: 'quizId2',
       chapterId: 'chapterId',
       bookId: 'bookId',
       subjectId: 'subjectId',

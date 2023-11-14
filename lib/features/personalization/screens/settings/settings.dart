@@ -39,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                   TUserProfileCard(
-                    user: TDummyData.user,
+                    user: TDummyData.user.value,
                     actionButtonOnPressed: () =>
                         Get.to(() => const ProfileScreen()),
                   ),

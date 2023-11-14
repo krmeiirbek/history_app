@@ -5,15 +5,17 @@ import 'package:history_app/common/widgets/custom_shapes/containers/primary_head
 import 'package:history_app/common/widgets/home/home_buttons.dart';
 import 'package:history_app/common/widgets/images/t_circular_image.dart';
 import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/list_books/list_books.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -35,22 +37,22 @@ class HomeScreen extends StatelessWidget {
                         .apply(color: TColors.white),
                   ),
                   actions: [
-                    Row(
+                    Obx(() => Row(
                       children: [
                         Text(
-                          "🌕 ${TDummyData.user.balance}",
+                          "🌕 ${TDummyData.user.value.balance}",
                           style: Theme.of(context).textTheme.titleSmall!.apply(
-                                color: TColors.white,
-                              ),
+                            color: TColors.white,
+                          ),
                         ),
                       ],
-                    ),
+                    )),
                     const SizedBox(width: 10),
                     Hero(
                       tag: 'avatar',
                       child: TCircularImage(
                         padding: 0,
-                        image: TDummyData.user.profilePicture,
+                        image: TDummyData.user.value.profilePicture,
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,

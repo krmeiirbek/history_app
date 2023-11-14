@@ -21,27 +21,29 @@ class TQuizBody extends GetView<QuizController> {
         itemBuilder: (_, index) {
           return ListTile(
             onTap: () {
-              if (controller.quizzes[index].isBuy == false) {
+              if (!controller.quizzes[index].isBuy) {
                 showDialog(
                   context: _,
                   builder: (_) => AlertDialog(
                     actions: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pop();
+                          Get.back();
                         },
                         child: const Text('Жоқ'),
                       ),
                       const SizedBox(width: 150),
                       InkWell(
-                        onTap: () {},
-                        child: const Text('Иә'),
+                        onTap: () {
+                          controller.buyQuiz(quiz: controller.quizzes[index]);
+                        },
+                        child: const Text('Сатып алу'),
                       ),
                     ],
                     title: const Text("Сатып алу"),
                     contentPadding: const EdgeInsets.all(TSizes.xl),
                     content: const Text(
-                        "Бұл нұсқаны сатып алсаныз,    тест тапсыра аласыз!"),
+                        "Бұл нұсқаны сатып алсыз ба?"),
                   ),
                 );
               } else {
@@ -60,18 +62,18 @@ class TQuizBody extends GetView<QuizController> {
             title: Text(
               controller.quizzes[index].title,
             ),
-            trailing: SizedBox(
+            trailing: Obx(() => SizedBox(
               width: 150,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   controller.quizzes[index].isBuy == false
                       ? Text(
-                          "🌕  ${TDummyData.quizzes[index].price}",
-                          style: Theme.of(context).textTheme.titleSmall!.apply(
-                                color: dark ? TColors.white : TColors.black,
-                              ),
-                        )
+                    "🌕  ${TDummyData.quizzes[index].price}",
+                    style: Theme.of(context).textTheme.titleSmall!.apply(
+                      color: dark ? TColors.white : TColors.black,
+                    ),
+                  )
                       : const Text('    '),
                   const SizedBox(width: TSizes.vl),
                   Flexible(
@@ -95,7 +97,7 @@ class TQuizBody extends GetView<QuizController> {
                   ),
                 ],
               ),
-            ),
+            )),
           );
         },
       ),

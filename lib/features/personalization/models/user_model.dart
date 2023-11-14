@@ -8,7 +8,8 @@ class UserModel {
   final String phoneNumber;
   final String password;
   final String profilePicture;
-  final int balance;
+  final double balance;
+  final List<String> sandyq;
 
   UserModel({
     this.id,
@@ -19,7 +20,30 @@ class UserModel {
     required this.password,
     required this.profilePicture,
     required this.balance,
+    required this.sandyq,
   });
+
+  UserModel copyWith({
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? phoneNumber,
+    String? password,
+    String? profilePicture,
+    double? balance,
+    List<String>? sandyq,
+  }) =>
+      UserModel(
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        email: email ?? this.email,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        password: password ?? this.password,
+        profilePicture: profilePicture ?? this.profilePicture,
+        balance: balance ?? this.balance,
+        sandyq: sandyq ?? this.sandyq,
+      );
 
   /// Helpers
   String get fullName => '$firstName $lastName';
@@ -34,5 +58,6 @@ class UserModel {
         password: '',
         profilePicture: '',
         balance: 0,
+        sandyq: [],
       );
 }

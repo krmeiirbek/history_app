@@ -7,14 +7,15 @@ class UserModel {
   final String phoneNo;
   final String password;
 
-  const UserModel(
-      {this.id,
-      required this.firstName,
-      required this.lastName,
-      required this.userName,
-      required this.email,
-      required this.phoneNo,
-      required this.password});
+  const UserModel({
+    this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.userName,
+    required this.email,
+    required this.phoneNo,
+    required this.password,
+  });
 
   toJson() {
     return {

@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "496589995566",
-    "project_id": "history-app-264cd",
-    "storage_bucket": "history-app-264cd.appspot.com"
+    "project_number": "170390610312",
+    "project_id": "history-app-777",
+    "storage_bucket": "history-app-777.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:496589995566:android:8e56970130224f49e129bf",
+        "mobilesdk_app_id": "1:170390610312:android:f4aa4b04180d8708135a3d",
         "android_client_info": {
           "package_name": "com.krmeiirbek.historyApp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "170390610312-564gsjdfqebftefsjofioko2s6qrlcuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.krmeiirbek.historyApp",
+            "certificate_hash": "6be5613a44b5f1a6c985f8b02acbb6b634f683a6"
+          }
+        },
+        {
+          "client_id": "170390610312-q2opk4c66ed0hta8o65bd17n9psvplmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLMaV1qjhQRMTnmyM-JRMq_Xcpo1l5iog"
+          "current_key": "AIzaSyCIJzEa1hBUX7Qag8oF06B1ChcqgpU3I9Q"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170390610312-q2opk4c66ed0hta8o65bd17n9psvplmd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "170390610312-3f6acc4je7t3fdhkec029isbvjm1s66t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.krmeiirbek.historyApp"
+              }
+            }
+          ]
         }
       }
     }

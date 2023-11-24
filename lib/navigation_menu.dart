@@ -14,8 +14,8 @@ class NavigationController extends GetxController {
   ];
 }
 
-class NavigationManu extends StatelessWidget {
-  const NavigationManu({super.key});
+class NavigationMenu extends StatelessWidget {
+  const NavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

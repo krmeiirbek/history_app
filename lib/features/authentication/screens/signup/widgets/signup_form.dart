@@ -111,7 +111,7 @@ class TSignupForm extends StatelessWidget {
                     controller.email.text.trim(),
                     controller.password.text.trim(),
                   );
-                  ()=>Get.to(() => const NavigationManu());
+                  ()=>Get.to(() => const NavigationMenu());
                 }
               },
               child: const Text(TTexts.createAccount),

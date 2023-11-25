@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>170390610312-3f6acc4je7t3fdhkec029isbvjm1s66t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.170390610312-3f6acc4je7t3fdhkec029isbvjm1s66t</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>170390610312-564gsjdfqebftefsjofioko2s6qrlcuh.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCov9ogqxk_lHDbB5-z57qDen7bdqFjVik</string>
+	<key>GCM_SENDER_ID</key>
+	<string>170390610312</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.krmeiirbek.historyApp</string>
+	<key>PROJECT_ID</key>
+	<string>history-app-777</string>
+	<key>STORAGE_BUCKET</key>
+	<string>history-app-777.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:170390610312:ios:9e07dadcef9843dd135a3d</string>
+</dict>
+</plist>

@@ -138,7 +138,7 @@ class TDummyData {
       questionId: '1',
       question:
           'Which city is known as the "City of Apples" and is a major cultural and economic center in Kazakhstan?',
-      image: 'assets/images/buttons/img.png',
+      image: 'assets/images/buttons/account_success_created.png',
       options: [
         OptionModel(
           optionId: 'A',

@@ -54,7 +54,7 @@ class SignupController extends GetxController {
       // start loading
       TFullScreenLoader.openLoadingDialog(
         "We are processing your information...",
-        TImages.loading2,
+        TImages.loading,
       );
       // check internet connect
       final isConnected = await NetworkManager.instance.isConnected();
@@ -73,7 +73,7 @@ class SignupController extends GetxController {
         TFullScreenLoader.stopLoading();
         TLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
-          massage:
+          message:
               'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use',
         );
         return;
@@ -101,16 +101,18 @@ class SignupController extends GetxController {
       // show massage
       TLoaders.successSnackBar(
           title: "Congratulations",
-          massage: "Your account has been created! Verify email to continue.");
+          message: "Your account has been created! Verify email to continue.");
 
       // move VE screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(
+            email: emailController .text.trim(),
+          ));
     } catch (e) {
       // remove loader
       TFullScreenLoader.stopLoading();
 
       // show error
-      TLoaders.errorSnackBar(title: "Oh Snap", massage: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
     }
   }
 }

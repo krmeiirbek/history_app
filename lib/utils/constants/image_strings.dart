@@ -53,5 +53,5 @@ class TImages {
   //lottie
   static const cheers = 'assets/lottie/cheers.json';
   static const loading = 'assets/lottie/loading.json';
-  static const loading2 = 'assets/lottie/loading2.json';
+  static const successfullyRegisteredAnimation = 'assets/lottie/check-register.json';
 }

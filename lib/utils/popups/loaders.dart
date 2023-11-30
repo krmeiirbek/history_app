@@ -33,10 +33,10 @@ class TLoaders {
     );
   }
 
-  static warningSnackBar({required title, massage = '', duration = 3}) {
+  static warningSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
-      massage,
+      message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: TColors.white,
@@ -51,10 +51,10 @@ class TLoaders {
     );
   }
 
-  static successSnackBar({required title, massage = '', duration = 3}) {
+  static successSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
-      massage,
+      message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: TColors.white,
@@ -69,10 +69,10 @@ class TLoaders {
     );
   }
 
-  static errorSnackBar({required title, massage = '', duration = 3}) {
+  static errorSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
-      massage,
+      message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: TColors.white,

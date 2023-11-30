@@ -26,13 +26,13 @@ class AuthenticationRepository extends GetxController {
       return await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (_) {
-      throw FirebaseAuthException(code: '');
+      throw FirebaseAuthException(code: 'a');
     } on FirebaseException catch (_) {
-      throw FirebaseException(code: '', plugin: '');
+      throw FirebaseException(code: 'b', plugin: 'b');
     } on FormatException catch (_) {
       throw const FormatException();
     } on PlatformException catch (_) {
-      throw PlatformException(code: 'code');
+      throw PlatformException(code: 'c');
     } catch (e) {
       throw 'Something went wrong, Please try again';
     }

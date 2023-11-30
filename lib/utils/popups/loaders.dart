@@ -69,7 +69,7 @@ class TLoaders {
     );
   }
 
-  static errorSnackBar({required title, massage = '', duration = 3}) {
+  static errorSnackBar({required title, massage = '', duration = 500}) {
     Get.snackbar(
       title,
       massage,

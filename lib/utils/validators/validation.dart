@@ -31,19 +31,9 @@ class TValidator {
       return 'Password must be at least 6 characters long.';
     }
 
-    // Check for uppercase letters
-    if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter.';
-    }
-
     // Check for numbers
     if (!value.contains(RegExp(r'[0-9]'))) {
       return 'Password must contain at least one number.';
-    }
-
-    // Check for special characters
-    if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'Password must contain at least one special character.';
     }
 
     return null;
@@ -55,7 +45,7 @@ class TValidator {
     }
 
     // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{4,50}$');
+    final phoneRegExp = RegExp(r'^\d{10,15}$');
 
     if (!phoneRegExp.hasMatch(value)) {
       return 'Invalid phone number format (10 digits required).';

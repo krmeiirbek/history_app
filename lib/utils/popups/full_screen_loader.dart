@@ -4,7 +4,7 @@ import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
 
 class TFullScreenLoader {
-  static void openLoadingDialog(String text, String animation) {
+  static void openLoadingDialog(String text) {
     showDialog(
       context: Get.overlayContext!,
       builder: (_) => PopScope(
@@ -16,9 +16,9 @@ class TFullScreenLoader {
           width: double.infinity,
           height: double.infinity,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 250),
-              Text(text,style: Theme.of(Get.context!).textTheme.labelSmall,),
+              Text(text,style: Theme.of(Get.context!).textTheme.bodyMedium),
             ],
           ),
         ),
@@ -27,6 +27,6 @@ class TFullScreenLoader {
   }
 
   static stopLoading() {
-    Navigator.of(Get.overlayContext!).pop();
+    Navigator.of(Get.context!).pop();
   }
 }

@@ -4,7 +4,6 @@ import 'package:history_app/data/repository/authentication/authentication_reposi
 import 'package:history_app/data/repository/user/user_repository.dart';
 import 'package:history_app/features/authentication/models/user_model.dart';
 import 'package:history_app/features/authentication/screens/signup/verify_email.dart';
-import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/helpers/network_manager.dart';
 import 'package:history_app/utils/popups/full_screen_loader.dart';
 import 'package:history_app/utils/popups/loaders.dart';
@@ -29,7 +28,8 @@ class SignupController extends GetxController {
     try {
       // start loading
       TFullScreenLoader.openLoadingDialog(
-          "We are processing your information", TImages.createdAccount);
+        "We are processing your information...",
+      );
       // check internet connect
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) return;
@@ -63,6 +63,8 @@ class SignupController extends GetxController {
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
 
+      TFullScreenLoader.stopLoading();
+
       // show massage
       TLoaders.successSnackBar(
           title: "Congratulations",
@@ -71,13 +73,11 @@ class SignupController extends GetxController {
       // move VE screen
       Get.to(() => const VerifyEmailScreen());
     } catch (e) {
-      TLoaders.errorSnackBar(title: "Oh Snap", massage: e.toString());
-
-
-      // show error
-    } finally {
       // remove loader
       TFullScreenLoader.stopLoading();
-    }
+
+      // show error
+      TLoaders.errorSnackBar(title: "Oh Snap", massage: e.toString());
+    } finally {}
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/authentication/controllers/signup_controller.dart';
+import 'package:history_app/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/constants/text_strings.dart';

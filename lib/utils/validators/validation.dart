@@ -44,11 +44,11 @@ class TValidator {
       return 'Phone number is required.';
     }
 
-    // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10,15}$');
+    // Regular expression for phone number validation
+    final phoneRegExp = RegExp(r'^87\d{9}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return 'Invalid phone number format. Use 87xxxxxxxxx';
     }
 
     return null;

@@ -4,6 +4,7 @@ import 'package:history_app/data/repository/authentication/authentication_reposi
 import 'package:history_app/data/repository/user/user_repository.dart';
 import 'package:history_app/features/authentication/models/user_model.dart';
 import 'package:history_app/features/authentication/screens/signup/verify_email.dart';
+import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/helpers/network_manager.dart';
 import 'package:history_app/utils/popups/full_screen_loader.dart';
 import 'package:history_app/utils/popups/loaders.dart';
@@ -15,13 +16,37 @@ class SignupController extends GetxController {
   final hidePassword = true.obs;
   final privacyPolicy = true.obs;
 
-  final firstName = TextEditingController();
-  final lastName = TextEditingController();
-  final userName = TextEditingController();
-  final email = TextEditingController();
-  final phoneNumber = TextEditingController();
-  final password = TextEditingController();
+  String lastText = '';
+
+  late TextEditingController firstNameController;
+  late TextEditingController lastNameController;
+  late TextEditingController userNameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneNumberController;
+  late TextEditingController passwordController;
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+
+  @override
+  void onInit() {
+    firstNameController = TextEditingController();
+    lastNameController = TextEditingController();
+    userNameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneNumberController = TextEditingController();
+    passwordController = TextEditingController();
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    userNameController.dispose();
+    emailController.dispose();
+    phoneNumberController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   /// -- SIGNUP
   Future<void> signup() async {
@@ -29,15 +54,23 @@ class SignupController extends GetxController {
       // start loading
       TFullScreenLoader.openLoadingDialog(
         "We are processing your information...",
+        TImages.loading2,
       );
       // check internet connect
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
-      // from validation
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!isConnected) {
+        TFullScreenLoader.stopLoading();
+        return;
+      }
+      // form validation
+      if (!signupFormKey.currentState!.validate()) {
+        TFullScreenLoader.stopLoading();
+        return;
+      }
 
       // PPC
       if (!privacyPolicy.value) {
+        TFullScreenLoader.stopLoading();
         TLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
           massage:
@@ -48,15 +81,15 @@ class SignupController extends GetxController {
       // register user
       final userCredential = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
-              email.text.trim(), password.text.trim());
+              emailController.text.trim(), passwordController.text.trim());
       // save authenticated
       final newUser = UserModel(
         id: userCredential.user!.uid,
-        firstName: firstName.text.trim(),
-        lastName: lastName.text.trim(),
-        userName: userName.text.trim(),
-        email: email.text.trim(),
-        phoneNumber: phoneNumber.text.trim(),
+        firstName: firstNameController.text.trim(),
+        lastName: lastNameController.text.trim(),
+        userName: userNameController.text.trim(),
+        email: emailController.text.trim(),
+        phoneNumber: phoneNumberController.text.trim(),
         profilePicture: '',
       );
 
@@ -78,6 +111,6 @@ class SignupController extends GetxController {
 
       // show error
       TLoaders.errorSnackBar(title: "Oh Snap", massage: e.toString());
-    } finally {}
+    }
   }
 }

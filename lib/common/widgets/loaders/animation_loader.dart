@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
+import 'package:lottie/lottie.dart';
 
 class TAnimationLoaderWidget extends StatelessWidget {
   const TAnimationLoaderWidget({
     super.key,
     required this.text,
+    required this.animation,
     this.actionText,
     this.showAction = false,
     this.onActionPressed,
   });
 
   final String text;
+  final String animation;
   final String? actionText;
   final bool showAction;
   final VoidCallback? onActionPressed;
@@ -22,6 +25,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Lottie.asset(animation, width: MediaQuery.of(context).size.width * 0.8),
           const SizedBox(height: TSizes.defaultSpace),
           Text(
             text,

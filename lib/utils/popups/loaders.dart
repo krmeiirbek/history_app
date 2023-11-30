@@ -45,7 +45,7 @@ class TLoaders {
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(20),
       icon: const Icon(
-        Iconsax.wallet2,
+        Iconsax.warning_2,
         color: TColors.white,
       ),
     );
@@ -57,8 +57,8 @@ class TLoaders {
       massage,
       isDismissible: true,
       shouldIconPulse: true,
-      colorText: TColors.primary,
-      backgroundColor: Colors.orange,
+      colorText: TColors.white,
+      backgroundColor: TColors.primary,
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
@@ -69,7 +69,7 @@ class TLoaders {
     );
   }
 
-  static errorSnackBar({required title, massage = '', duration = 500}) {
+  static errorSnackBar({required title, massage = '', duration = 3}) {
     Get.snackbar(
       title,
       massage,
@@ -81,7 +81,7 @@ class TLoaders {
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(20),
       icon: const Icon(
-        Iconsax.wallet2,
+        Iconsax.warning_2,
         color: TColors.white,
       ),
     );

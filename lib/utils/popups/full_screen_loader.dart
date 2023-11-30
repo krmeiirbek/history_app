@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:history_app/common/widgets/loaders/animation_loader.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
 
 class TFullScreenLoader {
-  static void openLoadingDialog(String text) {
+  static void openLoadingDialog(String text, String animation) {
     showDialog(
       context: Get.overlayContext!,
       builder: (_) => PopScope(
@@ -16,9 +17,9 @@ class TFullScreenLoader {
           width: double.infinity,
           height: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(text,style: Theme.of(Get.context!).textTheme.bodyMedium),
+              const SizedBox(height: 250),
+              TAnimationLoaderWidget(text: text, animation: animation),
             ],
           ),
         ),
@@ -27,6 +28,6 @@ class TFullScreenLoader {
   }
 
   static stopLoading() {
-    Navigator.of(Get.context!).pop();
+    Navigator.of(Get.overlayContext!).pop();
   }
 }

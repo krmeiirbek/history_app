@@ -28,9 +28,10 @@ dependencies:
   flutter_native_splash: ^2.3.5
 
   ## -- FIREBASE PACKAGES
-  firebase_core: ^2.21.0
-  firebase_auth: ^4.12.1
-  cloud_firestore: ^4.12.2
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.15.0
+  cloud_firestore: ^4.13.3
+
   connectivity_plus: ^5.0.2
   percent_indicator: ^4.2.3
   lottie: ^2.7.0
@@ -39,7 +40,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
 

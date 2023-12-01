@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/home/home.dart';
+import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
 import 'package:history_app/features/personalization/screens/settings/settings.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
@@ -20,6 +22,8 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
+    Get.put(PersonalizationController());
+    Get.put(HomeController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: Obx(

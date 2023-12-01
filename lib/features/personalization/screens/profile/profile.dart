@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import 'change_name.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = PersonalizationController.instance;
     return Scaffold(
       appBar: TAppBar(
         showBackArrowIcon: true,
-        title: Text('Change Name', style: Theme.of(context).textTheme.headlineSmall),
+        title: Text('Профильді өзгерту', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -29,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(image: TImages.user, width: 80, height: 80),
+                    TCircularImage(image: controller.userModel.profilePicture, width: 80, height: 80),
                     TextButton(onPressed: () {}, child: const Text('Change Profile Picture')),
                   ],
                 ),
@@ -39,16 +40,16 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(title: 'Profile Information'),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: 'Taimoor Sikander'),
-              TProfileMenu(onPressed: () {}, title: 'Username', value: 'taimoor_sikander'),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.userModel.fullName),
+              TProfileMenu(onPressed: () {}, title: 'Username', value: controller.userModel.userName),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(title: 'Personal Information'),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(onPressed: () {}, title: 'User ID', value: '45689', icon: Iconsax.copy),
-              TProfileMenu(onPressed: () {}, title: 'E-mail', value: 'mrtaimoorsikander@gmail.com'),
-              TProfileMenu(onPressed: () {}, title: 'Phone Number', value: '+923329121290'),
+              TProfileMenu(onPressed: () {}, title: 'User ID', value: controller.userModel.id, icon: Iconsax.copy),
+              TProfileMenu(onPressed: () {}, title: 'E-mail', value: controller.userModel.email),
+              TProfileMenu(onPressed: () {}, title: 'Phone Number', value: controller.userModel.phoneNumber),
               TProfileMenu(onPressed: () {}, title: 'Gender', value: 'Male'),
               TProfileMenu(onPressed: () {}, title: 'Date of Birth', value: '10 Oct, 1994'),
               const Divider(),

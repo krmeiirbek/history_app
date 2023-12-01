@@ -9,11 +9,13 @@ import 'package:history_app/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:history_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:history_app/utils/exceptions/format_exceptions.dart';
 import 'package:history_app/utils/exceptions/platform_exceptions.dart';
+import 'package:history_app/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   final _auth = FirebaseAuth.instance;
+  final localStorage = TLocalStorage();
 
   @override
   void onReady() {
@@ -74,6 +76,7 @@ class AuthenticationRepository extends GetxController {
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
+      localStorage.removeData('currentUserModel');
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;

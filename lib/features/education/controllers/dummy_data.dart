@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
+import 'package:history_app/features/authentication/models/user_model.dart';
 import 'package:history_app/features/education/models/book_model.dart';
 import 'package:history_app/features/education/models/chapter_model.dart';
 import 'package:history_app/features/education/models/option_model.dart';
 import 'package:history_app/features/education/models/question_model.dart';
 
 import '../../../utils/constants/image_strings.dart';
-import '../../personalization/models/user_model.dart';
 import '../models/history_model.dart';
 import '../models/quiz_model.dart';
 import '../models/subject_model.dart';
@@ -17,12 +17,11 @@ class TDummyData {
     lastName: 'Meiirbek',
     email: 'support@kazmei.com',
     phoneNumber: '+77775552001',
-    password: '',
     profilePicture: TImages.user,
     balance: 600,
     sandyq: [
 
-    ],
+    ], id: '', userName: '',
   ).obs;
 
   /// -- history

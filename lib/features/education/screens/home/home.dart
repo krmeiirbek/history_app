@@ -15,7 +15,7 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeController());
+    final controller = Get.put(HomeController());
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +40,7 @@ class HomeScreen extends GetView<HomeController> {
                     Obx(() => Row(
                       children: [
                         Text(
-                          "🌕 ${TDummyData.user.value.balance}",
+                          "🌕 ${controller.userModel.balance}",
                           style: Theme.of(context).textTheme.titleSmall!.apply(
                             color: TColors.white,
                           ),
@@ -52,7 +52,7 @@ class HomeScreen extends GetView<HomeController> {
                       tag: 'avatar',
                       child: TCircularImage(
                         padding: 0,
-                        image: TDummyData.user.value.profilePicture,
+                        image: controller.userModel.profilePicture,
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,

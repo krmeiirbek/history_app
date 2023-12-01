@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -30,15 +31,20 @@ class TCircularImage extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         // If image background color is null then switch it to light and dark mode color design.
-        color: backgroundColor ?? (THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white),
+        color: backgroundColor ??
+            (THelperFunctions.isDarkMode(context)
+                ? TColors.black
+                : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Center(
-        child: Image(
-          fit: fit,
-          image: AssetImage(image),
+        child: image!='' ? CachedNetworkImage(
+          imageUrl: image,
+          placeholder: (context, url) => const CircularProgressIndicator(),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
           color: overlayColor,
-        ),
+          fit: fit,
+        ) : Image.asset('assets/images/content/user.png'),
       ),
     );
   }

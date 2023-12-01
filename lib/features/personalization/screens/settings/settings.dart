@@ -4,8 +4,9 @@ import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/common/widgets/texts/section_heading.dart';
 import 'package:history_app/common/widgets/user/user_profile_card.dart';
-import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/data/repository/authentication/authentication_repository.dart';
 import 'package:history_app/features/education/screens/history/history.dart';
+import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
 import 'package:history_app/features/personalization/screens/settings/widgets/settings_menu.dart';
 import 'package:history_app/utils/constants/colors.dart';
@@ -13,10 +14,11 @@ import 'package:history_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = PersonalizationController.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -38,11 +40,17 @@ class SettingsScreen extends StatelessWidget {
                           .apply(color: TColors.white),
                     ),
                   ),
-                  TUserProfileCard(
-                    user: TDummyData.user.value,
-                    actionButtonOnPressed: () =>
-                        Get.to(() => const ProfileScreen()),
-                  ),
+                  Obx(() {
+                    if(controller.loading.value){
+                      return const Center(child: CircularProgressIndicator());
+                    }else{
+                      return TUserProfileCard(
+                        user: controller.userModel,
+                        actionButtonOnPressed: () =>
+                            Get.to(() => const ProfileScreen()),
+                      );
+                    }
+                  }),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
@@ -86,7 +94,9 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
-                          onPressed: () {}, child: const Text('Logout'))),
+                          onPressed: () =>
+                              AuthenticationRepository.instance.logout(),
+                          child: const Text('Logout'))),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                 ],
               ),

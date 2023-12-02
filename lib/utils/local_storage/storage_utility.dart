@@ -30,6 +30,15 @@ class TLocalStorage {
   Future<void> clearAll() async {
     await _storage.erase();
   }
+
+  Future<void> removeFromLocalStorage(String collectionPath, String itemId) async {
+    // Construct the key based on collectionPath and itemId
+    // Adjust the key format based on how you've structured your keys
+    String key = '${collectionPath}_$itemId';
+
+    // Call removeData to remove the item
+    await removeData(key);
+  }
 }
 
 

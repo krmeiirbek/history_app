@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:history_app/data/repository/education/education_repository.dart';
 import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/home/home.dart';
 import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
@@ -22,6 +23,7 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
+    Get.put(EducationRepository());
     Get.put(PersonalizationController());
     Get.put(HomeController());
     final dark = THelperFunctions.isDarkMode(context);

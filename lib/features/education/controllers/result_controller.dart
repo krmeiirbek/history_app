@@ -67,8 +67,8 @@ class ResultController extends GetxController {
     TDummyData.histories.add(
       HistoryModel(
         historyId: '',
-        item: quiz,
-        orderDate: DateTime.now(),
+        quiz: quiz,
+        passedDate: DateTime.now(),
         maxPoint: maxPoint.value,
         resultPoint: resultPoint.value,
       ),

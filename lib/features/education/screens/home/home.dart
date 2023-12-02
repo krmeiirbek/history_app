@@ -4,7 +4,6 @@ import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/common/widgets/home/home_buttons.dart';
 import 'package:history_app/common/widgets/images/t_circular_image.dart';
-import 'package:history_app/features/education/controllers/dummy_data.dart';
 import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/list_books/list_books.dart';
 import 'package:history_app/utils/constants/colors.dart';
@@ -68,17 +67,17 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView.separated(
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) => HomeButtons(
-                title: TDummyData.subjects[index].title,
-                image: TDummyData.subjects[index].image,
+                title: controller.subjects[index].title,
+                image: controller.subjects[index].image,
                 onPressed: () => Get.to(
                   () => ListBooksScreen(
-                    title: TDummyData.subjects[index].title,
+                    title: controller.subjects[index].title,
                   ),
                 ),
               ),
               separatorBuilder: (_, __) =>
                   const SizedBox(height: TSizes.spaceBtwSections),
-              itemCount: TDummyData.subjects.length,
+              itemCount: controller.subjects.length,
             ),
           ),
         ],

@@ -28,10 +28,10 @@ class TDummyData {
   static final List<HistoryModel> histories = [
     HistoryModel(
       historyId: '',
-      orderDate: DateTime(2023, 09, 1),
+      passedDate: DateTime(2023, 09, 1),
       maxPoint: 35,
       resultPoint: 18,
-      item: QuizModel(
+      quiz: QuizModel(
         subjectId: 'worldHistory',
         chapterId: 'chapterId',
         price: 500,

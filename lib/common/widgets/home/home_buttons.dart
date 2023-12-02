@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
@@ -40,11 +41,13 @@ class HomeButtons extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                  ),
                 ),
+                child: image!='' ? CachedNetworkImage(
+                  imageUrl: image,
+                  placeholder: (context, url) => const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  fit: BoxFit.cover,
+                ) : Image.asset('assets/images/content/user.png'),
               ),
             ),
             const SizedBox(width: TSizes.spaceBtwItems),

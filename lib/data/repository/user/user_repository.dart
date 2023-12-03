@@ -35,6 +35,12 @@ class UserRepository extends GetxController {
   }
 
   Future<UserModel> getUserData() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser == null) {
+      // Handle the case when the user is not logged in
+      return UserModel.empty();
+    }
+
     try {
       var userModel = UserModel.empty();
       final lastUpdatedLocal = localStorage.readData('currentUserModel_lastUpdated');
@@ -46,7 +52,7 @@ class UserRepository extends GetxController {
       }
 
       if (lastUpdatedLocalDateTime == null || lastUpdatedFirebase.isAfter(lastUpdatedLocalDateTime)) {
-        final res = await _db.collection("Users").doc(_user!.uid).get();
+        final res = await _db.collection("Users").doc(currentUser.uid).get();
         userModel = UserModel.fromSnapshot(res);
         await localStorage.saveData('currentUserModel', userModel.toJson());
         await localStorage.saveData('currentUserModel_lastUpdated', lastUpdatedFirebase.toIso8601String());

@@ -112,21 +112,12 @@ class TSignupForm extends StatelessWidget {
           /// Terms Checkbox
           const TTermsAndConditionCheckbox(),
           const SizedBox(height: TSizes.defaultSpace),
-
-          ///() => Get.to(() => const VerifyEmailScreen())
           /// Sign Up Page
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
                 controller.signup();
-                // if (formKey.currentState!.validate()) {
-                //   SignUpController.instance.registerUser(
-                //     controller.email.text.trim(),
-                //     controller.password.text.trim(),
-                //   );
-                //   ()=>Get.to(() => const NavigationMenu());
-                // }
               },
               child: const Text(TTexts.createAccount),
             ),

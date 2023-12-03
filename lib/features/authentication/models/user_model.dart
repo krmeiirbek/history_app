@@ -95,9 +95,7 @@ class UserModel {
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
-        balance: data['Balance'] is String
-            ? double.parse(data['Balance'])
-            : (data['Balance'] as double?) ?? 0.0,
+        balance: _ensureDouble(data['Balance']),
         sandyq: (data['Sandyq'] as List<dynamic>?)
                 ?.map((e) => e.toString())
                 .toList() ??
@@ -105,6 +103,16 @@ class UserModel {
       );
     } else {
       return UserModel.empty();
+    }
+  }
+
+  static double _ensureDouble(dynamic value) {
+    if (value is int) {
+      return value.toDouble();
+    } else if (value is double) {
+      return value;
+    } else {
+      return 0.0;
     }
   }
 

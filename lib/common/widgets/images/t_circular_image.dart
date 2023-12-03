@@ -38,13 +38,18 @@ class TCircularImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
       child: Center(
-        child: image!='' ? CachedNetworkImage(
-          imageUrl: image,
-          placeholder: (context, url) => const CircularProgressIndicator(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-          color: overlayColor,
-          fit: fit,
-        ) : Image.asset('assets/images/content/user.png'),
+        child: ClipOval(
+          child: image != ''
+              ? CachedNetworkImage(
+                  imageUrl: image,
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  color: overlayColor,
+                  fit: fit,
+                )
+              : Image.asset('assets/images/content/user.png', fit: fit),
+        ),
       ),
     );
   }

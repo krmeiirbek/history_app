@@ -17,7 +17,12 @@ class UserRepository extends GetxController {
 
   Future<void> saveUserRecord(UserModel user) async {
     try {
-      await _db.collection("Users").doc(user.id).set(user.toJson());
+      // Convert the user object to a map and add the 'lastUpdated' field
+      var userData = user.toJson();
+      userData['lastUpdated'] = DateTime.now();
+
+      // Save the updated user data to Firestore
+      await _db.collection("Users").doc(user.id).set(userData);
     } on FirebaseException catch (e) {
       throw TFirebaseExceptions(e.code).message;
     } on FormatException catch (_) {
@@ -32,13 +37,23 @@ class UserRepository extends GetxController {
   Future<UserModel> getUserData() async {
     try {
       var userModel = UserModel.empty();
-      if(localStorage.readData('currentUserModel') == null){
+      final lastUpdatedLocal = localStorage.readData('currentUserModel_lastUpdated');
+      final lastUpdatedFirebase = await _getLastUpdatedTimestampForUser();
+
+      DateTime? lastUpdatedLocalDateTime;
+      if (lastUpdatedLocal != null) {
+        lastUpdatedLocalDateTime = DateTime.tryParse(lastUpdatedLocal);
+      }
+
+      if (lastUpdatedLocalDateTime == null || lastUpdatedFirebase.isAfter(lastUpdatedLocalDateTime)) {
         final res = await _db.collection("Users").doc(_user!.uid).get();
         userModel = UserModel.fromSnapshot(res);
-        localStorage.saveData('currentUserModel', userModel.toJson());
-      }else{
+        await localStorage.saveData('currentUserModel', userModel.toJson());
+        await localStorage.saveData('currentUserModel_lastUpdated', lastUpdatedFirebase.toIso8601String());
+      } else {
         userModel = UserModel.fromJson(localStorage.readData('currentUserModel'));
       }
+
       return userModel;
     } on FirebaseException catch (e) {
       throw TFirebaseExceptions(e.code).message;
@@ -50,4 +65,17 @@ class UserRepository extends GetxController {
       throw e.toString();
     }
   }
+
+  Future<DateTime> _getLastUpdatedTimestampForUser() async {
+    try {
+      // Fetch the last updated timestamp for the user from Firestore
+      // Assuming a 'lastUpdated' field exists in the user's Firestore document
+      var userDoc = await _db.collection('Users').doc(_user!.uid).get();
+      var lastUpdatedTimestamp = userDoc.data()?['lastUpdated'] as Timestamp?;
+      return lastUpdatedTimestamp?.toDate() ?? DateTime.now();
+    } catch (e) {
+      return DateTime.now(); // Fallback to current time in case of error
+    }
+  }
+
 }

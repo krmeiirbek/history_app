@@ -95,8 +95,7 @@ class SignupController extends GetxController {
         sandyq: [],
       );
 
-      final userRepository = Get.put(UserRepository());
-      await userRepository.saveUserRecord(newUser);
+      await UserRepository().instance.saveUserRecord(newUser);
 
       TFullScreenLoader.stopLoading();
 

@@ -37,21 +37,22 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                   actions: [
                     Obx(() => Row(
-                      children: [
-                        Text(
-                          "🌕 ${controller.userModel.balance}",
-                          style: Theme.of(context).textTheme.titleSmall!.apply(
-                            color: TColors.white,
-                          ),
-                        ),
-                      ],
-                    )),
+                          children: [
+                            Text(
+                              "🌕 ${controller.userModel.value.balance}",
+                              style:
+                                  Theme.of(context).textTheme.titleSmall!.apply(
+                                        color: TColors.white,
+                                      ),
+                            ),
+                          ],
+                        )),
                     const SizedBox(width: 10),
                     Hero(
                       tag: 'avatar',
                       child: TCircularImage(
                         padding: 0,
-                        image: controller.userModel.profilePicture,
+                        image: controller.userModel.value.profilePicture,
                         width: 50,
                         height: 50,
                         fit: BoxFit.cover,
@@ -63,23 +64,29 @@ class HomeScreen extends GetView<HomeController> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView.separated(
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) => HomeButtons(
-                title: controller.subjects[index].title,
-                image: controller.subjects[index].image,
-                onPressed: () => Get.to(
-                  () => ListBooksScreen(
+          Obx(() {
+            if (controller.subjects.isNotEmpty) {
+              return Expanded(
+                child: ListView.separated(
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) => HomeButtons(
                     title: controller.subjects[index].title,
+                    image: controller.subjects[index].image,
+                    onPressed: () => Get.to(
+                      () => ListBooksScreen(
+                        title: controller.subjects[index].title,
+                      ),
+                    ),
                   ),
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(height: TSizes.spaceBtwSections),
+                  itemCount: controller.subjects.length,
                 ),
-              ),
-              separatorBuilder: (_, __) =>
-                  const SizedBox(height: TSizes.spaceBtwSections),
-              itemCount: controller.subjects.length,
-            ),
-          ),
+              );
+            } else {
+              return const Expanded(child: Center(child: CircularProgressIndicator(),));
+            }
+          }),
         ],
       ),
     );

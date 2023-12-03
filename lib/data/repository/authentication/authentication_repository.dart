@@ -95,6 +95,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await FirebaseAuth.instance.signOut();
       localStorage.removeData('currentUserModel');
+      localStorage.removeData('currentUserModel_lastUpdated');
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
@@ -18,15 +19,17 @@ class BookButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
+      height: 200,
       width: double.infinity,
+      padding: EdgeInsets.zero,
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(0),
-        color: dark ? Colors.grey[900]: kDefaultIconLightColor,
+        borderRadius: BorderRadius.circular(15),
+        color: dark ? Colors.grey[900] : Colors.white,
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
-            offset: Offset(0, 1),
+            offset: Offset(2, 2),
           )
         ],
       ),
@@ -34,22 +37,27 @@ class BookButtons extends StatelessWidget {
         onTap: onPressed,
         child: Row(
           children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+            Container(
+              height: 190,
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: image == ''
+                  ? const Icon(Icons.error)
+                  : CachedNetworkImage(
+                imageUrl: image,
+                placeholder: (context, url) => const Center(
+                    child: SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: CircularProgressIndicator())),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(width: TSizes.spaceBtwItems),
             Expanded(
-              flex: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -59,8 +67,8 @@ class BookButtons extends StatelessWidget {
                     child: Text(
                       title,
                       style: const TextStyle(
-                        fontSize: TSizes.fontSizeLg,
-                      ),
+                          fontSize: TSizes.fontSizeLg,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],

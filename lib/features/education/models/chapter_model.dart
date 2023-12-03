@@ -59,12 +59,22 @@ class ChapterModel {
       subjectId: data['subjectId'] ?? '',
       image: data['image'] ?? '',
       title: data['title'] ?? '',
-      price: data['price'] is String ? double.parse(data['price']) : (data['price'] as double?) ?? 0.0,
-      discount: data['discount'] is String ? double.parse(data['discount']) : (data['discount'] as double?) ?? 0.0,
+      price: _ensureDouble(data['price']),
+      discount: _ensureDouble(data['discount']),
       quizzes: (data['quizzes'] as List<dynamic>?)
           ?.map((e) => QuizModel.fromJson(e))
           .toList() ?? [],
     );
+  }
+
+  static double _ensureDouble(dynamic value) {
+    if (value is int) {
+      return value.toDouble();
+    } else if (value is double) {
+      return value;
+    } else {
+      return 0.0;
+    }
   }
 
   static ChapterModel empty() {

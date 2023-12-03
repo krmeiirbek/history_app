@@ -1,16 +1,43 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/data/repository/education/education_repository.dart';
+import 'package:history_app/data/repository/user/user_repository.dart';
+import 'package:history_app/features/authentication/models/user_model.dart';
+import 'package:history_app/features/education/models/chapter_model.dart';
 import 'package:history_app/features/education/models/quiz_model.dart';
+import 'package:history_app/utils/popups/loaders.dart';
 
 class QuizController extends GetxController {
-  final quizzes = TDummyData.quizzes.obs;
-  final currentUser = TDummyData.user;
+  static QuizController get instance => Get.find();
+
+  var quizzes = <QuizModel>[].obs;
+  var currentUser = UserModel.empty().obs;
+  final loading = true.obs;
+  final loadingForBuyingQuiz = false.obs;
+  late ChapterModel chapter;
 
   @override
   void onInit() {
-    isBuy();
+    chapter = Get.arguments as ChapterModel;
+    getUserDate();
     super.onInit();
+  }
+
+  void getUserDate() async {
+    loading.value = true;
+    currentUser.value = await UserRepository().instance.getUserData();
+    getQuizzesDate();
+    loading.value = false;
+  }
+
+  void getQuizzesDate() async {
+    loading.value = true;
+    quizzes.value = await EducationRepository().instance.getQuizzes(
+          chapter.subjectId,
+          chapter.bookId,
+          chapter.chapterId,
+        );
+    isBuy();
+    loading.value = false;
   }
 
   void isBuy() {
@@ -24,30 +51,22 @@ class QuizController extends GetxController {
     quizzes.assignAll(updatedQuizzes);
   }
 
-  void buyQuiz({required QuizModel quiz}) {
+  void buyQuiz({required QuizModel quiz}) async {
     if (currentUser.value.balance >= quiz.price) {
       currentUser.value.sandyq.add(quiz.quizId);
       currentUser.value = currentUser.value.copyWith(
         balance: currentUser.value.balance - quiz.price,
       );
-      TDummyData.user.value = currentUser.value;
+      print(currentUser.value.id);
+      loadingForBuyingQuiz.value = true;
+      await UserRepository().instance.updateUserRecord(currentUser.value);
+      loadingForBuyingQuiz.value = false;
       isBuy();
       update();
       Get.back();
     } else {
       Get.back();
-      Get.snackbar(
-        'Snackbar Title',
-        'This is a Get Snackbar!',
-        snackPosition: SnackPosition.BOTTOM, // Position of the Snackbar
-        backgroundColor: Colors.blue,
-        colorText: Colors.white,
-        duration: Duration(seconds: 3), // Duration for how long the Snackbar is displayed
-        snackStyle: SnackStyle.GROUNDED, // Snackbar style
-        margin: EdgeInsets.all(10.0), // Margin around the Snackbar
-        borderRadius: 10.0, // BorderRadius of the Snackbar
-        isDismissible: true, // Allow dismissing the Snackbar
-      );
+      TLoaders.warningSnackBar(title: 'Қаражатыңыз жеткіліксіз');
     }
   }
 }

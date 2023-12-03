@@ -78,7 +78,7 @@ class EducationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw e.toString();
     }
   }
 
@@ -219,7 +219,7 @@ class EducationRepository extends GetxController {
             .doc(questionId)
             .collection("options")
             .get();
-        options = res.docs.map((doc) => OptionModel.fromJson(doc.data())).toList();
+        options = res.docs.map((doc) => OptionModel.fromSnapshot(doc)).toList();
 
         await localStorage.saveData(key, options.map((option) => option.toJson()).toList());
         await localStorage.saveData('${key}_lastUpdated', lastUpdatedFirebase.toIso8601String());

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class OptionModel {
   final String optionId;
   final String answer;
@@ -22,6 +24,15 @@ class OptionModel {
       optionId: json['optionId'] as String? ?? '',
       answer: json['answer'] as String? ?? '',
       isCorrect: json['isCorrect'] as bool? ?? false,
+    );
+  }
+
+  factory OptionModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data() ?? {};
+    return OptionModel(
+      optionId: document.id,
+      answer: data['answer'] as String? ?? '',
+      isCorrect: data['isCorrect'] as bool? ?? false,
     );
   }
 

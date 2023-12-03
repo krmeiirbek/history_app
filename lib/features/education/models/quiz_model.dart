@@ -62,14 +62,24 @@ class QuizModel {
       chapterId: data['chapterId'] ?? '',
       bookId: data['bookId'] ?? '',
       subjectId: data['subjectId'] ?? '',
-      price: data['price'] is String ? double.parse(data['price']) : (data['price'] as double?) ?? 0.0,
-      discount: data['discount'] is String ? double.parse(data['discount']) : (data['discount'] as double?) ?? 0.0,
+      price: _ensureDouble(data['price']),
+      discount: _ensureDouble(data['discount']),
       title: data['title'] ?? '',
       isBuy: data['isBuy'] as bool? ?? false,
       questions: (data['questions'] as List<dynamic>?)
           ?.map((e) => QuestionModel.fromJson(e))
           .toList() ?? [],
     );
+  }
+
+  static double _ensureDouble(dynamic value) {
+    if (value is int) {
+      return value.toDouble();
+    } else if (value is double) {
+      return value;
+    } else {
+      return 0.0;
+    }
   }
 
   static QuizModel empty() {

@@ -24,30 +24,40 @@ class ListBooksScreen extends GetView<ListBookController> {
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: TSizes.defaultSpace),
-          child: controller.books.isEmpty
-              ? const Center(
-                  child: Text('No Books'),
-                )
-              : ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: controller.books.length,
-                  physics: const NeverScrollableScrollPhysics(),
-                  separatorBuilder: (_, index) => const SizedBox(height: 5),
-                  itemBuilder: (_, index) {
-                    return BookButtons(
-                      onPressed: () => Get.to(
-                        () => const ChaptersScreen(),
-                      ),
-                      title: controller.books[index].title,
-                      image: controller.books[index].image,
-                    );
-                  },
-                ),
-        ),
-      ),
+      body: Obx(() {
+        if (controller.loading.value) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: TSizes.defaultSpace),
+              child: (controller.books.isEmpty
+                  ? const Center(
+                      child: Text('Кітаптар жоқ'),
+                    )
+                  : ListView.separated(
+                      shrinkWrap: true,
+                      itemCount: controller.books.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      separatorBuilder: (_, index) => const SizedBox(height: 5),
+                      itemBuilder: (_, index) {
+                        return BookButtons(
+                          onPressed: () => Get.to(
+                            () => const ChaptersScreen(),
+                            arguments: controller.books[index].copyWith(
+                                subjectId: controller.subject.subjectId),
+                          ),
+                          title: controller.books[index].title,
+                          image: controller.books[index].image,
+                        );
+                      },
+                    )),
+            ),
+          );
+        }
+      }),
     );
   }
 }

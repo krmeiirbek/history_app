@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:history_app/features/authentication/models/user_model.dart';
+import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:history_app/utils/exceptions/format_exceptions.dart';
 import 'package:history_app/utils/exceptions/platform_exceptions.dart';
@@ -31,6 +32,26 @@ class UserRepository extends GetxController {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
       throw 'Something went wrong, Please try again';
+    }
+  }
+
+  Future<void> updateUserRecord(UserModel user) async {
+    try {
+      // Convert the user object to a map and add the 'lastUpdated' field
+      var userData = user.toJson();
+      userData['lastUpdated'] = DateTime.now();
+
+      // Save the updated user data to Firestore
+      await _db.collection("Users").doc(user.id).update(userData);
+      HomeController.instance.userModel.value = user;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw e.toString();
     }
   }
 

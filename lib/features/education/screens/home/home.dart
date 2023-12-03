@@ -76,6 +76,7 @@ class HomeScreen extends GetView<HomeController> {
                       () => ListBooksScreen(
                         title: controller.subjects[index].title,
                       ),
+                      arguments: controller.subjects[index],
                     ),
                   ),
                   separatorBuilder: (_, __) =>

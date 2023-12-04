@@ -45,6 +45,7 @@ class TResultWithOptionHeader extends GetView<ResultWithOptionsController> {
               SizedBox(
                 height: TSizes.indexedCard,
                 child: ListView.separated(
+                  controller: controller.scrollController,
                   physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: TSizes.defaultSpace,

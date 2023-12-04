@@ -57,7 +57,6 @@ class QuizController extends GetxController {
       currentUser.value = currentUser.value.copyWith(
         balance: currentUser.value.balance - quiz.price,
       );
-      print(currentUser.value.id);
       loadingForBuyingQuiz.value = true;
       await UserRepository().instance.updateUserRecord(currentUser.value);
       loadingForBuyingQuiz.value = false;

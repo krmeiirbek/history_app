@@ -11,6 +11,9 @@ class QuizModel {
   final double discount; // 0-100
   final String title;
   final bool isBuy;
+  String? subjectTitle;
+  String? bookTitle;
+  String? chapterTitle;
   final List<QuestionModel> questions;
 
   QuizModel({
@@ -23,6 +26,9 @@ class QuizModel {
     required this.title,
     required this.isBuy,
     required this.questions,
+    this.subjectTitle,
+    this.bookTitle,
+    this.chapterTitle,
   });
 
   Map<String, dynamic> toJson() {
@@ -105,6 +111,9 @@ class QuizModel {
     double? discount,
     String? title,
     bool? isBuy,
+    String? subjectTitle,
+    String? bookTitle,
+    String? chapterTitle,
     List<QuestionModel>? questions,
   }) =>
       QuizModel(
@@ -117,5 +126,8 @@ class QuizModel {
         title: title ?? this.title,
         questions: questions ?? this.questions,
         isBuy: isBuy ?? this.isBuy,
+        subjectTitle: subjectTitle ?? this.subjectTitle,
+        bookTitle: bookTitle ?? this.bookTitle,
+        chapterTitle: chapterTitle ?? this.chapterTitle,
       );
 }

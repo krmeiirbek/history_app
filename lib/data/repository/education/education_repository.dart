@@ -178,6 +178,16 @@ class EducationRepository extends GetxController {
             .get();
         questions = res.docs.map((doc) => QuestionModel.fromSnapshot(doc)).toList();
 
+        // Fetch options for each question and add them to the corresponding QuestionModel
+        for (var i = 0; i < questions.length; i++) {
+          String questionId = questions[i].questionId; // Assuming QuestionModel has a questionId field
+          var options = await getOptions(subjectId, bookId, chapterId, quizId, questionId);
+          questions[i] = questions[i].copyWith(
+            question: processText(questions[i].question),
+              options: options,
+          );
+        }
+
         await localStorage.saveData(key, questions.map((question) => question.toJson()).toList());
         await localStorage.saveData('${key}_lastUpdated', lastUpdatedFirebase.toIso8601String());
       } else {
@@ -193,45 +203,39 @@ class EducationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw e.toString();
     }
+  }
+
+  String processText(String text) {
+    return text.replaceAll('\\n', '\n');
   }
 
   Future<List<OptionModel>> getOptions(String subjectId, String bookId, String chapterId, String quizId, String questionId) async {
     try {
       var options = <OptionModel>[];
-      final key = '${subjectId}_${bookId}_${chapterId}_${quizId}_${questionId}_options';
-      final lastUpdatedLocal = localStorage.readData('${key}_lastUpdated');
-      final lastUpdatedFirebase = await _getLastUpdatedTimestampFromFirebase(key);
-
-      DateTime? lastUpdatedLocalDateTime = lastUpdatedLocal != null ? DateTime.tryParse(lastUpdatedLocal) : null;
-
-      if (lastUpdatedLocalDateTime == null || lastUpdatedFirebase.isAfter(lastUpdatedLocalDateTime)) {
-        final QuerySnapshot<Map<String, dynamic>> res = await _db.collection("subjects")
-            .doc(subjectId)
-            .collection("books")
-            .doc(bookId)
-            .collection("chapters")
-            .doc(chapterId)
-            .collection("quizzes")
-            .doc(quizId)
-            .collection("questions")
-            .doc(questionId)
-            .collection("options")
-            .get();
-        options = res.docs.map((doc) => OptionModel.fromSnapshot(doc)).toList();
-
-        await localStorage.saveData(key, options.map((option) => option.toJson()).toList());
-        await localStorage.saveData('${key}_lastUpdated', lastUpdatedFirebase.toIso8601String());
-      } else {
-        final List<dynamic> storedOptions = localStorage.readData(key);
-        options = storedOptions.map((json) => OptionModel.fromJson(json)).toList();
-      }
-
+      final QuerySnapshot<Map<String, dynamic>> res = await _db.collection("subjects")
+          .doc(subjectId)
+          .collection("books")
+          .doc(bookId)
+          .collection("chapters")
+          .doc(chapterId)
+          .collection("quizzes")
+          .doc(quizId)
+          .collection("questions")
+          .doc(questionId)
+          .collection("options")
+          .get();
+      options = res.docs.map((doc) => OptionModel.fromSnapshot(doc)).toList();
       return options;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      // Handle errors
-      throw 'Something went wrong, Please try again';
+      throw e.toString();
     }
   }
 

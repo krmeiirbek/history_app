@@ -47,7 +47,9 @@ class ListBooksScreen extends GetView<ListBookController> {
                           onPressed: () => Get.to(
                             () => const ChaptersScreen(),
                             arguments: controller.books[index].copyWith(
-                                subjectId: controller.subject.subjectId),
+                                subjectId: controller.subject.subjectId,
+                              subjectTitle: controller.subject.title,
+                            ),
                           ),
                           title: controller.books[index].title,
                           image: controller.books[index].image,

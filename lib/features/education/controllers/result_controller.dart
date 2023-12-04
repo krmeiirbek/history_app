@@ -14,16 +14,19 @@ class ResultController extends GetxController {
   final resultPoint = 0.obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     loading.value = true;
-    quiz = Get.arguments["quiz"] as QuizModel;
+    quiz = await Get.arguments["quiz"] as QuizModel;
     questions = quiz.questions;
     selectedOptions =
-        Get.arguments["selectedOptions"] as List<List<OptionModel>>;
+        await Get.arguments["selectedOptions"] as List<List<OptionModel>>;
+    if(questions.isNotEmpty) {
+      esepteu();
+    } else {
+      maxPoint.value = -1;
+    }
     loading.value = false;
-    esepteu();
-    saveToHistory();
   }
 
   void esepteu() {
@@ -61,6 +64,7 @@ class ResultController extends GetxController {
         }
       }
     }
+    saveToHistory();
   }
 
   void saveToHistory() {

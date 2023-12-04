@@ -42,25 +42,31 @@ class QuestionHeader extends StatelessWidget {
                             ),
                       ),
                       const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          Get.off(
-                            () => const ResultPage(),
-                            arguments: {
-                              "quiz": controller.quizModel,
-                              "selectedOptions": controller.selectedOptions,
-                            },
-                          );
-                        },
-                        child: Text(
-                          "Тестті аяқтау",
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                        ),
-                      ),
+                      controller.loading.value
+                          ? const SizedBox()
+                          : InkWell(
+                              onTap: () {
+                                Get.off(
+                                  () => const ResultPage(),
+                                  arguments: {
+                                    "quiz": controller.quizModel.copyWith(
+                                        questions: controller.questions),
+                                    "selectedOptions":
+                                        controller.selectedOptions,
+                                  },
+                                );
+                              },
+                              child: Text(
+                                "Тестті аяқтау",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
+                                      color: Colors.orange,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                              ),
+                            ),
                     ],
                   ),
                 ),
@@ -68,6 +74,7 @@ class QuestionHeader extends StatelessWidget {
                 SizedBox(
                   height: TSizes.indexedCard,
                   child: ListView.separated(
+                    controller: controller.scrollController, // Add the scroll controller here
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(
                       horizontal: TSizes.defaultSpace,

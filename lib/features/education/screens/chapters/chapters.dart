@@ -43,6 +43,8 @@ class ChaptersScreen extends GetView<ChapterController> {
                       arguments: controller.chapters[index].copyWith(
                         bookId: controller.book.bookId,
                         subjectId: controller.book.subjectId,
+                        subjectTitle: controller.book.subjectTitle,
+                        bookTitle: controller.book.title,
                       ),
                     ),
                     leading: SizedBox(

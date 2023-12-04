@@ -9,6 +9,7 @@ class BookModel {
   final String image;
   final double price;
   final double discount; // 0-100
+  String? subjectTitle;
   List<ChapterModel> chapters;
 
   BookModel({
@@ -19,6 +20,7 @@ class BookModel {
     required this.price,
     required this.discount,
     required this.chapters,
+    this.subjectTitle,
   });
 
   Map<String, dynamic> toJson() {
@@ -91,6 +93,7 @@ class BookModel {
     String? image,
     double? price,
     double? discount,
+    String? subjectTitle,
     List<ChapterModel>? chapters,
   }) {
     return BookModel(
@@ -101,6 +104,7 @@ class BookModel {
       price: price ?? this.price,
       discount: discount ?? this.discount,
       chapters: chapters ?? this.chapters,
+      subjectTitle: subjectTitle ?? this.subjectTitle,
     );
   }
 }

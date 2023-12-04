@@ -10,6 +10,8 @@ class ChapterModel {
   final String title;
   final double price;
   final double discount; // 0-100
+  String? subjectTitle;
+  String? bookTitle;
   List<QuizModel> quizzes;
 
   ChapterModel({
@@ -21,6 +23,8 @@ class ChapterModel {
     required this.price,
     required this.discount,
     required this.quizzes,
+    this.subjectTitle,
+    this.bookTitle,
   });
 
   Map<String, dynamic> toJson() {
@@ -98,6 +102,8 @@ class ChapterModel {
     String? title,
     double? price,
     double? discount,
+    String? subjectTitle,
+    String? bookTitle,
     List<QuizModel>? quizzes,
   }) {
     return ChapterModel(
@@ -109,6 +115,8 @@ class ChapterModel {
       price: price ?? this.price,
       discount: discount ?? this.discount,
       quizzes: quizzes ?? this.quizzes,
+      subjectTitle: subjectTitle ?? this.subjectTitle,
+      bookTitle: bookTitle ?? this.bookTitle,
     );
   }
 }

@@ -57,6 +57,9 @@ class TQuizBody extends GetView<QuizController> {
                         subjectId: controller.chapter.subjectId,
                         bookId: controller.chapter.bookId,
                         chapterId: controller.chapter.chapterId,
+                        subjectTitle: controller.chapter.subjectTitle,
+                        bookTitle: controller.chapter.bookTitle,
+                        chapterTitle: controller.chapter.title,
                       ),
                     );
                   }

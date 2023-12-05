@@ -63,7 +63,11 @@ class TLoginForm extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    Obx(() => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value =
+                              !controller.rememberMe.value,
+                        )),
                     const Text(TTexts.rememberMe)
                   ],
                 ),
@@ -82,7 +86,7 @@ class TLoginForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  controller.login();
+                  controller.emailAndPasswordSignIn();
                 },
                 child: const Text(
                   TTexts.signIn,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:history_app/data/repository/authentication/authentication_repository.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/helpers/network_manager.dart';
+import 'package:history_app/utils/local_storage/storage_utility.dart';
 import 'package:history_app/utils/popups/full_screen_loader.dart';
 import 'package:history_app/utils/popups/loaders.dart';
 
@@ -12,7 +13,7 @@ class LoginController extends GetxController {
   /// Variables
   final hidePassword = true.obs;
   final rememberMe = true.obs;
-
+  final localStorage = TLocalStorage();
   String lastText = '';
 
   late TextEditingController emailController;
@@ -21,8 +22,8 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    emailController = TextEditingController(text: localStorage.readData('REMEMBER_ME_EMAIL'));
+    passwordController = TextEditingController(text: localStorage.readData('REMEMBER_ME_PASSWORD'));
     super.onInit();
   }
 
@@ -34,7 +35,7 @@ class LoginController extends GetxController {
   }
 
   /// -- SIGNUP
-  Future<void> login() async {
+  Future<void> emailAndPasswordSignIn() async {
     try {
       // start loading
       TFullScreenLoader.openLoadingDialog(
@@ -51,6 +52,11 @@ class LoginController extends GetxController {
       if (!loginFormKey.currentState!.validate()) {
         TFullScreenLoader.stopLoading();
         return;
+      }
+
+      if(rememberMe.value){
+        localStorage.saveData('REMEMBER_ME_EMAIL', emailController.text.trim());
+        localStorage.saveData('REMEMBER_ME_PASSWORD', passwordController.text.trim());
       }
 
       // login user

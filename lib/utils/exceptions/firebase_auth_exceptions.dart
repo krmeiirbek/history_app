@@ -61,9 +61,42 @@ class TFirebaseAuthExceptions implements Exception {
         return 'The email template sender is invalid. Please verify the sender\'s email.';
       case 'invalid-recipient-email':
         return 'The recipient email address is invalid. Please provide a valid recipient email.';
-
-      ///
-      ///
+      case 'missing-iframe-start':
+        return 'The email template is missing the iframe start tag.';
+      case 'missing-iframe-end':
+        return 'The email template is missing the iframe end tag.';
+      case 'missing-iframe-src':
+        return 'The email template is missing the iframe src attribute.';
+      case 'auth-domain-config-required':
+        return 'The auth Domain configuration is required for the action code verification link.';
+      case 'missing-app-credential':
+        return 'The app credential is missing. Please provide valid app credentials.';
+      case 'invalid-app-credential':
+        return 'The app credential is invalid. Please provide a valid app credential.';
+      case 'session-cookie-expired':
+        return 'The Firebase session cookie has expired. Please sign in again.';
+      case 'uid-already-exists':
+        return 'The provided user ID is already in use by another user.';
+      case 'invalid-cordova-configuration':
+        return 'The provided Cordova configuration is invalid.';
+      case 'app-deleted':
+        return 'This instance of Firebase App has been deleted.';
+      case 'user-disabled':
+        return 'The user account has been disabled.';
+      case 'user-token-mismatch':
+        return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
+      case 'web-storage-unsupported':
+        return 'Web storage is not supported or is disabled.';
+      case 'invalid-credential':
+        return 'The supplied credential is invalid. Please check the credential and try again.';
+      case 'app-not-authorized':
+        return 'The app is not authorized to use Firebase Authentication with the provided API key.';
+      case 'keychain-error':
+        return 'A keychain error occurred. Please check the keychain and try again.';
+      case 'internal-error':
+        return 'An internal authentication error occurred. Please try again later.';
+      case 'INVALID_LOGIN_CREDENTIALS':
+        return 'Invalid login credentials.';
       default:
         return 'An unexpected FirebaseAuth error occurred. Please try again.';
     }

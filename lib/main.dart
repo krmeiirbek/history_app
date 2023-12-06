@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:history_app/app.dart';
 import 'package:history_app/data/repository/authentication/authentication_repository.dart';
-
 import 'firebase_options.dart';
 
 void main() async {

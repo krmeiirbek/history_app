@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:history_app/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/constants/text_strings.dart';
+import 'package:history_app/utils/validators/validation.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -10,6 +11,7 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -31,10 +33,15 @@ class ForgotPassword extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Text Field
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: TTexts.email,
-                  prefixIcon: Icon(Iconsax.direct_right),
+              Form(
+                key: controller.forgetPasswordFormKey,
+                child: TextFormField(
+                  controller: controller.email,
+                  validator: TValidator.validateEmail,
+                  decoration: const InputDecoration(
+                    labelText: TTexts.email,
+                    prefixIcon: Icon(Iconsax.direct_right),
+                  ),
                 ),
               ),
 
@@ -44,7 +51,7 @@ class ForgotPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.off(() => const ResetPassword()),
+                  onPressed: () => controller.sendPasswordResetEmail(),
                   child: const Text(TTexts.submit),
                 ),
               )

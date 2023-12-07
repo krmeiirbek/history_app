@@ -91,13 +91,12 @@ class LoginController extends GetxController {
       final userCredentials =
           await AuthenticationRepository.instance.signInWithGoogle();
 
-      TFullScreenLoader.stopLoading();
-
       await userController.saveUserRecord(userCredentials);
+
+      TFullScreenLoader.stopLoading();
 
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
-      print(e.toString());
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
     }

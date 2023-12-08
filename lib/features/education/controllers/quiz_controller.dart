@@ -13,6 +13,7 @@ class QuizController extends GetxController {
   var currentUser = UserModel.empty().obs;
   final loading = true.obs;
   final loadingForBuyingQuiz = false.obs;
+  final loadingForBuyingQuizStr = ''.obs;
   late ChapterModel chapter;
 
   @override
@@ -43,7 +44,8 @@ class QuizController extends GetxController {
   void isBuy() {
     // Create a new list of quizzes with updated isBuy property
     final updatedQuizzes = quizzes.map((quiz) {
-      final isBought = currentUser.value.sandyq.contains(quiz.quizId);
+      final quizKey = '${chapter.subjectId}_${chapter.bookId}_${chapter.chapterId}_${quiz.quizId}';
+      final isBought = currentUser.value.sandyq.contains(quizKey);
       return quiz.copyWith(isBuy: isBought);
     }).toList();
 
@@ -53,13 +55,16 @@ class QuizController extends GetxController {
 
   void buyQuiz({required QuizModel quiz}) async {
     if (currentUser.value.balance >= quiz.price) {
-      currentUser.value.sandyq.add(quiz.quizId);
+      final quizKey = '${chapter.subjectId}_${chapter.bookId}_${chapter.chapterId}_${quiz.quizId}';
+      currentUser.value.sandyq.add(quizKey);
       currentUser.value = currentUser.value.copyWith(
         balance: currentUser.value.balance - quiz.price,
       );
       loadingForBuyingQuiz.value = true;
+      loadingForBuyingQuizStr.value = quiz.quizId;
       await UserRepository().instance.updateUserRecord(currentUser.value);
       loadingForBuyingQuiz.value = false;
+      loadingForBuyingQuizStr.value = '';
       isBuy();
       update();
       Get.back();

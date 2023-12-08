@@ -14,9 +14,11 @@ class TQuizBody extends GetView<QuizController> {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Obx(() {
-      if(controller.loading.value){
-        return const Center(child: CircularProgressIndicator(),);
-      }else {
+      if (controller.loading.value) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      } else {
         return Padding(
           padding: const EdgeInsets.all(TSizes.defaultBtwItems),
           child: ListView.separated(
@@ -39,20 +41,20 @@ class TQuizBody extends GetView<QuizController> {
                           const SizedBox(width: 150),
                           InkWell(
                             onTap: () {
-                              controller.buyQuiz(quiz: controller.quizzes[index]);
+                              controller.buyQuiz(
+                                  quiz: controller.quizzes[index]);
                             },
                             child: const Text('Сатып алу'),
                           ),
                         ],
                         title: const Text("Сатып алу"),
                         contentPadding: const EdgeInsets.all(TSizes.xl),
-                        content: const Text(
-                            "Бұл нұсқаны сатып алсыз ба?"),
+                        content: const Text("Бұл нұсқаны сатып алсыз ба?"),
                       ),
                     );
                   } else {
                     Get.to(
-                          () => const QuestionScreen(),
+                      () => const QuestionScreen(),
                       arguments: controller.quizzes[index].copyWith(
                         subjectId: controller.chapter.subjectId,
                         bookId: controller.chapter.bookId,
@@ -67,14 +69,16 @@ class TQuizBody extends GetView<QuizController> {
                 leading: Text(
                   '${index + 1}',
                   style: Theme.of(context).textTheme.bodyLarge!.apply(
-                    fontSizeDelta: TSizes.dividerHeight,
-                  ),
+                        fontSizeDelta: TSizes.dividerHeight,
+                      ),
                 ),
                 title: Text(
                   controller.quizzes[index].title,
                 ),
                 trailing: Obx(() {
-                  if(controller.loadingForBuyingQuiz.value){
+                  if (controller.loadingForBuyingQuiz.value &&
+                      (controller.quizzes[index].quizId ==
+                          controller.loadingForBuyingQuizStr.value)) {
                     return const SizedBox(
                       height: 30,
                       width: 30,
@@ -82,7 +86,7 @@ class TQuizBody extends GetView<QuizController> {
                         child: CircularProgressIndicator(),
                       ),
                     );
-                  }else{
+                  } else {
                     return SizedBox(
                       width: 150,
                       child: Row(
@@ -90,11 +94,16 @@ class TQuizBody extends GetView<QuizController> {
                         children: [
                           controller.quizzes[index].isBuy == false
                               ? Text(
-                            "🌕  ${TDummyData.quizzes[index].price}",
-                            style: Theme.of(context).textTheme.titleSmall!.apply(
-                              color: dark ? TColors.white : TColors.black,
-                            ),
-                          )
+                                  "🌕  ${TDummyData.quizzes[index].price}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .apply(
+                                        color: dark
+                                            ? TColors.white
+                                            : TColors.black,
+                                      ),
+                                )
                               : const Text('    '),
                           const SizedBox(width: TSizes.vl),
                           Flexible(

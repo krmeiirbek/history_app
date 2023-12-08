@@ -94,7 +94,7 @@ class UserModel {
         lastName: data['LastName'] ?? '',
         userName: data['UserName'] ?? '',
         email: data['Email'] ?? '',
-        phoneNumber: data['PhoneNumber'] ?? '',
+        phoneNumber: data['Phone'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
         balance: _ensureDouble(data['Balance']),
         sandyq: (data['Sandyq'] as List<dynamic>?)

@@ -171,6 +171,7 @@ class TResultWithOptionBody extends GetView<ResultWithOptionsController> {
                 ),
               ],
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

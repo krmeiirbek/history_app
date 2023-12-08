@@ -20,6 +20,7 @@ class QuestionBody extends StatelessWidget {
           return SafeArea(
             top: false,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: SingleChildScrollView(

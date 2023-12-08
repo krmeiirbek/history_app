@@ -27,8 +27,9 @@ class TResultBody extends GetView<ResultController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(width: MediaQuery.of(context).size.width),
+                    SizedBox(width: MediaQuery.of(context).size.width-16),
                     Stack(
+                      alignment: AlignmentDirectional.center,
                       children: [
                         Lottie.asset(
                           TImages.cheers,

@@ -31,11 +31,10 @@ class TResultWithOptionHeader extends GetView<ResultWithOptionsController> {
                       },
                       child: Text(
                         "Нұсқаларға өту",
-                        style:
-                        Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Colors.orange,
-                          fontWeight: FontWeight.w900,
-                        ),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: Colors.orange,
+                              fontWeight: FontWeight.w900,
+                            ),
                       ),
                     ),
                   ],
@@ -51,44 +50,56 @@ class TResultWithOptionHeader extends GetView<ResultWithOptionsController> {
                     horizontal: TSizes.defaultSpace,
                   ),
                   itemBuilder: (context, index) => Obx(() => InkWell(
-                    onTap: () {
-                      controller.changeQuestion(index);
-                    },
-                    child: Container(
-                      height: TSizes.indexedCard,
-                      width: TSizes.indexedCard,
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: controller.questionId.value == index
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context).colorScheme.surface,
-                        border: controller.questionId.value == index
-                            ? null
-                            : Border.all(
-                          color: Theme.of(context)
-                              .unselectedWidgetColor,
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '${index + 1}',
-                          style: controller.questionId.value == index
-                              ? const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          )
-                              : TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context)
-                                .unselectedWidgetColor,
+                        onTap: () {
+                          controller.changeQuestion(index);
+                        },
+                        child: Container(
+                          height: TSizes.indexedCard,
+                          width: TSizes.indexedCard,
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: controller.questionId.value == index
+                                ? Theme.of(context).colorScheme.primary
+                                : controller.selectedOptions[index].isEmpty
+                                    ? Theme.of(context).colorScheme.surface
+                                    : controller.selectedOptions[index].every(
+                                            (element) => element.isCorrect)
+                                        ? Colors.green
+                                        : Theme.of(context).colorScheme.error,
+                            border: controller.questionId.value == index
+                                ? null
+                                : controller.selectedOptions[index].isNotEmpty
+                                    ? null
+                                    : Border.all(
+                                        color: Theme.of(context)
+                                            .unselectedWidgetColor,
+                                      ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '${index + 1}',
+                              style: controller.questionId.value == index
+                                  ? const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    )
+                                  : controller.selectedOptions[index].isNotEmpty
+                                      ? const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        )
+                                      : TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: Theme.of(context)
+                                              .unselectedWidgetColor,
+                                        ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  )),
+                      )),
                   separatorBuilder: (context, index) =>
-                  const SizedBox(width: 10),
+                      const SizedBox(width: 10),
                   itemCount: controller.questions.length,
                   scrollDirection: Axis.horizontal,
                 ),

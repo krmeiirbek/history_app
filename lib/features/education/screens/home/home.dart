@@ -68,7 +68,7 @@ class HomeScreen extends GetView<HomeController> {
             if (controller.subjects.isNotEmpty) {
               return Expanded(
                 child: ListView.separated(
-                  padding: EdgeInsets.zero,
+                  padding: const EdgeInsets.only(bottom: 15),
                   itemBuilder: (context, index) => HomeButtons(
                     title: controller.subjects[index].title,
                     image: controller.subjects[index].image,

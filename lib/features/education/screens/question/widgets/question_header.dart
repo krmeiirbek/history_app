@@ -74,7 +74,8 @@ class QuestionHeader extends StatelessWidget {
                 SizedBox(
                   height: TSizes.indexedCard,
                   child: ListView.separated(
-                    controller: controller.scrollController, // Add the scroll controller here
+                    controller: controller.scrollController,
+                    // Add the scroll controller here
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(
                       horizontal: TSizes.defaultSpace,
@@ -90,14 +91,18 @@ class QuestionHeader extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: controller.questionId.value == index
-                                  ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.surface,
+                                  ? Colors.deepPurple.shade800
+                                  : controller.selectedOptions[index].isEmpty
+                                      ? Theme.of(context).colorScheme.surface
+                                      : Colors.deepPurple.shade500,
                               border: controller.questionId.value == index
                                   ? null
-                                  : Border.all(
-                                      color: Theme.of(context)
-                                          .unselectedWidgetColor,
-                                    ),
+                                  : controller.selectedOptions[index].isNotEmpty
+                                      ? null
+                                      : Border.all(
+                                          color: Theme.of(context)
+                                              .unselectedWidgetColor,
+                                        ),
                             ),
                             child: Center(
                               child: Text(
@@ -107,11 +112,17 @@ class QuestionHeader extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                       )
-                                    : TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: Theme.of(context)
-                                            .unselectedWidgetColor,
-                                      ),
+                                    : controller
+                                            .selectedOptions[index].isNotEmpty
+                                        ? const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          )
+                                        : TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: Theme.of(context)
+                                                .unselectedWidgetColor,
+                                          ),
                               ),
                             ),
                           ),

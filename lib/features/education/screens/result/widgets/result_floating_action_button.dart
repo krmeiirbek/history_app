@@ -52,6 +52,7 @@ class TResultFloatingActionButton extends GetView<ResultController> {
                   onTap: () => Get.back(),
                   child: Text(
                     'Артқа қайту',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: context.theme.colorScheme.primary,
                       fontSize: 16,

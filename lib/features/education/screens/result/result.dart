@@ -18,6 +18,7 @@ class ResultPage extends GetView<ResultController> {
       child: const Scaffold(
         body: TResultBody(),
         floatingActionButton: TResultFloatingActionButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }

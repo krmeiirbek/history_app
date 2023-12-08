@@ -42,11 +42,11 @@ class NavigationMenu extends StatelessWidget {
           destinations: const [
             NavigationDestination(
               icon: Icon(Iconsax.home),
-              label: 'Home',
+              label: 'Мәзір',
             ),
             NavigationDestination(
               icon: Icon(Iconsax.setting),
-              label: 'Setting',
+              label: 'Баптаулар',
             ),
           ],
         ),

@@ -115,6 +115,7 @@ class AuthenticationRepository extends GetxController {
       final GoogleSignInAuthentication? googleAuth =
           await userAccount?.authentication;
 
+
       final credentials = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
 
@@ -137,8 +138,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
-      localStorage.removeData('currentUserModel');
-      localStorage.removeData('currentUserModel_lastUpdated');
+      localStorage.clearAll();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;

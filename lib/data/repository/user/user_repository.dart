@@ -18,6 +18,16 @@ class UserRepository extends GetxController {
 
   Future<void> saveUserRecord(UserModel user) async {
     try {
+      var userRef = _db.collection("Users").doc(user.id);
+
+      // Check if the user already exists
+      var doc = await userRef.get();
+      if (doc.exists) {
+        // User already exists, skip saving or handle as needed
+        // e.g., update specific fields without overwriting the entire document
+        // await userRef.update({ /* specific fields to update */ });
+        return;
+      }
       // Convert the user object to a map and add the 'lastUpdated' field
       var userData = user.toJson();
       userData['lastUpdated'] = DateTime.now();

@@ -41,9 +41,9 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                   Obx(() {
-                    if(controller.loading.value){
+                    if (controller.loading.value) {
                       return const Center(child: CircularProgressIndicator());
-                    }else{
+                    } else {
                       return TUserProfileCard(
                         user: controller.userModel,
                         actionButtonOnPressed: () =>
@@ -71,10 +71,12 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'In-progress and Completed tests',
                     onPressed: () => Get.to(() => const HistoryScreen()),
                   ),
-                  const TSettingsMenu(
-                      icon: Iconsax.bank,
-                      title: 'Bank Account',
-                      subTitle: 'Withdraw balance to registered bank account'),
+                  TSettingsMenu(
+                    icon: Iconsax.bank,
+                    title: 'Теңгерімді толтыру',
+                    subTitle: 'Сілтеме арқылы whatsapp-та қанша 🌕 толтыру керектігін хабарлайсыз',
+                    onPressed: () => controller.launchWhatsAppUri(),
+                  ),
                   const TSettingsMenu(
                       icon: Iconsax.discount_shape,
                       title: 'My Coupons',

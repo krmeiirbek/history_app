@@ -9,6 +9,7 @@ import 'package:history_app/features/education/screens/history/history.dart';
 import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
 import 'package:history_app/features/personalization/screens/settings/widgets/settings_menu.dart';
+import 'package:history_app/features/privacy_policy/screens/privacy_policy.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
@@ -85,10 +86,14 @@ class SettingsScreen extends StatelessWidget {
                             icon: Iconsax.discount_shape,
                             title: 'Қолданба туралы',
                             subTitle: 'Қолданба туралы ақпарат'),
-                        const TSettingsMenu(
-                            icon: Iconsax.security_card,
-                            title: 'Қолдану ережесі',
-                            subTitle: 'Қолданбаны пайдалану ережелері және басқада келісім шарттар'),
+                        TSettingsMenu(
+                          icon: Iconsax.security_card,
+                          title: 'Ережелер мен келісімдер',
+                          subTitle:
+                              'Қолданбаны пайдалану ережелері және басқада келісім шарттар',
+                          onPressed: () =>
+                              Get.to(() => const PrivacyPolicyScreen()),
+                        ),
 
                         /// -- Logout Button
                         const SizedBox(height: TSizes.spaceBtwSections),

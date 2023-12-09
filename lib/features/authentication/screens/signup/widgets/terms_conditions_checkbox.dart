@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/features/authentication/controllers/signup/signup_controller.dart';
+import 'package:history_app/features/privacy_policy/screens/privacy_policy.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/constants/text_strings.dart';
@@ -45,6 +47,10 @@ class TTermsAndConditionCheckbox extends StatelessWidget {
                       decoration: TextDecoration.underline,
                       decorationColor: dark ? TColors.white : TColors.primary,
                     ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Get.to(() => const PrivacyPolicyScreen());
+                  },
               ),
               TextSpan(
                 text: "${TTexts.and} ",

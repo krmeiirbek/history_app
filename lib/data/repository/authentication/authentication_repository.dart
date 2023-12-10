@@ -58,7 +58,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -76,7 +76,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -92,7 +92,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
   Future<void> sendPasswordResetEmail(String email) async {
@@ -107,7 +107,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -152,7 +152,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -170,12 +170,13 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
   Future<void> deleteAccount() async {
     try {
+      localStorage.clearAll();
       await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
       await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
@@ -187,7 +188,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 }

@@ -42,7 +42,7 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -85,7 +85,7 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -104,7 +104,7 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, Please try again';
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 

@@ -28,8 +28,7 @@ class TUserProfileCard extends StatelessWidget {
             fit: BoxFit.cover,
         ),
       ),
-      title: Text(
-        user.fullName,
+      title: Text(user.fullName,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:history_app/data/repository/education/education_repository.dart';
 import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/home/home.dart';
-import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
+import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/settings/settings.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
@@ -24,7 +24,7 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
     Get.put(EducationRepository());
-    Get.put(PersonalizationController());
+    Get.put(UserController());
     Get.put(HomeController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(

@@ -25,7 +25,7 @@ class QuizController extends GetxController {
 
   void getUserDate() async {
     loading.value = true;
-    currentUser.value = await UserRepository().instance.getUserData();
+    currentUser.value = await UserRepository.instance.getUserData();
     getQuizzesDate();
     loading.value = false;
   }
@@ -62,7 +62,7 @@ class QuizController extends GetxController {
       );
       loadingForBuyingQuiz.value = true;
       loadingForBuyingQuizStr.value = quiz.quizId;
-      await UserRepository().instance.updateUserRecord(currentUser.value);
+      await UserRepository.instance.updateUserRecord(currentUser.value);
       loadingForBuyingQuiz.value = false;
       loadingForBuyingQuizStr.value = '';
       isBuy();

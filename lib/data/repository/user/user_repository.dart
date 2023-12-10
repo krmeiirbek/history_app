@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:history_app/data/repository/authentication/authentication_repository.dart';
 import 'package:history_app/features/authentication/models/user_model.dart';
 import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/utils/exceptions/firebase_exceptions.dart';
@@ -10,7 +11,7 @@ import 'package:history_app/utils/exceptions/platform_exceptions.dart';
 import 'package:history_app/utils/local_storage/storage_utility.dart';
 
 class UserRepository extends GetxController {
-  UserRepository get instance => Get.find();
+  static UserRepository get instance => Get.find();
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final _user = FirebaseAuth.instance.currentUser;
@@ -65,6 +66,80 @@ class UserRepository extends GetxController {
     }
   }
 
+  Future<UserModel> fetchUserDetails() async {
+    try {
+      final documentSnapshot = await _db
+          .collection("Users")
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .get();
+
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapshot(documentSnapshot);
+      } else {
+        return UserModel.empty();
+      }
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong, Please try again';
+    }
+  }
+
+  Future<void> updateUserDetails(UserModel updateUser) async {
+    try {
+      var userData = updateUser.toJson();
+      userData['lastUpdated'] = DateTime.now();
+      await _db
+          .collection("Users")
+          .doc(updateUser.id)
+          .update(userData);
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong, Please try again';
+    }
+  }
+
+  Future<void> updateSingleField(Map<String, dynamic> json) async {
+    try {
+      json['lastUpdated'] = DateTime.now();
+      await _db
+          .collection("Users")
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .update(json);
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went  wrong, Please try again';
+    }
+  }
+
+  Future<void> removeUserRecord(String userId) async {
+    try {
+      await _db.collection("Users").doc(userId).delete();
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Something went  wrong, Please try again';
+    }
+  }
+
   Future<UserModel> getUserData() async {
     User? currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser == null) {
@@ -74,7 +149,8 @@ class UserRepository extends GetxController {
 
     try {
       var userModel = UserModel.empty();
-      final lastUpdatedLocal = localStorage.readData('currentUserModel_lastUpdated');
+      final lastUpdatedLocal =
+          localStorage.readData('currentUserModel_lastUpdated');
       final lastUpdatedFirebase = await _getLastUpdatedTimestampForUser();
 
       DateTime? lastUpdatedLocalDateTime;
@@ -82,13 +158,16 @@ class UserRepository extends GetxController {
         lastUpdatedLocalDateTime = DateTime.tryParse(lastUpdatedLocal);
       }
 
-      if (lastUpdatedLocalDateTime == null || lastUpdatedFirebase.isAfter(lastUpdatedLocalDateTime)) {
+      if (lastUpdatedLocalDateTime == null ||
+          lastUpdatedFirebase.isAfter(lastUpdatedLocalDateTime)) {
         final res = await _db.collection("Users").doc(currentUser.uid).get();
         userModel = UserModel.fromSnapshot(res);
         await localStorage.saveData('currentUserModel', userModel.toJson());
-        await localStorage.saveData('currentUserModel_lastUpdated', lastUpdatedFirebase.toIso8601String());
+        await localStorage.saveData('currentUserModel_lastUpdated',
+            lastUpdatedFirebase.toIso8601String());
       } else {
-        userModel = UserModel.fromJson(localStorage.readData('currentUserModel'));
+        userModel =
+            UserModel.fromJson(localStorage.readData('currentUserModel'));
       }
 
       return userModel;
@@ -114,5 +193,4 @@ class UserRepository extends GetxController {
       return DateTime.now(); // Fallback to current time in case of error
     }
   }
-
 }

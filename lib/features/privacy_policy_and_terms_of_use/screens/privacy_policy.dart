@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/privacy_policy/controllers/privacy_policy_controller.dart';
+import 'package:history_app/features/privacy_policy_and_terms_of_use/controllers/privacy_policy_controller.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
   const PrivacyPolicyScreen({super.key});

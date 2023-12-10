@@ -21,7 +21,7 @@ class HomeController extends GetxController {
 
   void getUserDate() async {
     loading.value = true;
-    userModel.value = await UserRepository().instance.getUserData();
+    userModel.value = await UserRepository.instance.getUserData();
     loading.value = false;
   }
 

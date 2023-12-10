@@ -20,7 +20,6 @@ class SignupController extends GetxController {
 
   late TextEditingController firstNameController;
   late TextEditingController lastNameController;
-  late TextEditingController userNameController;
   late TextEditingController emailController;
   late TextEditingController phoneNumberController;
   late TextEditingController passwordController;
@@ -30,7 +29,6 @@ class SignupController extends GetxController {
   void onInit() {
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
-    userNameController = TextEditingController();
     emailController = TextEditingController();
     phoneNumberController = TextEditingController();
     passwordController = TextEditingController();
@@ -41,7 +39,6 @@ class SignupController extends GetxController {
   void dispose() {
     firstNameController.dispose();
     lastNameController.dispose();
-    userNameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
     passwordController.dispose();
@@ -87,7 +84,6 @@ class SignupController extends GetxController {
         id: userCredential.user!.uid,
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
-        userName: userNameController.text.trim(),
         email: emailController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
         profilePicture: '',
@@ -95,7 +91,7 @@ class SignupController extends GetxController {
         sandyq: [],
       );
 
-      await UserRepository().instance.saveUserRecord(newUser);
+      await UserRepository.instance.saveUserRecord(newUser);
 
       TFullScreenLoader.stopLoading();
 

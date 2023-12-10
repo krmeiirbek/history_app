@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:history_app/features/education/controllers/dummy_data.dart';
 import 'package:history_app/features/education/controllers/quiz_controller.dart';
 import 'package:history_app/features/education/screens/question/question.dart';
 import 'package:history_app/utils/constants/colors.dart';
@@ -94,7 +93,7 @@ class TQuizBody extends GetView<QuizController> {
                         children: [
                           controller.quizzes[index].isBuy == false
                               ? Text(
-                                  "🌕  ${TDummyData.quizzes[index].price}",
+                                  "🌕  ${controller.quizzes[index].price}",
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleSmall!

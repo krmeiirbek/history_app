@@ -6,10 +6,10 @@ import 'package:history_app/common/widgets/texts/section_heading.dart';
 import 'package:history_app/common/widgets/user/user_profile_card.dart';
 import 'package:history_app/data/repository/authentication/authentication_repository.dart';
 import 'package:history_app/features/education/screens/history/history.dart';
-import 'package:history_app/features/personalization/controllers/personalization_controller.dart';
+import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
 import 'package:history_app/features/personalization/screens/settings/widgets/settings_menu.dart';
-import 'package:history_app/features/privacy_policy/screens/privacy_policy.dart';
+import 'package:history_app/features/privacy_policy_and_terms_of_use/screens/privacy_policy.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = PersonalizationController.instance;
+    final controller = UserController.instance;
     return Scaffold(
       body: Column(
         children: [
@@ -45,7 +45,7 @@ class SettingsScreen extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   } else {
                     return TUserProfileCard(
-                      user: controller.userModel,
+                      user: controller.user.value,
                       actionButtonOnPressed: () =>
                           Get.to(() => const ProfileScreen()),
                     );

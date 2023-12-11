@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
-import 'package:history_app/features/education/controllers/dummy_data.dart';
+import 'package:history_app/data/repository/authentication/authentication_repository.dart';
+import 'package:history_app/data/repository/education/education_repository.dart';
 import 'package:history_app/features/education/models/history_model.dart';
 import 'package:history_app/features/education/models/option_model.dart';
 import 'package:history_app/features/education/models/question_model.dart';
 import 'package:history_app/features/education/models/quiz_model.dart';
+import 'package:history_app/utils/popups/loaders.dart';
 
 class ResultController extends GetxController {
   final loading = false.obs;
@@ -21,7 +23,7 @@ class ResultController extends GetxController {
     questions = quiz.questions;
     selectedOptions =
         await Get.arguments["selectedOptions"] as List<List<OptionModel>>;
-    if(questions.isNotEmpty) {
+    if (questions.isNotEmpty) {
       esepteu();
     } else {
       maxPoint.value = -1;
@@ -67,15 +69,22 @@ class ResultController extends GetxController {
     saveToHistory();
   }
 
-  void saveToHistory() {
-    TDummyData.histories.add(
-      HistoryModel(
-        historyId: '',
-        quiz: quiz,
-        passedDate: DateTime.now(),
-        maxPoint: maxPoint.value,
-        resultPoint: resultPoint.value,
-      ),
+  Future<void> saveToHistory() async {
+    final userId = AuthenticationRepository.instance.authUser?.uid;
+    if(userId == null){
+      TLoaders.warningSnackBar(title: 'history not saved');
+      return;
+    }
+    final historyRecord = HistoryModel(
+      historyId: userId,
+      subjectTitle: quiz.subjectTitle ?? '',
+      bookTitle: quiz.bookTitle ?? '',
+      chapterTitle: quiz.chapterTitle ?? '',
+      quizTitle: quiz.title,
+      passedDate: DateTime.now(),
+      maxPoint: maxPoint.value,
+      resultPoint: resultPoint.value,
     );
+    await EducationRepository.instance.saveHistory(historyRecord);
   }
 }

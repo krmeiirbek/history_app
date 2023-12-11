@@ -27,7 +27,7 @@ class HomeController extends GetxController {
 
   void getSubjectsDate() async {
     loading.value = true;
-    subjects.value = await EducationRepository().instance.getSubjects();
+    subjects.value = await EducationRepository.instance.getSubjects();
     loading.value = false;
   }
 }

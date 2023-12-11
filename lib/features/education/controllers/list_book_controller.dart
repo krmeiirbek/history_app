@@ -19,7 +19,7 @@ class ListBookController extends GetxController {
 
   void getBooksDate() async {
     loading.value = true;
-    books.value = await EducationRepository().instance.getBooks(subject.subjectId);
+    books.value = await EducationRepository.instance.getBooks(subject.subjectId);
     loading.value = false;
   }
 }

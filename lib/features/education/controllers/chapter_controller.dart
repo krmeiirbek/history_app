@@ -19,8 +19,7 @@ class ChapterController extends GetxController {
 
   void getChaptersDate() async {
     loading.value = true;
-    chapters.value = await EducationRepository()
-        .instance
+    chapters.value = await EducationRepository.instance
         .getChapters(book.subjectId, book.bookId);
     loading.value = false;
   }

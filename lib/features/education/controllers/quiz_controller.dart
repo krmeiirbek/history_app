@@ -32,7 +32,7 @@ class QuizController extends GetxController {
 
   void getQuizzesDate() async {
     loading.value = true;
-    quizzes.value = await EducationRepository().instance.getQuizzes(
+    quizzes.value = await EducationRepository.instance.getQuizzes(
           chapter.subjectId,
           chapter.bookId,
           chapter.chapterId,

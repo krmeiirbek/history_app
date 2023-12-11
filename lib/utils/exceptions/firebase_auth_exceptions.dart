@@ -8,97 +8,97 @@ class TFirebaseAuthExceptions implements Exception {
   String get message {
     switch (code) {
       case 'email-already-in-use':
-        return 'The email address is already registered. Please use a different email.';
+        return 'Электрондық пошта мекенжайы әлдеқашан тіркелген. Басқа электрондық поштаны пайдаланыңыз.';
       case 'invalid-email':
-        return 'The email address provided is invalid. Please enter a valid email.';
+        return 'Берілген электрондық пошта мекенжайы жарамсыз. Жарамды электрондық поштаны енгізіңіз.';
       case 'weak-password':
-        return 'The password is too weak. Please choose a stronger password.';
+        return 'Құпия сөз тым әлсіз. Күшті құпия сөзді таңдаңыз.';
       case 'user-disabled':
-        return 'This user account has been disabled. Please contact support for assistance';
+        return 'Бұл пайдаланушы тіркелгісі өшірілген. Көмек алу үшін қолдау қызметіне хабарласыңыз';
       case 'user-not-found':
-        return 'Invalid login details. User not found.';
+        return 'Кіру мәліметтері жарамсыз. Пайдаланушы табылмады.';
       case 'wrong-password':
-        return 'Incorrect password. Please check your password and try again.';
+        return 'Қате құпиясөз. Құпия сөзіңізді тексеріп, әрекетті қайталаңыз.';
       case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
+        return 'Жарамсыз растау коды. Жарамды кодты енгізіңіз.';
       case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
+        return 'Жарамсыз растау идентификаторы. Жаңа растау кодын сұраңыз.';
       case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
+        return 'Квота асып кетті. Тағы жасауды сәл кейінірек көріңізді өтінеміз.';
       case 'email-already-exists':
-        return 'The email address already exists. Please use a different email.';
+        return 'Электрондық пошта мекенжайы бұрыннан бар. Басқа электрондық поштаны пайдаланыңыз.';
       case 'provider-already-linked':
-        return 'The account is already linked with another provider.';
+        return 'Тіркелгі басқа провайдермен әлдеқашан байланыстырылған.';
       case 'requires-recent-login':
-        return 'This operation is sensitive and requires recent authentication. Please log in again.';
+        return 'Бұл операция сезімтал және соңғы аутентификацияны қажет етеді. Жүйеге қайта кіріңіз.';
       case 'credential-already-in-use':
-        return 'This credential is already associated with a different user account.';
+        return 'Бұл тіркелгі деректері әлдеқашан басқа пайдаланушы тіркелгісімен байланыстырылған.';
       case 'user-mismatch':
-        return 'The supplied credentials do not correspond to the previously signed in user.';
+        return 'Берілген тіркелгі деректері бұрын кірген пайдаланушыға сәйкес келмейді.';
       case 'account-exists-with-different-credential':
-        return 'An account already exists with the same email but different sign-in credentials.';
+        return 'Бір электрондық пошта мекенжайы бар, бірақ кіру тіркелгі деректері басқа тіркелгі бұрыннан бар.';
       case 'operation-not-allowed':
-        return 'This operation is not allowed. Contact support for assistance.';
+        return 'Бұл операцияға рұқсат етілмейді. Көмек алу үшін қолдау қызметіне хабарласыңыз.';
       case 'expired-action-code':
-        return 'The action code has expired. Please request a new action code.';
+        return 'Әрекет кодының мерзімі аяқталды. Жаңа әрекет кодын сұраңыз.';
       case 'invalid-action-code':
-        return 'The action code is invalid. Please check the code and try again.';
+        return 'Әрекет коды жарамсыз. Кодты тексеріп, әрекетті қайталаңыз.';
       case 'missing-action-code':
-        return 'The action code is missing. Please provide a valid action code.';
+        return 'Әрекет коды жоқ. Жарамды әрекет кодын беріңіз.';
       case 'user-token-expired':
-        return 'The user\'s token has expired, and authentication is required. Please sign in again.';
+        return 'Пайдаланушы таңбалауышының мерзімі аяқталды және аутентификация қажет. Жүйеге қайта кіріңіз.';
       case 'user-not-found':
-        return 'No user found for the given email or UID.';
+        return 'Берілген электрондық пошта немесе UID үшін пайдаланушы табылмады.';
       case 'invalid-credential':
-        return 'The supplied credential is malformed or has expired.';
+        return 'Берілген тіркелгі деректері дұрыс емес немесе мерзімі өтіп кеткен.';
       case 'wrong-password':
-        return 'The password is invalid. Please check your password and try again.';
+        return 'Құпия сөз жарамсыз. Құпия сөзіңізді тексеріп, әрекетті қайталаңыз.';
       case 'user-token-revoked':
-        return 'The user\'s token has been revoked. Please sign in again.';
+        return 'Пайдаланушының таңбалауышы кері қайтарылды. Жүйеге қайта кіріңіз.';
       case 'invalid-message-payload':
-        return 'The email template verification message payload is invalid.';
+        return 'Электрондық пошта үлгісін растау хабарының пайдалы жүктемесі жарамсыз.';
       case 'invalid-sender':
-        return 'The email template sender is invalid. Please verify the sender\'s email.';
+        return 'Электрондық пошта үлгісін жіберуші жарамсыз. Жіберушінің электрондық поштасын растаңыз.';
       case 'invalid-recipient-email':
-        return 'The recipient email address is invalid. Please provide a valid recipient email.';
+        return 'Алушының электрондық пошта мекенжайы жарамсыз. Жарамды алушының электрондық поштасын көрсетіңіз.';
       case 'missing-iframe-start':
-        return 'The email template is missing the iframe start tag.';
+        return 'Электрондық пошта үлгісінде аттың бастау тегі жоқ.';
       case 'missing-iframe-end':
-        return 'The email template is missing the iframe end tag.';
+        return 'Электрондық пошта үлгісінде аттың соңы тегі жоқ.';
       case 'missing-iframe-src':
-        return 'The email template is missing the iframe src attribute.';
+        return 'Электрондық пошта үлгісінде аттың сөз төлсипаты жоқ.';
       case 'auth-domain-config-required':
-        return 'The auth Domain configuration is required for the action code verification link.';
+        return 'Әрекет кодын тексеру сілтемесі үшін аутентификациялық домен конфигурациясы қажет.';
       case 'missing-app-credential':
-        return 'The app credential is missing. Please provide valid app credentials.';
+        return 'Қолданбаның тіркелгі деректері жоқ. Жарамды қолданба тіркелгі деректерін беріңіз.';
       case 'invalid-app-credential':
-        return 'The app credential is invalid. Please provide a valid app credential.';
+        return 'Қолданбаның тіркелгі деректері жарамсыз. Жарамды қолданба тіркелгі деректерін беріңіз.';
       case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
+        return 'База сеансының cookie файлының мерзімі аяқталды. Жүйеге қайта кіріңіз.';
       case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
+        return 'Берілген пайдаланушы идентификаторын басқа пайдаланушы пайдалануда.';
       case 'invalid-cordova-configuration':
-        return 'The provided Cordova configuration is invalid.';
+        return 'Берілген Кордова конфигурациясы жарамсыз.';
       case 'app-deleted':
-        return 'This instance of Firebase App has been deleted.';
+        return 'База қолданбасының бұл данасы жойылды.';
       case 'user-disabled':
-        return 'The user account has been disabled.';
+        return 'Пайдаланушы тіркелгісі өшірілді.';
       case 'user-token-mismatch':
-        return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
+        return 'Берілген пайдаланушының ID аутентификацияланған пайдаланушының пайдаланушы идентификаторымен сәйкес емес.';
       case 'web-storage-unsupported':
-        return 'Web storage is not supported or is disabled.';
+        return 'Веб жадына қолдау көрсетілмейді немесе өшірілген.';
       case 'invalid-credential':
-        return 'The supplied credential is invalid. Please check the credential and try again.';
+        return 'Берілген тіркелгі деректері жарамсыз. Тіркелгі деректерін тексеріп, әрекетті қайталаңыз.';
       case 'app-not-authorized':
-        return 'The app is not authorized to use Firebase Authentication with the provided API key.';
+        return 'Қолданбаның берілген API кілтімен Firebase аутентификациясын пайдалануға рұқсаты жоқ.';
       case 'keychain-error':
-        return 'A keychain error occurred. Please check the keychain and try again.';
+        return 'Кілттік тізбек қатесі орын алды. Брелокты тексеріп, әрекетті қайталаңыз.';
       case 'internal-error':
-        return 'An internal authentication error occurred. Please try again later.';
+        return 'Ішкі аутентификация қатесі орын алды. Тағы жасауды сәл кейінірек көріңізді өтінеміз.';
       case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials.';
+        return 'Кіру тіркелгі деректері жарамсыз.';
       default:
-        return 'An unexpected FirebaseAuth error occurred. Please try again.';
+        return 'Күтпеген тіркелу қатесі орын алды. Қайталап көріңіз.';
     }
   }
 }

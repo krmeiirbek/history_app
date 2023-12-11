@@ -44,16 +44,15 @@ class ListBooksScreen extends GetView<ListBookController> {
                       separatorBuilder: (_, index) => const SizedBox(height: 5),
                       itemBuilder: (_, index) {
                         return BookButtons(
-                          onPressed: () => Get.to(
-                            () => const ChaptersScreen(),
-                            arguments: controller.books[index].copyWith(
-                                subjectId: controller.subject.subjectId,
-                              subjectTitle: controller.subject.title,
-                            ),
-                          ),
-                          title: controller.books[index].title,
-                          image: controller.books[index].image,
-                        );
+                            onPressed: () => Get.to(
+                                  () => const ChaptersScreen(),
+                                  arguments: controller.books[index].copyWith(
+                                    subjectId: controller.subject.subjectId,
+                                    subjectTitle: controller.subject.title,
+                                  ),
+                                ),
+                            title: controller.books[index].title,
+                            image: controller.books[index].image);
                       },
                     )),
             ),

@@ -1,21 +1,21 @@
 class TValidator {
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
-      return '$fieldName is required.';
+      return '$fieldName қажет.';
     }
     return null;
   }
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return 'Электрондық пошта қажет.';
     }
 
     // Regular expression for email validation
     final emailRegExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
 
     if (!emailRegExp.hasMatch(value)) {
-      return 'Invalid email address.';
+      return 'Электрондық пошта мекенжайы жарамсыз.';
     }
 
     return null;
@@ -23,12 +23,12 @@ class TValidator {
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required.';
+      return 'Құпия сөз қажет.';
     }
 
     // Check for minimum password length
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long.';
+      return 'Құпия сөз кемінде 6 таңбадан тұруы керек.';
     }
 
 
@@ -38,14 +38,14 @@ class TValidator {
 
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is required.';
+      return 'Телефон нөмірі қажет.';
     }
 
     // Regular expression for phone number validation
     final phoneRegExp = RegExp(r'^87\d{9}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format. Use 87xxxxxxxxx';
+      return 'Жарамсыз телефон нөмірінің форматы. 87xxxxxxxxx пайдаланыңыз';
     }
 
     return null;

@@ -72,7 +72,7 @@ class ResultController extends GetxController {
   Future<void> saveToHistory() async {
     final userId = AuthenticationRepository.instance.authUser?.uid;
     if(userId == null){
-      TLoaders.warningSnackBar(title: 'history not saved');
+      TLoaders.warningSnackBar(title: 'Тарих сақталмады');
       return;
     }
     final historyRecord = HistoryModel(

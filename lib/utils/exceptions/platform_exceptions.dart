@@ -6,36 +6,36 @@ class TPlatformExceptions implements Exception {
   String get message {
     switch (code) {
       case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials. Please double-check your information.';
+        return 'Кіру тіркелгі деректері жарамсыз. Ақпаратыңызды екі рет тексеріңіз.';
       case 'too-many-requests':
-        return 'Too many requests. Please try again later.';
+        return 'Тым көп сұраулар. Тағы жасауды сәл кейінірек көріңізді өтінеміз.';
       case 'invalid-argument':
-        return 'Invalid argument provided to the authentication method.';
+        return 'Аутентификация әдісіне берілген жарамсыз аргумент.';
       case 'invalid-password':
-        return 'Incorrect password. Please try again.';
+        return 'Қате құпиясөз. Қайталап көріңіз.';
       case 'invalid-phone-number':
-        return 'The provided phone number is invalid.';
+        return 'Берілген телефон нөмірі жарамсыз.';
       case 'operation-not-allowed':
-        return 'The sign-in provider is disabled for your Firebase project.';
+        return 'Жүйеге кіру провайдері негізгі жобаңыз үшін өшірілген.';
       case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
+        return 'Негізгі сеанс cookie файлының мерзімі аяқталды. Жүйеге қайта кіріңіз.';
       case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
+        return 'Берілген пайдаланушы идентификаторын басқа пайдаланушы пайдалануда.';
       case 'sign_in_failed':
-        return 'Sign-in failed. Please try again.';
+        return 'Жүйеге кіру сәтсіз аяқталды. Қайталап көріңіз.';
       case 'network-request-failed':
-        return 'Network request failed. Please check your internet connection.';
+        return 'Желі сұрауы орындалмады. Интернет байланысын тексеріңіз.';
       case 'internal-error':
-        return 'Internal error. Please try again later.';
+        return 'Ішкі қате. Әрекетті кейінірек қайталаңыз.';
       case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
+        return 'Жарамсыз растау коды. Жарамды кодты енгізіңіз.';
       case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
+        return 'Жарамсыз растау идентификаторы. Жаңа растау кодын сұраңыз.';
       case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
+        return 'Ішкі қате. Кейінірек қайталап көріңіз.';
       // Add more cases as needed…
       default:
-        return 'An unexpected platform error occurred. Please try again.';
+        return 'Платформада күтпеген қате пайда болды. Қайталап көріңіз.';
     }
   }
 }

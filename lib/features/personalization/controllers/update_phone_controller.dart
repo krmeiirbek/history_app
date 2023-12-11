@@ -47,12 +47,12 @@ class UpdatePhoneController extends GetxController {
 
       TFullScreenLoader.stopLoading();
 
-      TLoaders.successSnackBar(title: "Success", message: "Updated");
+      TLoaders.successSnackBar(title: "Жетістік", message: "Жаңартылды");
 
       Get.off(() => const ProfileScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'oh no', message: e.toString());
+      TLoaders.errorSnackBar(title: 'О, Жоқ', message: e.toString());
     }
   }
 }

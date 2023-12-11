@@ -414,7 +414,7 @@ class EducationRepository extends GetxController {
       }
     } catch (e) {
       // Handle errors
-      throw "Error syncing deletions: $e";
+      throw "Жоюларды синхрондауда қате пайда болды:$e";
     }
   }
 }

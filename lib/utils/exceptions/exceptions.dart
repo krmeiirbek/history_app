@@ -9,7 +9,7 @@ class TExceptions implements Exception {
     ///
     ///
       default:
-        return 'some mistake';
+        return 'біршама қате';
     }
   }
 }

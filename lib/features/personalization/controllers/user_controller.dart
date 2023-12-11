@@ -86,9 +86,9 @@ class UserController extends GetxController {
       }
     } catch (e) {
       TLoaders.warningSnackBar(
-        title: 'Data not saved',
-        message: "Something went wrong while saving your information. "
-            "You can re-save your data in your Profile",
+        title: 'Деректер сақталмады',
+        message: "Ақпаратыңызды сақтау кезінде бірдеңе дұрыс болмады. "
+        "Деректерді профильде қайта сақтауға болады",
       );
     }
   }
@@ -156,7 +156,7 @@ class UserController extends GetxController {
       Get.offAll(() => const LoginScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.warningSnackBar(title: 'Oh no', message: e.toString());
+      TLoaders.warningSnackBar(title: 'О, Жоқ', message: e.toString());
     }
   }
 }

@@ -13,7 +13,7 @@ class HistoryScreen extends StatelessWidget {
       /// -- AppBar
       appBar: TAppBar(
         title: Text(
-          'My Histories',
+          'Менің тарихтарым',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),

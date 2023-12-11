@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/features/education/controllers/result_with_options_controller.dart';
+import 'package:history_app/navigation_menu.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class TResultWithOptionHeader extends GetView<ResultWithOptionsController> {
@@ -24,6 +25,18 @@ class TResultWithOptionHeader extends GetView<ResultWithOptionsController> {
                 ),
                 child: Row(
                   children: [
+                    InkWell(
+                      onTap: () {
+                        Get.offAll(() => const NavigationMenu());
+                      },
+                      child: Text(
+                        "Басты бет",
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: TSizes.md),
+                      ),
+                    ),
                     const Spacer(),
                     InkWell(
                       onTap: () {

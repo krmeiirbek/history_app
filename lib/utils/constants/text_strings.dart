@@ -1,73 +1,60 @@
 class TTexts {
   // -- GLOBAL Texts
-  static const String and = "and";
-  static const String skip = "Skip";
-  static const String done = "Done";
-  static const String submit = "Submit";
-  static const String appName = "Tee-Shop";
-  static const String tContinue = "Continue";
-
-  // -- OnBoarding Texts
-  static const String onBoardingTitle1 = "Choose your product";
-  static const String onBoardingTitle2 = "Select Payment Method";
-  static const String onBoardingTitle3 = "Deliver at your door step";
-
-  static const String onBoardingSubTitle1 =
-      "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!";
-  static const String onBoardingSubTitle2 =
-      "For Seamless Transactions, Choose Your Payment Path - Your Convenience, Our Priority!";
-  static const String onBoardingSubTitle3 =
-      "From Our Doorstep to Yours - Swift, Secure, and Contactless Delivery!";
+  static const String and = "және";
+  static const String done = "Дайын";
+  static const String submit = "Жіберу";
+  static const String tContinue = "Жалғастыру";
 
   // -- Authentication Forms
-  static const String firstName = "First Name";
-  static const String lastName = "Last Name";
+  static const String firstName = "Аты";
+  static const String lastName = "Тегі";
   static const String email = "E-Mail";
-  static const String password = "Password";
-  static const String newPassword = "New Password";
-  static const String username = "Username";
-  static const String phoneNo = "Phone Number";
-  static const String rememberMe = "Remember Me";
-  static const String forgetPassword = "Forget Password?";
-  static const String signIn = "Sign In";
-  static const String createAccount = "Create Account";
-  static const String orSignInWith = "or sign in with";
-  static const String orSignUpWith = "or sign up with";
-  static const String iAgreeTo = "I agree to";
-  static const String privacyPolicy = "Privacy Policy";
-  static const String termsOfUse = "Terms of use";
-  static const String verificationCode = "verificationCode";
-  static const String resendEmail = "Resend Email";
-  static const String resendEmailIn = "Resend email in";
+  static const String password = "Құпия сөз";
+  static const String newPassword = "Жаңа құпия сөз";
+  static const String phoneNo = "Телефон";
+  static const String rememberMe = "Есте сақтау";
+  static const String forgetPassword = "Құпия сөзді ұмыттыңыз ба?";
+  static const String signIn = "Кіру";
+  static const String createAccount = "Аккаунт ашу";
+  static const String or = "немесе";
+  static const String I = "Мен";
+  static const String agreeTo = "келісемін";
+  static const String privacyPolicy = "Құпия саясат";
+  static const String termsOfUse = "Қолдану шарттарына";
+  static const String verificationCode = "растау коды";
+  static const String resendEmail = "Электрондық поштаны қайта жіберу";
+  static const String resendEmailIn = "Электрондық поштаны қайтадан жіберіңіз";
 
   // -- Authentication Headings
-  static const String loginTitle = "Welcome back,";
+  static const String loginTitle = "Қош келдіңіз,";
   static const String loginSubTitle =
-      "Discover Limitless Choices and Unmatched Convenience.";
-  static const String signupTitle = "Let’s create your account";
-  static const String forgetPasswordTitle = "Forget password";
+      "Шексіз таңдаулар мен теңдесі жоқ ыңғайлылықты ашыңыз.";
+  static const String signupTitle = "Аккаунт жасаймыз";
+  static const String forgetPasswordTitle = "Құпия сөзді ұмытыңыз";
   static const String forgetPasswordSubTitle =
-      "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.";
-  static const String changeYourPasswordTitle = "Password Reset Email Sent";
+      "Уайымдамаңыз, кейде адамдар да ұмытып кетуі мүмкін, электрондық поштаңызды енгізіңіз,"
+      " біз сізге құпия сөзді қалпына келтіру сілтемесін жібереміз.";
+  static const String changeYourPasswordTitle = "Құпия сөзді қалпына келтіру электрондық поштасы жіберілді";
   static const String changeYourPasswordSubTitle =
-      "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.";
-  static const String confirmEmail = "Verify your email address!";
+      "Есептік жазбаңыздың қауіпсіздігі - біздің басым пошта!"
+      " Құпия сөзіңізді қауіпсіз өзгерту және тіркелгіңізді қорғау үшін сізге қауіпсіз сілтеме жібердік.";
+  static const String confirmEmail = "Электрондық пошта мекенжайыңызды растаңыз!";
   static const String confirmEmailSubTitle =
-      "Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.";
+      "Құттықтаймыз! Есептік жазбаңыз күтеді: "
+      "сатып алуды бастау және теңдесі жоқ мәмілелер мен жеке ұсыныстар әлемін көру үшін электрондық поштаңызды растаңыз.";
   static const String emailNotReceivedMessage =
-      "Didn’t get the email? Check your junk/spam or resend it.";
+      "Электрондық поштаны алған жоқсыз ба?"
+      " Қалаусыз/спамыңызды тексеріңіз немесе оны қайта жіберіңіз.";
   static const String yourAccountCreatedTitle =
-      "Your account successfully created!";
+      "Есептік жазбаңыз сәтті жасалды!";
   static const String yourAccountCreatedSubTitle =
-      "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+      "Ең жақсы сатып алу орныңызға қош келдіңіз: тіркелгіңіз жасалды, үзіліссіз онлайн білім алыңыз!";
 
-  // -- Product
-  static const String popularProducts = "Popular Products";
 
-  // -- Home
+/*  // -- Home
   static const String historyOfKazakhstanTitle = "History of Kazakhstan";
   static const String historyOfKazakhstanSubTitle =
       "Thematic tests on the history of Kazakhstan";
   static const String worldHistoryTitle = "World history";
-  static const String worldHistorySubTitle = "Thematic tests on world history ";
+  static const String worldHistorySubTitle = "Thematic tests on world history ";*/
 }

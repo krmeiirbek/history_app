@@ -132,7 +132,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      if (kDebugMode) print('Something went wrong: $e');
+      if (kDebugMode) print('Бірдеңе дұрыс болмады:$e');
       return null;
     }
   }

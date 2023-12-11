@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:history_app/navigation_menu.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class TResultHeader extends StatelessWidget {
@@ -11,20 +13,35 @@ class TResultHeader extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: TSizes.xl),
+          padding: const EdgeInsets.all(TSizes.xl),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'Тест Нәтижесі',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium
-                        ?.copyWith(
-                      color: Colors.white,
+                  Builder(
+                    builder: (context) {
+                      return Text(
+                        'Нәтиже',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(color: Colors.white),
+                      );
+                    },
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      Get.offAll(() => const NavigationMenu());
+                    },
+                    child: Text(
+                      "Басты бет",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: TSizes.md),
                     ),
                   ),
                 ],

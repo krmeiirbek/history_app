@@ -14,22 +14,22 @@ class TFormatExceptions implements Exception {
     switch (code) {
       case 'invalid-email-format':
         return const TFormatExceptions(
-            'The email address format is invalid. Please enter a valid email.');
+            'Электрондық пошта мекенжайының форматы. жарамсыз. Жарамды электрондық поштаны енгізіңіз.');
       case 'invalid-phone-number-format':
         return const TFormatExceptions(
-            'The provided phone number format is invalid. Please enter a valid number.');
+            'Берілген телефон нөмірі форматы. жарамсыз. Жарамды нөмірді енгізіңіз.');
       case 'invalid-date-format':
         return const TFormatExceptions(
-            'The date format is invalid. Please enter a valid date.');
+            'Күн форматы. жарамсыз. Жарамды күнді енгізіңіз.');
       case 'invalid-url-format':
         return const TFormatExceptions(
-            'The URL format is invalid. Please enter a valid URL.');
+            'URL форматы. жарамсыз. Жарамды URL мекенжайын енгізіңіз.');
       case 'invalid-credit-card-format':
         return const TFormatExceptions(
-            'The credit card format is invalid. Please enter a valid credit card number.');
+            'Несие картасының форматы. жарамсыз. Жарамды несие картасының нөмірін енгізіңіз.');
       case 'invalid-numeric-format':
         return const TFormatExceptions(
-            'The input should be a valid numeric format.');
+            'Енгізу жарамды сандық форматы. болуы керек.');
       default:
         return const TFormatExceptions();
     }

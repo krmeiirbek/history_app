@@ -9,7 +9,7 @@ class TermsOfUseController extends GetxController {
     if (response.statusCode == 200) {
       return response.body;
     } else {
-      throw Exception('Failed to load Markdown file');
+      throw Exception('Markdown файлы жүктелмеді');
     }
   }
 }

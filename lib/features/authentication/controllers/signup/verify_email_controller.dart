@@ -22,10 +22,10 @@ class VerifyEmailController extends GetxController {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
       TLoaders.successSnackBar(
-          title: 'Email Sent',
-          message: 'Please check your inbox and verify your email.');
+          title: 'Электрондық пошта жіберілді',
+          message: 'Кіріс жәшігіңізді тексеріп, электрондық поштаңызды растаңыз.');
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      TLoaders.errorSnackBar(title: 'О, Жоқ', message: e.toString());
     }
   }
 

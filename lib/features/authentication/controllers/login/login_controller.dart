@@ -43,7 +43,7 @@ class LoginController extends GetxController {
     try {
       // start loading
       TFullScreenLoader.openLoadingDialog(
-        "We are processing your information...",
+        "Ақпаратыңызды өңдеудеміз...",
         TImages.loading,
       );
       // check internet connect
@@ -73,14 +73,14 @@ class LoginController extends GetxController {
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
+      TLoaders.errorSnackBar(title: "О, Жоқ", message: e.toString());
     }
   }
 
   Future<void> googleSignIn() async {
     try {
       TFullScreenLoader.openLoadingDialog(
-          "Loading you in... ", TImages.loading);
+          "Жүктелуде...", TImages.loading);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -98,7 +98,7 @@ class LoginController extends GetxController {
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
+      TLoaders.errorSnackBar(title: "О, Жоқ", message: e.toString());
     }
   }
 }

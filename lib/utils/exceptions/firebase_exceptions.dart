@@ -6,91 +6,91 @@ class TFirebaseExceptions implements Exception {
   String get message {
     switch (code) {
       case 'unknown':
-        return 'An unknown Firebase error occurred. Please try again.';
+        return 'Белгісіз база қатесі орын алды. Қайталап көріңіз.';
       case 'invalid-custom-token':
-        return 'The custom token format is incorrect. Please check your custom token.';
+        return 'Теңшелетін таңбалауыш пішімі дұрыс емес. Арнаулы таңбалауышыңызды тексеріңіз.';
       case 'custom-token-mismatch':
-        return 'The custom token corresponds to a different audience.';
+        return 'Пайдаланушы таңбалауышы басқа аудиторияға сәйкес келеді.';
       case 'user-disabled':
-        return 'The user account has been disabled.';
+        return 'Пайдаланушы тіркелгісі өшірілді.';
       case 'user-not-found':
-        return 'No user found for the given email or UID.';
+        return 'Берілген электрондық пошта немесе UID үшін пайдаланушы табылмады.';
       case 'invalid-email':
-        return 'The email address provided is invalid. Please enter a valid email.';
+        return 'Берілген электрондық пошта мекенжайы жарамсыз. Жарамды электрондық поштаны енгізіңіз.';
       case 'email-already-in-use':
-        return 'The email address is already registered. Please use a different email.';
+        return 'Электрондық пошта мекенжайы әлдеқашан тіркелген. Басқа электрондық поштаны пайдаланыңыз.';
       case 'wrong-password':
-        return 'Incorrect password. Please check your password and try again.';
+        return 'Қате құпиясөз. Құпия сөзіңізді тексеріп, әрекетті қайталаңыз.';
       case 'weak-password':
-        return 'The password is too weak. Please choose a stronger password.';
+        return 'Құпия сөз тым әлсіз. Күшті құпия сөзді таңдаңыз.';
       case 'provider-already-linked':
-        return 'The account is already linked with another provider.';
+        return 'Тіркелгі басқа провайдермен әлдеқашан байланыстырылған.';
       case 'operation-not-allowed':
-        return 'This operation is not allowed. Contact support for assistance.';
+        return 'Бұл операцияға рұқсат етілмейді. Көмек алу үшін қолдау қызметіне хабарласыңыз.';
       case 'invalid-credential':
-        return 'The supplied credential is malformed or has expired.';
+        return 'Берілген тіркелгі деректері дұрыс емес немесе мерзімі өтіп кеткен.';
       case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
+        return 'Жарамсыз растау коды. Жарамды кодты енгізіңіз.';
       case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
+        return 'Жарамсыз растау идентификаторы. Жаңа растау кодын сұраңыз.';
       case 'captcha-check-failed':
-        return 'The reCAPTCHA response is invalid. Please try again.';
+        return 'Қайталау жауабы жарамсыз. Қайталап көріңіз.';
       case 'app-not-authorized':
-        return 'The app is not authorized to use Firebase Authentication with the provided API key.';
+        return 'Қолданбаның берілген API кілтімен база аутентификациясын пайдалануға рұқсаты жоқ.';
       case 'keychain-error':
-        return 'A keychain error occurred. Please check the keychain and try again.';
+        return 'Кілттік тізбек қатесі орын алды. Брелокты тексеріп, әрекетті қайталаңыз.';
       case 'internal-error':
-        return 'An internal authentication error occurred. Please try again later.';
+        return 'Ішкі аутентификация қатесі орын алды. Тағы жасауды сәл кейінірек көріңізді өтінеміз.';
       case 'invalid-app-credential':
-        return 'The app credential is invalid. Please provide a valid app credential.';
+        return 'Қолданбаның тіркелгі деректері жарамсыз. Жарамды қолданба тіркелгі деректерін беріңіз.';
       case 'user-mismatch':
-        return 'The supplied credentials do not correspond to the previously signed-in user.';
+        return 'Берілген тіркелгі деректері бұрын кірген пайдаланушыға сәйкес келмейді.';
       case 'requires-recent-login':
-        return 'This operation is sensitive and requires recent authentication. Please log in again.';
+        return 'Берілген тіркелгі деректері бұрын кірген пайдаланушыға сәйкес келмейді.';
       case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
+        return 'Ішкі қате. Тағы жасауды сәл кейінірек көріңізді өтінеміз.';
       case 'account-exists-with-different-credential':
-        return 'An account already exists with the same email but different sign-in credentials.';
+        return 'Бір электрондық пошта мекенжайы бар, бірақ кіру тіркелгі деректері басқа тіркелгі бұрыннан бар.';
       case 'missing-iframe-start':
-        return 'The email template is missing the iframe start tag.';
+        return 'Электрондық пошта үлгісінде аттың бастау тегі жоқ.';
       case 'missing-iframe-end':
-        return 'The email template is missing the iframe end tag.';
+        return 'Электрондық пошта үлгісінде аттың соңы тегі жоқ.';
       case 'missing-iframe-src':
-        return 'The email template is missing the iframe src attribute.';
+        return 'Электрондық пошта үлгісінде аттың сөз төлсипаты жоқ.';
       case 'auth-domain-config-required':
-        return 'The authDomain configuration is required for the action code verification link.';
+        return 'Әрекет кодын тексеру сілтемесі үшін тіркелу конфигурациясы қажет.';
       case 'missing-app-credential':
-        return 'The app credential is missing. Please provide valid app credentials.';
+        return 'Қолданбаның тіркелгі деректері жоқ. Жарамды қолданба тіркелгі деректерін беріңіз.';
       case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
+        return 'Негізгі сеанс cookie файлының мерзімі аяқталды. Жүйеге қайта кіріңіз.';
       case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
+        return 'Берілген пайдаланушы идентификаторын басқа пайдаланушы пайдалануда.';
       case 'web-storage-unsupported':
-        return 'Web storage is not supported or is disabled.';
+        return 'Веб жадына қолдау көрсетілмейді немесе өшірілген.';
       case 'app-deleted':
-        return 'This instance of FirebaseApp has been deleted.';
+        return 'FirebaseApp қолданбасының бұл данасы жойылды.';
       case 'user-token-mismatch':
-        return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
+        return 'Берілген пайдаланушының таңбалауышы аутентификацияланған пайдаланушының пайдаланушы идентификаторымен сәйкес емес.';
       case 'invalid-message-payload':
-        return 'The email template verification message payload is invalid.';
+        return 'Электрондық пошта үлгісін растау хабарының пайдалы жүктемесі жарамсыз.';
       case 'invalid-sender':
-        return 'The email template sender is invalid. Please verify the sender\'s email.';
+        return 'Электрондық пошта үлгісін жіберуші жарамсыз. Жіберушінің электрондық поштасын растаңыз.';
       case 'invalid-recipient-email':
-        return 'The recipient email address is invalid. Please provide a valid recipient email.';
+        return 'Алушының электрондық пошта мекенжайы жарамсыз. Жарамды алушының электрондық поштасын көрсетіңіз.';
       case 'missing-action-code':
-        return 'The action code is missing. Please provide a valid action code.';
+        return 'Әрекет коды жоқ. Жарамды әрекет кодын беріңіз.';
       case 'user-token-expired':
-        return 'The user\'s token has expired, and authentication is required. Please sign in again.';
+        return 'Пайдаланушы таңбалауышының мерзімі аяқталды және аутентификация қажет. Жүйеге қайта кіріңіз.';
       case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials.';
+        return 'Кіру тіркелгі деректері жарамсыз.';
       case 'expired-action-code':
-        return 'The action code has expired. Please request a new action code.';
+        return 'Әрекет кодының мерзімі аяқталды. Жаңа әрекет кодын сұраңыз.';
       case 'invalid-action-code':
-        return 'The action code is invalid. Please check the code and try again.';
+        return 'Әрекет коды жарамсыз. Кодты тексеріп, әрекетті қайталаңыз.';
       case 'credential-already-in-use':
-        return 'This credential is already associated with a different user account.';
+        return 'Бұл тіркелгі деректері әлдеқашан басқа пайдаланушы тіркелгісімен байланыстырылған.';
       default:
-        return 'An unexpected Firebase error occurred. Please try again.';
+        return 'Күтпеген база қатесі орын алды. Қайталап көріңіз.';
     }
   }
 }

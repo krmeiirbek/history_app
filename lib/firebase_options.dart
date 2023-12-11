@@ -18,8 +18,8 @@ class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
+        'Әдепкі негізгі опциялар веб үшін конфигурацияланбаған - '
+            'FlutterFire CLI қайта іске қосу арқылы мұны қайта конфигурациялауға болады.',
       );
     }
     switch (defaultTargetPlatform) {
@@ -29,22 +29,22 @@ class DefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'Әдепкі негізгі опциялар веб үшін конфигурацияланбаған - '
+              'FlutterFire CLI қайта іске қосу арқылы мұны қайта конфигурациялауға болады.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'Әдепкі негізгі опциялар веб үшін конфигурацияланбаған - '
+              'FlutterFire CLI қайта іске қосу арқылы мұны қайта конфигурациялауға болады.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'Әдепкі негізгі опциялар веб үшін конфигурацияланбаған - '
+              'FlutterFire CLI қайта іске қосу арқылы мұны қайта конфигурациялауға болады.',
         );
       default:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
+          'Бұл платформа үшін әдепкі негізгі опцияларға қолдау көрсетілмейді.',
         );
     }
   }

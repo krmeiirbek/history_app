@@ -50,7 +50,7 @@ class SignupController extends GetxController {
     try {
       // start loading
       TFullScreenLoader.openLoadingDialog(
-        "We are processing your information...",
+        "Ақпаратыңызды өңдеудеміз...",
         TImages.loading,
       );
       // check internet connect
@@ -69,9 +69,9 @@ class SignupController extends GetxController {
       if (!privacyPolicy.value) {
         TFullScreenLoader.stopLoading();
         TLoaders.warningSnackBar(
-          title: 'Accept Privacy Policy',
+          title: 'Құпиялық саясатын қабылдау',
           message:
-              'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use',
+              'Тіркелгіні жасау үшін Құпиялық саясаты мен пайдалану шарттарын оқып, қабылдауыңыз керек',
         );
         return;
       }
@@ -97,8 +97,8 @@ class SignupController extends GetxController {
 
       // show massage
       TLoaders.successSnackBar(
-          title: "Congratulations",
-          message: "Your account has been created! Verify email to continue.");
+          title: "Құттықтаймыз",
+          message: "Есептік жазбаңыз жасалды! Жалғастыру үшін электрондық поштаны растаңыз.");
 
       // move VE screen
       Get.to(() => VerifyEmailScreen(
@@ -109,7 +109,7 @@ class SignupController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       // show error
-      TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
+      TLoaders.errorSnackBar(title: "О, Жоқ", message: e.toString());
     }
   }
 }

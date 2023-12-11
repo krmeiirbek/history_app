@@ -16,7 +16,7 @@ class ForgetPasswordController extends GetxController {
   sendPasswordResetEmail() async {
     try {
       TFullScreenLoader.openLoadingDialog(
-        "Progressing your request",
+        "Сұрауыңыз орындалуда",
         TImages.loading,
       );
 
@@ -37,8 +37,8 @@ class ForgetPasswordController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       TLoaders.successSnackBar(
-        title: "Email Sent",
-        message: "Email Link Sent to Reset your Password".tr,
+        title: "Электрондық пошта жіберілді",
+        message: "Құпия сөзді қалпына келтіру үшін электрондық пошта сілтемесі жіберілді".tr,
       );
 
       Get.to(() => ResetPassword(email: email.text.trim()));
@@ -46,7 +46,7 @@ class ForgetPasswordController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       TLoaders.errorSnackBar(
-        title: "Oh Snap",
+        title: "О, Жоқ",
         message: e.toString(),
       );
     }
@@ -55,7 +55,7 @@ class ForgetPasswordController extends GetxController {
   resendPasswordResetEmail(String email) async {
     try {
       TFullScreenLoader.openLoadingDialog(
-        "Progressing your request",
+        "Сұрауыңыз орындалуда",
         TImages.loading,
       );
 
@@ -71,12 +71,12 @@ class ForgetPasswordController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       TLoaders.successSnackBar(
-          title: "Email Sent",
-          message: "Email Link Sent to Reset your Password".tr);
+          title: "Электрондық пошта жіберілді",
+          message: "Құпия сөзді қалпына келтіру үшін электрондық пошта сілтемесі жіберілді".tr);
     } catch (e) {
       TFullScreenLoader.stopLoading();
 
-      TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
+      TLoaders.errorSnackBar(title: "О, Жоқ", message: e.toString());
     }
   }
 }

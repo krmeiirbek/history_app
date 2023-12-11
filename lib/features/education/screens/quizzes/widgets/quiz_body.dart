@@ -5,6 +5,7 @@ import 'package:history_app/features/education/screens/question/question.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
+import 'package:history_app/utils/popups/show_dialogs.dart';
 
 class TQuizBody extends GetView<QuizController> {
   const TQuizBody({super.key});
@@ -27,30 +28,12 @@ class TQuizBody extends GetView<QuizController> {
               return ListTile(
                 onTap: () {
                   if (!controller.quizzes[index].isBuy) {
-                    showDialog(
-                      context: _,
-                      builder: (_) => AlertDialog(
-                        actions: [
-                          InkWell(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: const Text('Жоқ'),
-                          ),
-                          const SizedBox(width: 150),
-                          InkWell(
-                            onTap: () {
-                              controller.buyQuiz(
-                                  quiz: controller.quizzes[index]);
-                            },
-                            child: const Text('Сатып алу'),
-                          ),
-                        ],
-                        title: const Text("Сатып алу"),
-                        contentPadding: const EdgeInsets.all(TSizes.xl),
-                        content: const Text("Бұл нұсқаны сатып алсыз ба?"),
-                      ),
-                    );
+                    ShowDialogs.classicShowDialog(
+                        title: 'Сатып алу',
+                        onPressed: () {
+                          controller.buyQuiz(quiz: controller.quizzes[index]);
+                        },
+                        middleText: 'Бұл нұсқаны сатып алaсыз ба?');
                   } else {
                     Get.to(
                       () => const QuestionScreen(),

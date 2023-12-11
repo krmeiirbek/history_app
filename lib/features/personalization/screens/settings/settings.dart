@@ -4,7 +4,6 @@ import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/common/widgets/texts/section_heading.dart';
 import 'package:history_app/common/widgets/user/user_profile_card.dart';
-import 'package:history_app/data/repository/authentication/authentication_repository.dart';
 import 'package:history_app/features/education/screens/history/history.dart';
 import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
@@ -101,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
                             width: double.infinity,
                             child: OutlinedButton(
                                 onPressed: () =>
-                                    AuthenticationRepository.instance.logout(),
+                                    controller.logoutAccount(),
                                 child: const Text('Шығу'))),
                         const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                       ],

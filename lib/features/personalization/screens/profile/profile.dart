@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               TProfileMenu(
                 onPressed: () => controller.copyToClipboard(
-                    controller.user.value.id, 'E-mail'),
+                    controller.user.value.email, 'E-mail'),
                 title: 'E-mail',
                 value: controller.user.value.email,
                 icon: Iconsax.copy,

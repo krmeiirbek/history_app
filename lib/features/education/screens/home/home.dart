@@ -60,6 +60,7 @@ class HomeScreen extends GetView<HomeController> {
                                 width: 50,
                                 height: 50,
                                 fit: BoxFit.cover,
+                                isNetworkImage: true,
                               ),
                             ),
                     ),

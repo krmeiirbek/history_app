@@ -6,6 +6,7 @@ import 'package:history_app/data/repository/authentication/authentication_reposi
 import 'package:history_app/data/repository/user/user_repository.dart';
 import 'package:history_app/features/authentication/models/user_model.dart';
 import 'package:history_app/features/authentication/screens/login/login.dart';
+import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/helpers/network_manager.dart';
@@ -126,7 +127,9 @@ class UserController extends GetxController {
         await userRepository.updateSingleField(json);
 
         user.value.profilePicture = imageUrl;
+        HomeController.instance.userModel.value.profilePicture = imageUrl;
         user.refresh();
+        HomeController.instance.userModel.refresh();
         TLoaders.successSnackBar(
             title: "Құттықтаймын",
             message: "Сіздің профиль суретініз жаңартылды ");

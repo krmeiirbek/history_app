@@ -26,6 +26,7 @@ class TUserProfileCard extends StatelessWidget {
             width: 50,
             height: 50,
             fit: BoxFit.cover,
+          isNetworkImage: true,
         ),
       ),
       title: Text(user.fullName,

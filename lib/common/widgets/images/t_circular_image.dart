@@ -15,10 +15,12 @@ class TCircularImage extends StatelessWidget {
     required this.image,
     this.fit = BoxFit.cover,
     this.padding = TSizes.sm,
+    this.isNetworkImage = false,
   });
 
   final BoxFit? fit;
   final String image;
+  final bool isNetworkImage;
   final Color? overlayColor;
   final Color? backgroundColor;
   final double width, height, padding;
@@ -37,18 +39,23 @@ class TCircularImage extends StatelessWidget {
                 : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: ClipOval(
-          child: image != ''
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
               ? CachedNetworkImage(
                   imageUrl: image,
-                  placeholder: (context, url) =>
+                  progressIndicatorBuilder: (context, url, downlandProgress) =>
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   color: overlayColor,
                   fit: fit,
                 )
-              : Image.asset('assets/images/content/user.png', fit: fit),
+              : Image(
+                  image: AssetImage(image),
+                  color: overlayColor,
+                  fit: fit,
+                ),
         ),
       ),
     );

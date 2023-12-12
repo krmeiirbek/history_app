@@ -7,7 +7,7 @@ class UserModel {
   String lastName;
   String email;
   String phoneNumber;
-  final String profilePicture;
+  String profilePicture;
   final double balance;
   final List<String> sandyq;
 

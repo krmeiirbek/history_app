@@ -28,6 +28,7 @@ dependencies:
   flutter_native_splash: ^2.3.5
 
   ## -- FIREBASE PACKAGES
+  firebase_storage: ^11.5.5
   firebase_core: ^2.24.0
   firebase_auth: ^4.15.0
   cloud_firestore: ^4.13.3
@@ -36,6 +37,7 @@ dependencies:
   percent_indicator: ^4.2.3
   lottie: ^2.7.0
   cached_network_image: ^3.3.0
+  image_picker: ^1.0.4
   google_sign_in: ^6.1.6
   whatsapp_unilink: ^2.1.0
   flutter_markdown: ^0.6.18+2

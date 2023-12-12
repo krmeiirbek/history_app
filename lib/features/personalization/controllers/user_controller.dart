@@ -12,6 +12,7 @@ import 'package:history_app/utils/helpers/network_manager.dart';
 import 'package:history_app/utils/popups/full_screen_loader.dart';
 import 'package:history_app/utils/popups/loaders.dart';
 import 'package:history_app/utils/popups/show_dialogs.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
@@ -19,6 +20,7 @@ class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   final userRepository = Get.put(UserRepository());
+  final imageUploading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
 
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
@@ -70,22 +72,27 @@ class UserController extends GetxController {
 
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
+      await fetchUserRecord();
 
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-          balance: 1000,
-          sandyq: [],
-        );
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
 
-        await userRepository.saveUserRecord(user);
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+            balance: 1000,
+            sandyq: [],
+          );
+
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       TLoaders.warningSnackBar(
@@ -101,6 +108,34 @@ class UserController extends GetxController {
         title: "Шығу",
         onPressed: () async => _userAuth.logout(),
         middleText: "Есептік жазбадан шыққыңыз келетініне сенімдісіз бе?");
+  }
+
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if (image != null) {
+        imageUploading.value = true;
+        final imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile', image);
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        TLoaders.successSnackBar(
+            title: "Құттықтаймын",
+            message: "Сіздің профиль суретініз жаңартылды ");
+      }
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'О, Жоқ', message: 'Бірдеңе дұрыс емес');
+    } finally {
+      imageUploading.value = false;
+    }
   }
 
   void deleteAccountWarningPopup() {

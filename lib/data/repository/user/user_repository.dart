@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:history_app/data/repository/authentication/authentication_repository.dart';
@@ -9,6 +11,7 @@ import 'package:history_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:history_app/utils/exceptions/format_exceptions.dart';
 import 'package:history_app/utils/exceptions/platform_exceptions.dart';
 import 'package:history_app/utils/local_storage/storage_utility.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -43,6 +46,23 @@ class UserRepository extends GetxController {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
       throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
+    }
+  }
+
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions();
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw e.toString();
     }
   }
 
@@ -93,10 +113,7 @@ class UserRepository extends GetxController {
     try {
       var userData = updateUser.toJson();
       userData['lastUpdated'] = DateTime.now();
-      await _db
-          .collection("Users")
-          .doc(updateUser.id)
-          .update(userData);
+      await _db.collection("Users").doc(updateUser.id).update(userData);
     } on FirebaseException catch (e) {
       throw TFirebaseExceptions(e.code).message;
     } on FormatException catch (_) {

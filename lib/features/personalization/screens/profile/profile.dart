@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/widgets/change_phone.dart';
 import 'package:history_app/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
@@ -38,12 +39,26 @@ class ProfileScreen extends StatelessWidget {
                     width: double.infinity,
                     child: Column(
                       children: [
-                        TCircularImage(
-                            image: controller.user.value.profilePicture,
-                            width: 80,
-                            height: 80),
+                        Obx(
+                          () {
+                            final networkImage =
+                                controller.user.value.profilePicture;
+                            final image = networkImage.isNotEmpty
+                                ? networkImage
+                                : TImages.user;
+                            return controller.imageUploading.value
+                                ? const CircularProgressIndicator()
+                                : TCircularImage(
+                                    isNetworkImage: networkImage.isNotEmpty,
+                                    image: image,
+                                    width: 80,
+                                    height: 80,
+                                  );
+                          },
+                        ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                controller.uploadUserProfilePicture(),
                             child: const Text('Профиль суретін өзгерту')),
                       ],
                     ),

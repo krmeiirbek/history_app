@@ -58,5 +58,9 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSPhotoLibraryUsageDescription</key>
+        <string>Суретті таңдау үшін галереяға рұқсат керек</string>
+        <key>NSCameraUsageDescription</key>
+        <string>Бұл қолданба камераға рұқсат қажет етеді</string>
 	</dict>
 </plist>

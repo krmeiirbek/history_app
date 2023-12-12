@@ -45,9 +45,9 @@ class UserController extends GetxController {
 
   void launchWhatsAppUri() async {
     final link = WhatsAppUnilink(
-      phoneNumber: '+77475551101',
+      phoneNumber: '+77013545050',
       text:
-          "Мен тарих қолданбасындағы теңгерімімді толтырғым келеді.\nUID: ${user.value.id}",
+          "Мен TARIH TIME қолданбасындағы теңгерімімді толтырғым келеді.\nМенің USER_ID-ім: ${user.value.id}\nМаған керек сумма",
     );
     await launchUrl(link.asUri());
   }

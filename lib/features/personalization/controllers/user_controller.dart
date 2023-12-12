@@ -58,10 +58,13 @@ class UserController extends GetxController {
 
   Future<void> fetchUserRecord() async {
     try {
+      loading.value = true;
       final user = await userRepository.fetchUserDetails();
       this.user(user);
     } catch (e) {
       user(UserModel.empty());
+    } finally {
+      loading.value = false;
     }
   }
 
@@ -88,7 +91,7 @@ class UserController extends GetxController {
       TLoaders.warningSnackBar(
         title: 'Деректер сақталмады',
         message: "Ақпаратыңызды сақтау кезінде бірдеңе дұрыс болмады. "
-        "Деректерді профильде қайта сақтауға болады",
+            "Деректерді профильде қайта сақтауға болады",
       );
     }
   }

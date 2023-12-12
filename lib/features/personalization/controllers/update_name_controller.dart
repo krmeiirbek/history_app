@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:history_app/data/repository/user/user_repository.dart';
 import 'package:history_app/features/personalization/controllers/user_controller.dart';
-import 'package:history_app/features/personalization/screens/profile/profile.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/helpers/network_manager.dart';
 import 'package:history_app/utils/popups/full_screen_loader.dart';
@@ -31,7 +30,7 @@ class UpdateNameController extends GetxController {
   Future<void> updateUserName() async {
     try {
       TFullScreenLoader.openLoadingDialog(
-          "We are updating your information ... ", TImages.loading);
+          "Біз сіздің ақпаратыңызды жаңартып жатырмыз ... ", TImages.loading);
 
       final isConnected = await NetworkManager.instance.isConnected();
 
@@ -51,9 +50,10 @@ class UpdateNameController extends GetxController {
 
       TFullScreenLoader.stopLoading();
 
-      TLoaders.successSnackBar(title: "Жетістік", message: "Жаңартылды");
+      Get.back();
 
-      Get.off(() => const ProfileScreen());
+      TLoaders.successSnackBar(
+          title: "Жетістік", message: "Жаңартылды", duration: 1);
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'О, Жоқ', message: e.toString());

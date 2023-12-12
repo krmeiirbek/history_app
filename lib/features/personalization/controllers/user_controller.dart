@@ -130,7 +130,7 @@ class UserController extends GetxController {
       }
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.warningSnackBar(title: 'Oh no', message: e.toString());
+      TLoaders.warningSnackBar(title: 'О, Жоқ', message: e.toString());
     }
   }
 

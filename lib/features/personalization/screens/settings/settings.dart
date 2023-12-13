@@ -4,6 +4,7 @@ import 'package:history_app/common/widgets/appbar/appbar.dart';
 import 'package:history_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:history_app/common/widgets/texts/section_heading.dart';
 import 'package:history_app/common/widgets/user/user_profile_card.dart';
+import 'package:history_app/features/education/screens/application/application.dart';
 import 'package:history_app/features/education/screens/history/history.dart';
 import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/profile/profile.dart';
@@ -81,10 +82,13 @@ class SettingsScreen extends StatelessWidget {
                               'Сілтеме арқылы whatsapp-та қанша 🌕 толтыру керектігін хабарлайсыз',
                           onPressed: () => controller.launchWhatsAppUri(),
                         ),
-                        const TSettingsMenu(
-                            icon: Iconsax.discount_shape,
-                            title: 'Қолданба туралы',
-                            subTitle: 'Қолданба туралы ақпарат'),
+                        TSettingsMenu(
+                          icon: Iconsax.discount_shape,
+                          title: 'Қолданба туралы',
+                          subTitle: 'Қолданба туралы ақпарат',
+                          onPressed: () =>
+                              Get.to(() => const ApplicationScreen()),
+                        ),
                         TSettingsMenu(
                           icon: Iconsax.security_card,
                           title: 'Ережелер мен келісімдер',
@@ -99,8 +103,7 @@ class SettingsScreen extends StatelessWidget {
                         SizedBox(
                             width: double.infinity,
                             child: OutlinedButton(
-                                onPressed: () =>
-                                    controller.logoutAccount(),
+                                onPressed: () => controller.logoutAccount(),
                                 child: const Text('Шығу'))),
                         const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                       ],

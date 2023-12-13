@@ -41,16 +41,19 @@ class TCircularImage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
+
         child: Center(
           child: isNetworkImage
               ? CachedNetworkImage(
-                  imageUrl: image,
-                  progressIndicatorBuilder: (context, url, downlandProgress) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                  color: overlayColor,
-                  fit: fit,
-                )
+                imageUrl: image,
+                progressIndicatorBuilder:
+                    (context, url, downlandProgress) =>
+                        const CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.error),
+                color: overlayColor,
+                fit: fit,
+              )
               : Image(
                   image: AssetImage(image),
                   color: overlayColor,

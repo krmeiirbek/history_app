@@ -52,6 +52,7 @@ class TImages {
 
   //lottie
   static const cheers = 'assets/lottie/cheers.json';
+  static const author = 'assets/images/content/author.jpg';
   static const loading = 'assets/lottie/loading.json';
   static const successfullyRegisteredAnimation = 'assets/lottie/check-register.json';
 }

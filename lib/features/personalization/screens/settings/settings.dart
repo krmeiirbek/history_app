@@ -44,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
                   if (controller.loading.value) {
                     return const Center(child: CircularProgressIndicator());
                   } else {
-                    return TUserProfileCard(
+                    return  TUserProfileCard(
                       user: controller.user.value,
                       actionButtonOnPressed: () =>
                           Get.to(() => const ProfileScreen()),

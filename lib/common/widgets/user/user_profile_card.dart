@@ -22,7 +22,7 @@ class TUserProfileCard extends StatelessWidget {
         tag: 'avatar',
         child: TCircularImage(
             padding: 0,
-            image: user.profilePicture,
+            image: user.profilePicture ,
             width: 50,
             height: 50,
             fit: BoxFit.cover,

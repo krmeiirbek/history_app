@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
 class TCircularImage extends StatelessWidget {
@@ -14,7 +13,7 @@ class TCircularImage extends StatelessWidget {
     this.backgroundColor,
     required this.image,
     this.fit = BoxFit.cover,
-    this.padding = TSizes.sm,
+    this.padding = 0,
     this.isNetworkImage = false,
   });
 

@@ -7,6 +7,7 @@ import 'package:history_app/common/widgets/images/t_circular_image.dart';
 import 'package:history_app/features/education/controllers/home_controller.dart';
 import 'package:history_app/features/education/screens/list_books/list_books.dart';
 import 'package:history_app/utils/constants/colors.dart';
+import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -53,14 +54,22 @@ class HomeScreen extends GetView<HomeController> {
                           ? const Center(child: CircularProgressIndicator())
                           : Hero(
                               tag: 'avatar',
-                              child: TCircularImage(
-                                padding: 0,
-                                image:
-                                    controller.userModel.value.profilePicture,
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.cover,
-                                isNetworkImage: true,
+                              child: Obx(
+                                () {
+                                  final networkImage = controller
+                                      .userController.user.value.profilePicture;
+                                  final image = networkImage.isNotEmpty
+                                      ? networkImage
+                                      : TImages.user;
+                                  return controller
+                                          .userController.imageUploading.value
+                                      ? const CircularProgressIndicator()
+                                      : TCircularImage(
+                                          isNetworkImage:
+                                              networkImage.isNotEmpty,
+                                          image: image,
+                                        );
+                                },
                               ),
                             ),
                     ),

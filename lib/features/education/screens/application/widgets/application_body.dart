@@ -36,7 +36,7 @@ class ApplicationBody extends StatelessWidget {
                   SizedBox(
                       width: 140,
                       child: Text(
-                        "Қазір Жетісай қаласындағы «Дарын» мектеп-интернатында қызмет етеді. 2023ж ол «TARIH_TIME» қосымшасын жасады.",
+                        "Қазір Жетісай қаласындағы «Дарын» мектеп-интернатында қызмет етеді. 2023ж ол «TARIH TIME» қосымшасын жасады.",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ))
                 ],

@@ -27,6 +27,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_native_splash: ^2.3.5
 
+
   ## -- FIREBASE PACKAGES
   firebase_storage: ^11.5.5
   firebase_core: ^2.24.0
@@ -45,9 +46,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^3.0.1
 
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+    android: "launcher_icon"
+    ios: true
+    image_path: "assets/logos/t-store-splash-logo-black.png"
 flutter:
 
   uses-material-design: true

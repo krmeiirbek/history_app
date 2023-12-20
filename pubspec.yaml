@@ -53,7 +53,7 @@ dev_dependencies:
 flutter_launcher_icons:
     android: "launcher_icon"
     ios: true
-    image_path: "assets/logos/t-store-splash-logo-black.png"
+    image_path: "assets/logos/logo.png"
 flutter:
 
   uses-material-design: true

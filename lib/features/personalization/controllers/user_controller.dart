@@ -88,8 +88,8 @@ class UserController extends GetxController {
             email: userCredentials.user!.email ?? '',
             phoneNumber: userCredentials.user!.phoneNumber ?? '',
             profilePicture: userCredentials.user!.photoURL ?? '',
-            balance: 1000,
-            sandyq: [],
+            balance: 0,
+            sandyq: ['historyOfKazakhstan_5classroom_1chapter_1quiz'],
           );
 
           await userRepository.saveUserRecord(user);

@@ -87,8 +87,8 @@ class SignupController extends GetxController {
         email: emailController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
         profilePicture: '',
-        balance: 1000,
-        sandyq: [],
+        balance: 0,
+        sandyq: ['historyOfKazakhstan_5classroom_1chapter_1quiz'],
       );
 
       await UserRepository.instance.saveUserRecord(newUser);

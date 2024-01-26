@@ -24,6 +24,12 @@ class QuestionModel {
     };
   }
 
+  Map<String, dynamic> toFirebase() {
+    return {
+      'question': question,
+    };
+  }
+
   factory QuestionModel.fromJson(Map<String, dynamic> json) {
     return QuestionModel(
       questionId: json['questionId'] as String? ?? '',

@@ -19,6 +19,13 @@ class OptionModel {
     };
   }
 
+  Map<String, dynamic> toFirebase() {
+    return {
+      'answer': answer,
+      'isCorrect': isCorrect,
+    };
+  }
+
   factory OptionModel.fromJson(Map<String, dynamic> json) {
     return OptionModel(
       optionId: json['optionId'] as String? ?? '',

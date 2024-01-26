@@ -45,6 +45,14 @@ class QuizModel {
     };
   }
 
+  Map<String, dynamic> toFirebase() {
+    return {
+      'price': price,
+      'discount': discount,
+      'title': title,
+    };
+  }
+
   factory QuizModel.fromJson(Map<String, dynamic> json) {
     return QuizModel(
       quizId: json['quizId'] as String? ?? '',

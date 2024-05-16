@@ -27,6 +27,7 @@ class QuestionModel {
   Map<String, dynamic> toFirebase() {
     return {
       'question': question,
+      if (image != null) 'image': image,
     };
   }
 
@@ -35,9 +36,7 @@ class QuestionModel {
       questionId: json['questionId'] as String? ?? '',
       question: json['question'] as String? ?? '',
       image: json['image'] as String?,
-      options: (json['options'] as List<dynamic>?)
-          ?.map((e) => OptionModel.fromJson(e))
-          .toList() ?? [],
+      options: (json['options'] as List<dynamic>?)?.map((e) => OptionModel.fromJson(e)).toList() ?? [],
     );
   }
 
@@ -47,9 +46,7 @@ class QuestionModel {
       questionId: document.id,
       question: data['question'] ?? '',
       image: data['image'] as String?,
-      options: (data['options'] as List<dynamic>?)
-          ?.map((e) => OptionModel.fromJson(e))
-          .toList() ?? [],
+      options: (data['options'] as List<dynamic>?)?.map((e) => OptionModel.fromJson(e)).toList() ?? [],
     );
   }
 

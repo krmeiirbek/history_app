@@ -17,10 +17,13 @@ class TLoginHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image(
-            height: 170,
-            image:
-                AssetImage(dark ? TImages.lightAppLogo : TImages.darkAppLogo),
+          Hero(
+            tag: 'logo',
+            child: Image(
+              height: 170,
+              image:
+                  AssetImage(dark ? TImages.lightAppLogo : TImages.darkAppLogo),
+            ),
           ),
           Text(TTexts.loginTitle,
               style: Theme.of(context).textTheme.headlineMedium),

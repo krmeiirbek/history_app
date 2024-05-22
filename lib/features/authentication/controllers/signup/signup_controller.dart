@@ -25,6 +25,13 @@ class SignupController extends GetxController {
   late TextEditingController passwordController;
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
+  final unFocusNode = FocusNode();
+  final firstNameFocusNode = FocusNode();
+  final lastNameFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final phoneNumberFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+
   @override
   void onInit() {
     firstNameController = TextEditingController();
@@ -42,6 +49,12 @@ class SignupController extends GetxController {
     emailController.dispose();
     phoneNumberController.dispose();
     passwordController.dispose();
+    unFocusNode.dispose();
+    firstNameFocusNode.dispose();
+    lastNameFocusNode.dispose();
+    emailFocusNode.dispose();
+    phoneNumberFocusNode.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -98,11 +111,12 @@ class SignupController extends GetxController {
       // show massage
       TLoaders.successSnackBar(
           title: "Құттықтаймыз",
-          message: "Есептік жазбаңыз жасалды! Жалғастыру үшін электрондық поштаны растаңыз.");
+          message:
+              "Есептік жазбаңыз жасалды! Жалғастыру үшін электрондық поштаны растаңыз.");
 
       // move VE screen
       Get.to(() => VerifyEmailScreen(
-            email: emailController .text.trim(),
+            email: emailController.text.trim(),
           ));
     } catch (e) {
       // remove loader

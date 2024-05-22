@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:history_app/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:history_app/utils/constants/colors.dart';
+import 'package:history_app/utils/helpers/helper_functions.dart';
 import 'circular_container.dart';
 
 class TPrimaryHeaderContainer extends StatelessWidget {
@@ -13,9 +14,10 @@ class TPrimaryHeaderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return TCurvedEdgesWidget(
       child: Container(
-        color: TColors.primary,
+        color: dark ? TColors.primary.withAlpha(200) : TColors.primary,
         padding: const EdgeInsets.only(bottom: 0),
 
         /// -- If [size.isFinite': is not true.in Stack] error occurred -> Read README.md file at [DESIGN ERRORS] # 1

@@ -2,7 +2,7 @@ name: history_app
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 1.0.1+2
+version: 1.0.3+4
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
@@ -54,7 +54,8 @@ dev_dependencies:
 flutter_launcher_icons:
     android: "launcher_icon"
     ios: true
-    image_path: "assets/logos/logo.png"
+    remove_alpha_ios: true
+    image_path: "assets/logos/logo-whiteBackground.png"
 flutter:
 
   uses-material-design: true

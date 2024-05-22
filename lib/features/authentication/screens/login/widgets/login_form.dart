@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:history_app/features/authentication/controllers/login/login_controller.dart';
@@ -8,14 +9,14 @@ import 'package:history_app/utils/constants/text_strings.dart';
 import 'package:history_app/utils/validators/validation.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TLoginForm extends StatelessWidget {
+class TLoginForm extends GetView<LoginController> {
   const TLoginForm({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+
     return Form(
       key: controller.loginFormKey,
       child: Padding(
@@ -26,6 +27,10 @@ class TLoginForm extends StatelessWidget {
             /// Email
             TextFormField(
               controller: controller.emailController,
+              focusNode: controller.emailFocusNode,
+              onFieldSubmitted: (_) => FocusScope.of(context)
+                  .requestFocus(controller.passwordFocusNode),
+              keyboardType: TextInputType.emailAddress,
               validator: (value) => TValidator.validateEmail(value),
               decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right),
@@ -38,6 +43,9 @@ class TLoginForm extends StatelessWidget {
               () => TextFormField(
                 obscureText: controller.hidePassword.value,
                 controller: controller.passwordController,
+                focusNode: controller.passwordFocusNode,
+                onFieldSubmitted: (_) => FocusScope.of(context)
+                    .unfocus(),
                 validator: (value) => TValidator.validatePassword(value),
                 decoration: InputDecoration(
                   labelText: TTexts.password,
@@ -73,9 +81,11 @@ class TLoginForm extends StatelessWidget {
                 ),
 
                 /// Forgot Password
-                TextButton(
-                  onPressed: () => Get.to(() => const ForgotPassword()),
-                  child: const Text(TTexts.forgetPassword),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => Get.to(() => const ForgotPassword()),
+                    child: const Text(TTexts.forgetPassword, overflow: TextOverflow.ellipsis,),
+                  ),
                 )
               ],
             ),
@@ -96,12 +106,15 @@ class TLoginForm extends StatelessWidget {
             const SizedBox(height: TSizes.spaceBtwItems),
 
             /// Create Account
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () => Get.to(() => const SignupScreen()),
-                child: const Text(
-                  TTexts.createAccount,
+            Hero(
+              tag: 'auth_button',
+              child: SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => Get.to(() => const SignupScreen()),
+                  child: const Text(
+                    TTexts.createAccount,
+                  ),
                 ),
               ),
             ),

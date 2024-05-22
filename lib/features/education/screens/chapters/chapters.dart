@@ -51,7 +51,7 @@ class ChaptersScreen extends GetView<ChapterController> {
                       height: 30,
                       width: 30,
                       child: controller.chapters[index].image == ''
-                          ? const Icon(Icons.disabled_by_default_outlined)
+                          ? const Icon(Icons.category_outlined)
                           : CachedNetworkImage(
                               imageUrl: controller.chapters[index].image,
                               placeholder: (context, url) => const Center(

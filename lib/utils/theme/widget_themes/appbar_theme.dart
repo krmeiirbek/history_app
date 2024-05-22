@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:history_app/utils/constants/sizes.dart';
 import '../../constants/colors.dart';
 
@@ -6,6 +7,10 @@ class TAppBarTheme {
   TAppBarTheme._();
 
   static const lightAppBarTheme = AppBarTheme(
+    systemOverlayStyle: SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+    ),
     elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,

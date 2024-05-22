@@ -9,6 +9,7 @@ import 'package:history_app/features/education/screens/list_books/list_books.dar
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/constants/image_strings.dart';
 import 'package:history_app/utils/constants/sizes.dart';
+import 'package:history_app/utils/helpers/helper_functions.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
@@ -16,7 +17,9 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
+    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
+      backgroundColor: dark ? null : TColors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,18 +40,18 @@ class HomeScreen extends GetView<HomeController> {
                         .apply(color: TColors.white),
                   ),
                   actions: [
-                    Obx(() => Row(
-                          children: [
-                            Text(
-                              "🌕 ${controller.userModel.value.balance}",
-                              style:
-                                  Theme.of(context).textTheme.titleSmall!.apply(
-                                        color: TColors.white,
-                                      ),
-                            ),
-                          ],
-                        )),
-                    const SizedBox(width: 10),
+                    // Obx(() => Row(
+                    //       children: [
+                    //         Text(
+                    //           "🌕 ${controller.userModel.value.balance}",
+                    //           style:
+                    //               Theme.of(context).textTheme.titleSmall!.apply(
+                    //                     color: TColors.white,
+                    //                   ),
+                    //         ),
+                    //       ],
+                    //     )),
+                    // const SizedBox(width: 10),
                     Obx(
                       () => controller.loading.value
                           ? const Center(child: CircularProgressIndicator())

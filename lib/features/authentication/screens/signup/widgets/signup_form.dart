@@ -7,14 +7,14 @@ import 'package:history_app/utils/constants/text_strings.dart';
 import 'package:history_app/utils/validators/validation.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TSignupForm extends StatelessWidget {
+class TSignupForm extends GetView<SignupController> {
   const TSignupForm({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SignupController());
+
     return Form(
       key: controller.signupFormKey,
       child: Column(
@@ -25,6 +25,9 @@ class TSignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.firstNameController,
+                  focusNode: controller.firstNameFocusNode,
+                  onFieldSubmitted: (_) => FocusScope.of(context)
+                      .requestFocus(controller.lastNameFocusNode),
                   validator: (value) =>
                       TValidator.validateEmptyText("Аты", value),
                   decoration: const InputDecoration(
@@ -39,6 +42,9 @@ class TSignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.lastNameController,
+                  focusNode: controller.lastNameFocusNode,
+                  onFieldSubmitted: (_) => FocusScope.of(context)
+                      .requestFocus(controller.emailFocusNode),
                   validator: (value) =>
                       TValidator.validateEmptyText("Тегі", value),
                   decoration: const InputDecoration(
@@ -50,9 +56,14 @@ class TSignupForm extends StatelessWidget {
             ],
           ),
           const SizedBox(height: TSizes.spaceBtwInputFields),
+
           /// Email
           TextFormField(
             controller: controller.emailController,
+            focusNode: controller.emailFocusNode,
+            onFieldSubmitted: (_) => FocusScope.of(context)
+                .requestFocus(controller.phoneNumberFocusNode),
+            keyboardType: TextInputType.emailAddress,
             validator: (value) => TValidator.validateEmail(value),
             decoration: const InputDecoration(
               labelText: TTexts.email,
@@ -64,6 +75,10 @@ class TSignupForm extends StatelessWidget {
           /// PhoneNumber
           TextFormField(
             controller: controller.phoneNumberController,
+            focusNode: controller.phoneNumberFocusNode,
+            onFieldSubmitted: (_) => FocusScope.of(context)
+                .requestFocus(controller.passwordFocusNode),
+            keyboardType: TextInputType.phone,
             validator: (value) => TValidator.validatePhoneNumber(value),
             decoration: const InputDecoration(
               labelText: TTexts.phoneNo,
@@ -77,6 +92,9 @@ class TSignupForm extends StatelessWidget {
             () => TextFormField(
               obscureText: controller.hidePassword.value,
               controller: controller.passwordController,
+              focusNode: controller.passwordFocusNode,
+              onFieldSubmitted: (_) => FocusScope.of(context)
+                  .unfocus(),
               validator: (value) => TValidator.validatePassword(value),
               decoration: InputDecoration(
                 labelText: TTexts.password,
@@ -98,14 +116,18 @@ class TSignupForm extends StatelessWidget {
           /// Terms Checkbox
           const TTermsAndConditionCheckbox(),
           const SizedBox(height: TSizes.defaultSpace),
+
           /// Sign Up Page
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                controller.signup();
-              },
-              child: const Text(TTexts.createAccount),
+          Hero(
+            tag: 'auth_button',
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  controller.signup();
+                },
+                child: const Text(TTexts.createAccount),
+              ),
             ),
           ),
         ],

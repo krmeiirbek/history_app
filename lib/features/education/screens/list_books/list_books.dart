@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:history_app/common/widgets/appbar/appbar.dart';
+import 'package:history_app/common/widgets/home/home_buttons.dart';
 import 'package:history_app/features/education/controllers/list_book_controller.dart';
 import 'package:history_app/features/education/screens/chapters/chapters.dart';
 import 'package:history_app/features/education/screens/list_books/widgets/list_books_buttons.dart';
@@ -43,7 +45,7 @@ class ListBooksScreen extends GetView<ListBookController> {
                       physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (_, index) => const SizedBox(height: 5),
                       itemBuilder: (_, index) {
-                        return BookButtons(
+                        return HomeButtons(
                             onPressed: () => Get.to(
                                   () => const ChaptersScreen(),
                                   arguments: controller.books[index].copyWith(

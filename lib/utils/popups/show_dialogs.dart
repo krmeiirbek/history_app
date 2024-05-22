@@ -51,14 +51,20 @@ class ShowDialogs {
             side: const BorderSide(color: Colors.red)),
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: TSizes.xs),
-          child: Text(
-            'Шығу',
+          child: SizedBox(
+            width: 150,
+            child: Center(
+              child: Text(
+                'Шығу',
+              ),
+            ),
           ),
         ),
       ),
       cancel: OutlinedButton(
         onPressed: () => Navigator.of(Get.overlayContext!).pop(),
-        child: const Text('Болдырмау'),
+        child:
+            const SizedBox(width: 150, child: Center(child: Text('Болдырмау'))),
       ),
     );
   }

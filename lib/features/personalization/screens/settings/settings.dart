@@ -75,13 +75,13 @@ class SettingsScreen extends StatelessWidget {
                           subTitle: 'Аяқталған сынақтар',
                           onPressed: () => Get.to(() => const HistoryScreen()),
                         ),
-                        TSettingsMenu(
-                          icon: Iconsax.bank,
-                          title: 'Теңгерімді толтыру',
-                          subTitle:
-                              'Сілтеме арқылы whatsapp-та қанша 🌕 толтыру керектігін хабарлайсыз',
-                          onPressed: () => controller.launchWhatsAppUri(),
-                        ),
+                        // TSettingsMenu(
+                        //   icon: Iconsax.bank,
+                        //   title: 'Теңгерімді толтыру',
+                        //   subTitle:
+                        //       'Сілтеме арқылы whatsapp-та қанша 🌕 толтыру керектігін хабарлайсыз',
+                        //   onPressed: () => controller.launchWhatsAppUri(),
+                        // ),
                         TSettingsMenu(
                           icon: Iconsax.discount_shape,
                           title: 'Қолданба туралы',

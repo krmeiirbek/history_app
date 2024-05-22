@@ -5,16 +5,18 @@ import 'package:history_app/features/education/controllers/home_controller.dart'
 import 'package:history_app/features/education/screens/home/home.dart';
 import 'package:history_app/features/personalization/controllers/user_controller.dart';
 import 'package:history_app/features/personalization/screens/settings/settings.dart';
-import 'package:history_app/features/practice_test/screens/testing/testing.dart';
+import 'package:history_app/features/ubt/screens/ubt.dart';
 import 'package:history_app/utils/constants/colors.dart';
 import 'package:history_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'features/ubt/controllers/ubt_controller.dart';
 
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    const TestingScreen(),
+    const UBT(),
     const SettingsScreen(),
   ];
 }
@@ -28,6 +30,7 @@ class NavigationMenu extends StatelessWidget {
     Get.put(EducationRepository());
     Get.put(UserController());
     Get.put(HomeController());
+    Get.put(UBTController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: Obx(
@@ -35,17 +38,20 @@ class NavigationMenu extends StatelessWidget {
           height: 80,
           elevation: 0,
           backgroundColor: dark ? TColors.black : TColors.white,
-          indicatorColor: dark ? TColors.white.withOpacity(0.1) : TColors.black.withOpacity(0.1),
+          indicatorColor: dark
+              ? TColors.white.withOpacity(0.1)
+              : TColors.black.withOpacity(0.1),
           selectedIndex: controller.selectedIndex.value,
-          onDestinationSelected: (index) => controller.selectedIndex.value = index,
+          onDestinationSelected: (index) =>
+              controller.selectedIndex.value = index,
           destinations: const [
             NavigationDestination(
               icon: Icon(Iconsax.home),
               label: 'Мәзір',
             ),
             NavigationDestination(
-              icon: Icon(Iconsax.book_1),
-              label: 'Тест',
+              icon: Icon(Iconsax.home),
+              label: 'ҰБТ',
             ),
             NavigationDestination(
               icon: Icon(Iconsax.setting),

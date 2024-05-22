@@ -22,6 +22,10 @@ class LoginController extends GetxController {
   late TextEditingController passwordController;
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+  final unFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+
   @override
   void onInit() {
     emailController =
@@ -35,6 +39,9 @@ class LoginController extends GetxController {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    unFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 

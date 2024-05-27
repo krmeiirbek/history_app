@@ -164,6 +164,11 @@ class UserController extends GetxController {
         } else if (provider == 'password') {
           TFullScreenLoader.stopLoading();
           Get.to(() => const ReAuthLoginForm());
+        } else if (provider == 'apple.com') {
+          await auth.signInWithApple();
+          await auth.deleteAccount();
+          TFullScreenLoader.stopLoading();
+          Get.offAll(() => const LoginScreen());
         }
       }
     } catch (e) {

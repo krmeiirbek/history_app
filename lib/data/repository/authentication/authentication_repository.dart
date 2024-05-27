@@ -13,6 +13,7 @@ import 'package:history_app/utils/exceptions/firebase_exceptions.dart';
 import 'package:history_app/utils/exceptions/format_exceptions.dart';
 import 'package:history_app/utils/exceptions/platform_exceptions.dart';
 import 'package:history_app/utils/local_storage/storage_utility.dart';
+import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -20,7 +21,7 @@ class AuthenticationRepository extends GetxController {
   final _auth = FirebaseAuth.instance;
   final localStorage = TLocalStorage();
 
-  User? get  authUser => _auth.currentUser;
+  User? get authUser => _auth.currentUser;
 
   @override
   void onReady() {
@@ -44,11 +45,9 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  Future<UserCredential> registerWithEmailAndPassword(
-      String email, String password) async {
+  Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      return await _auth.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
@@ -62,11 +61,9 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  Future<UserCredential> loginWithEmailAndPassword(
-      String email, String password) async {
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
     try {
-      return await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
@@ -95,6 +92,7 @@ class AuthenticationRepository extends GetxController {
       throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
+
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -115,14 +113,46 @@ class AuthenticationRepository extends GetxController {
     try {
       final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
 
-      final GoogleSignInAuthentication? googleAuth =
-          await userAccount?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
 
-
-      final credentials = GoogleAuthProvider.credential(
-          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      final credentials = GoogleAuthProvider.credential(accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
 
       return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseExceptions(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatExceptions().message;
+    } on PlatformException catch (e) {
+      throw TPlatformExceptions(e.code).message;
+    } catch (e) {
+      if (kDebugMode) print('Бірдеңе дұрыс болмады:$e');
+      return null;
+    }
+  }
+
+  Future<UserCredential?> signInWithApple() async {
+    try {
+      final authResult = await TheAppleSignIn.performRequests([
+        const AppleIdRequest(requestedScopes: [
+          Scope.email,
+          Scope.fullName,
+        ])
+      ]);
+      print(authResult.status);
+      switch (authResult.status) {
+        case AuthorizationStatus.authorized:
+          final appleCredential = authResult.credential;
+          final oAuthProvider = OAuthProvider('apple.com');
+          final oAuthCredential = oAuthProvider.credential(
+            idToken: String.fromCharCodes(appleCredential!.identityToken!),
+            accessToken: String.fromCharCodes(appleCredential.authorizationCode!),
+          );
+          return await _auth.signInWithCredential(oAuthCredential);
+        default:
+          throw FirebaseAuthException(code: 'INVALID_LOGIN_CREDENTIALS');
+      }
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {

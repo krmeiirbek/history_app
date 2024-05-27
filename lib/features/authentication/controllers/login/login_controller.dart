@@ -28,10 +28,8 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    emailController =
-        TextEditingController(text: localStorage.readData('REMEMBER_ME_EMAIL'));
-    passwordController = TextEditingController(
-        text: localStorage.readData('REMEMBER_ME_PASSWORD'));
+    emailController = TextEditingController(text: localStorage.readData('REMEMBER_ME_EMAIL'));
+    passwordController = TextEditingController(text: localStorage.readData('REMEMBER_ME_PASSWORD'));
     super.onInit();
   }
 
@@ -67,13 +65,11 @@ class LoginController extends GetxController {
 
       if (rememberMe.value) {
         localStorage.saveData('REMEMBER_ME_EMAIL', emailController.text.trim());
-        localStorage.saveData(
-            'REMEMBER_ME_PASSWORD', passwordController.text.trim());
+        localStorage.saveData('REMEMBER_ME_PASSWORD', passwordController.text.trim());
       }
 
       // login user
-      await AuthenticationRepository.instance.loginWithEmailAndPassword(
-          emailController.text.trim(), passwordController.text.trim());
+      await AuthenticationRepository.instance.loginWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
 
       TFullScreenLoader.stopLoading();
 
@@ -86,8 +82,7 @@ class LoginController extends GetxController {
 
   Future<void> googleSignIn() async {
     try {
-      TFullScreenLoader.openLoadingDialog(
-          "Жүктелуде...", TImages.loading);
+      TFullScreenLoader.openLoadingDialog("Жүктелуде...", TImages.loading);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -95,9 +90,31 @@ class LoginController extends GetxController {
         return;
       }
 
-      final userCredentials =
-          await AuthenticationRepository.instance.signInWithGoogle();
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
 
+      await userController.saveUserRecord(userCredentials);
+
+      TFullScreenLoader.stopLoading();
+
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      TFullScreenLoader.stopLoading();
+      TLoaders.errorSnackBar(title: "О, Жоқ", message: e.toString());
+    }
+  }
+
+  Future<void> appleSignIn() async {
+    try {
+      TFullScreenLoader.openLoadingDialog("Жүктелуде...", TImages.loading);
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        TFullScreenLoader.stopLoading();
+        return;
+      }
+      print('do userCredentials');
+      final userCredentials = await AuthenticationRepository.instance.signInWithApple();
+      print('then userCredentials');
       await userController.saveUserRecord(userCredentials);
 
       TFullScreenLoader.stopLoading();

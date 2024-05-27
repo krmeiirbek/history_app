@@ -6,6 +6,7 @@ class TImages {
   // Social Logos
   static String google = "assets/logos/google-icon.png";
   static String facebook = "assets/logos/facebook-icon.png";
+  static String apple = "assets/logos/apple.png";
 
   // OnBoarding Logos
   static String onBoardingImage1 =

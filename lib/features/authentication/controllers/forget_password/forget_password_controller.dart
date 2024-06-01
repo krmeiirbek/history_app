@@ -31,8 +31,7 @@ class ForgetPasswordController extends GetxController {
         return;
       }
 
-      await AuthenticationRepository.instance
-          .sendPasswordResetEmail(email.text.trim());
+      await AuthenticationRepository.instance.sendPasswordResetEmail(email.text.trim());
 
       TFullScreenLoader.stopLoading();
 
@@ -70,9 +69,7 @@ class ForgetPasswordController extends GetxController {
 
       TFullScreenLoader.stopLoading();
 
-      TLoaders.successSnackBar(
-          title: "Электрондық пошта жіберілді",
-          message: "Құпия сөзді қалпына келтіру үшін электрондық пошта сілтемесі жіберілді".tr);
+      TLoaders.successSnackBar(title: "Электрондық пошта жіберілді", message: "Құпия сөзді қалпына келтіру үшін электрондық пошта сілтемесі жіберілді".tr);
     } catch (e) {
       TFullScreenLoader.stopLoading();
 

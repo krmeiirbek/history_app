@@ -31,23 +31,22 @@ class TSocialButtons extends StatelessWidget {
             ),
           ),
         ),
-        if(TDeviceUtils.isIOS())
-        const SizedBox(width: 10),
-        if(TDeviceUtils.isIOS())
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: TColors.grey),
-            borderRadius: BorderRadius.circular(100),
-          ),
-          child: IconButton(
-            onPressed: () => controller.appleSignIn(),
-            icon: Image(
-              width: TSizes.iconMd,
-              height: TSizes.iconMd,
-              image: AssetImage(TImages.apple),
+        if (TDeviceUtils.isIOS()) const SizedBox(width: 10),
+        if (TDeviceUtils.isIOS())
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: TColors.grey),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: IconButton(
+              onPressed: () => controller.appleSignIn(),
+              icon: Image(
+                width: TSizes.iconMd,
+                height: TSizes.iconMd,
+                image: AssetImage(TImages.apple),
+              ),
             ),
           ),
-        ),
       ],
     );
   }

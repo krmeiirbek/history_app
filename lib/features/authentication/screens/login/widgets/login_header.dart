@@ -21,15 +21,12 @@ class TLoginHeader extends StatelessWidget {
             tag: 'logo',
             child: Image(
               height: 170,
-              image:
-                  AssetImage(dark ? TImages.lightAppLogo : TImages.darkAppLogo),
+              image: AssetImage(dark ? TImages.lightAppLogo : TImages.darkAppLogo),
             ),
           ),
-          Text(TTexts.loginTitle,
-              style: Theme.of(context).textTheme.headlineMedium),
+          Text(TTexts.loginTitle, style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: TSizes.sm),
-          Text(TTexts.loginSubTitle,
-              style: Theme.of(context).textTheme.bodyMedium),
+          Text(TTexts.loginSubTitle, style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: TSizes.spaceBtwItems),
         ],
       ),

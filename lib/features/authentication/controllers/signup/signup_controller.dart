@@ -83,15 +83,12 @@ class SignupController extends GetxController {
         TFullScreenLoader.stopLoading();
         TLoaders.warningSnackBar(
           title: 'Құпиялық саясатын қабылдау',
-          message:
-              'Тіркелгіні жасау үшін Құпиялық саясаты мен пайдалану шарттарын оқып, қабылдауыңыз керек',
+          message: 'Тіркелгіні жасау үшін Құпиялық саясаты мен пайдалану шарттарын оқып, қабылдауыңыз керек',
         );
         return;
       }
       // register user
-      final userCredential = await AuthenticationRepository.instance
-          .registerWithEmailAndPassword(
-              emailController.text.trim(), passwordController.text.trim());
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(emailController.text.trim(), passwordController.text.trim());
       // save authenticated
       final newUser = UserModel(
         id: userCredential.user!.uid,
@@ -109,10 +106,7 @@ class SignupController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       // show massage
-      TLoaders.successSnackBar(
-          title: "Құттықтаймыз",
-          message:
-              "Есептік жазбаңыз жасалды! Жалғастыру үшін электрондық поштаны растаңыз.");
+      TLoaders.successSnackBar(title: "Құттықтаймыз", message: "Есептік жазбаңыз жасалды! Жалғастыру үшін электрондық поштаны растаңыз.");
 
       // move VE screen
       Get.to(() => VerifyEmailScreen(

@@ -112,9 +112,8 @@ class LoginController extends GetxController {
         TFullScreenLoader.stopLoading();
         return;
       }
-      print('do userCredentials');
       final userCredentials = await AuthenticationRepository.instance.signInWithApple();
-      print('then userCredentials');
+
       await userController.saveUserRecord(userCredentials);
 
       TFullScreenLoader.stopLoading();

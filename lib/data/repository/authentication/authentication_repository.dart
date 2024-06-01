@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -127,8 +126,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      if (kDebugMode) print('Бірдеңе дұрыс болмады:$e');
-      return null;
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 
@@ -162,8 +160,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformExceptions(e.code).message;
     } catch (e) {
-      if (kDebugMode) print('Бірдеңе дұрыс болмады:$e');
-      return null;
+      throw 'Бірдеңе дұрыс болмады, қайталап көріңіз';
     }
   }
 

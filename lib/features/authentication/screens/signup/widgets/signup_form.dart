@@ -14,7 +14,6 @@ class TSignupForm extends GetView<SignupController> {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: controller.signupFormKey,
       child: Column(
@@ -26,10 +25,8 @@ class TSignupForm extends GetView<SignupController> {
                 child: TextFormField(
                   controller: controller.firstNameController,
                   focusNode: controller.firstNameFocusNode,
-                  onFieldSubmitted: (_) => FocusScope.of(context)
-                      .requestFocus(controller.lastNameFocusNode),
-                  validator: (value) =>
-                      TValidator.validateEmptyText("Аты", value),
+                  onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(controller.lastNameFocusNode),
+                  validator: (value) => TValidator.validateEmptyText("Аты", value),
                   decoration: const InputDecoration(
                     labelText: TTexts.firstName,
                     prefixIcon: Icon(Iconsax.user),
@@ -43,10 +40,8 @@ class TSignupForm extends GetView<SignupController> {
                 child: TextFormField(
                   controller: controller.lastNameController,
                   focusNode: controller.lastNameFocusNode,
-                  onFieldSubmitted: (_) => FocusScope.of(context)
-                      .requestFocus(controller.emailFocusNode),
-                  validator: (value) =>
-                      TValidator.validateEmptyText("Тегі", value),
+                  onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(controller.emailFocusNode),
+                  validator: (value) => TValidator.validateEmptyText("Тегі", value),
                   decoration: const InputDecoration(
                     labelText: TTexts.lastName,
                     prefixIcon: Icon(Iconsax.user),
@@ -61,8 +56,7 @@ class TSignupForm extends GetView<SignupController> {
           TextFormField(
             controller: controller.emailController,
             focusNode: controller.emailFocusNode,
-            onFieldSubmitted: (_) => FocusScope.of(context)
-                .requestFocus(controller.phoneNumberFocusNode),
+            onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(controller.phoneNumberFocusNode),
             keyboardType: TextInputType.emailAddress,
             validator: (value) => TValidator.validateEmail(value),
             decoration: const InputDecoration(
@@ -76,8 +70,7 @@ class TSignupForm extends GetView<SignupController> {
           TextFormField(
             controller: controller.phoneNumberController,
             focusNode: controller.phoneNumberFocusNode,
-            onFieldSubmitted: (_) => FocusScope.of(context)
-                .requestFocus(controller.passwordFocusNode),
+            onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(controller.passwordFocusNode),
             keyboardType: TextInputType.phone,
             validator: (value) => TValidator.validatePhoneNumber(value),
             decoration: const InputDecoration(
@@ -93,19 +86,15 @@ class TSignupForm extends GetView<SignupController> {
               obscureText: controller.hidePassword.value,
               controller: controller.passwordController,
               focusNode: controller.passwordFocusNode,
-              onFieldSubmitted: (_) => FocusScope.of(context)
-                  .unfocus(),
+              onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
               validator: (value) => TValidator.validatePassword(value),
               decoration: InputDecoration(
                 labelText: TTexts.password,
                 prefixIcon: const Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
-                  onPressed: () => controller.hidePassword.value =
-                      !controller.hidePassword.value,
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
                   icon: Icon(
-                    controller.hidePassword.value
-                        ? Iconsax.eye_slash
-                        : Iconsax.eye,
+                    controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye,
                   ),
                 ),
               ),

@@ -21,9 +21,7 @@ class VerifyEmailController extends GetxController {
   sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
-      TLoaders.successSnackBar(
-          title: 'Электрондық пошта жіберілді',
-          message: 'Кіріс жәшігіңізді тексеріп, электрондық поштаңызды растаңыз.');
+      TLoaders.successSnackBar(title: 'Электрондық пошта жіберілді', message: 'Кіріс жәшігіңізді тексеріп, электрондық поштаңызды растаңыз.');
     } catch (e) {
       TLoaders.errorSnackBar(title: 'О, Жоқ', message: e.toString());
     }
@@ -49,9 +47,9 @@ class VerifyEmailController extends GetxController {
 
   checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
-    if(currentUser != null && currentUser.emailVerified) {
+    if (currentUser != null && currentUser.emailVerified) {
       Get.off(
-            () => SuccessScreen(
+        () => SuccessScreen(
           image: TImages.successfullyRegisteredAnimation,
           title: TTexts.yourAccountCreatedTitle,
           subtitle: TTexts.yourAccountCreatedSubTitle,

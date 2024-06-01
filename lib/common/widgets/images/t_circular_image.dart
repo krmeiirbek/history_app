@@ -31,27 +31,19 @@ class TCircularImage extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        // If image background color is null then switch it to light and dark mode color design.
-        color: backgroundColor ??
-            (THelperFunctions.isDarkMode(context)
-                ? TColors.black
-                : TColors.white),
+        color: backgroundColor ?? (THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
-
         child: isNetworkImage
             ? CachedNetworkImage(
-              imageUrl: image,
-              progressIndicatorBuilder:
-                  (context, url, downlandProgress) =>
-                      const CircularProgressIndicator(),
-              errorWidget: (context, url, error) =>
-                  const Icon(Icons.error),
-              color: overlayColor,
-              fit: fit,
-            )
+                imageUrl: image,
+                progressIndicatorBuilder: (context, url, downlandProgress) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                color: overlayColor,
+                fit: fit,
+              )
             : Image(
                 image: AssetImage(image),
                 color: overlayColor,

@@ -43,13 +43,8 @@ class UserModel {
       email: json['Email'] as String? ?? '',
       phoneNumber: json['Phone'] as String? ?? '',
       profilePicture: json['ProfilePicture'] as String? ?? '',
-      balance: json['Balance'] is String
-          ? double.tryParse(json['Balance']) ?? 0.0
-          : (json['Balance'] as double?) ?? 0.0,
-      sandyq: (json['Sandyq'] as List<dynamic>?)
-              ?.map((e) => e.toString())
-              .toList() ??
-          [],
+      balance: json['Balance'] is String ? double.tryParse(json['Balance']) ?? 0.0 : (json['Balance'] as double?) ?? 0.0,
+      sandyq: (json['Sandyq'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
     );
   }
 
@@ -70,8 +65,7 @@ class UserModel {
 
   static List<String> nameParts(fullName) => fullName.split(" ");
 
-  factory UserModel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
+  factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
       return UserModel(
@@ -82,10 +76,7 @@ class UserModel {
         phoneNumber: data['Phone'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',
         balance: _ensureDouble(data['Balance']),
-        sandyq: (data['Sandyq'] as List<dynamic>?)
-                ?.map((e) => e.toString())
-                .toList() ??
-            [],
+        sandyq: (data['Sandyq'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? [],
       );
     } else {
       return UserModel.empty();

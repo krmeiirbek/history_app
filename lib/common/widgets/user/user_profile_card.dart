@@ -22,34 +22,28 @@ class TUserProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading:  Hero(
+      leading: Hero(
         tag: 'avatar',
-        child:  Obx(
-              () {
-            final networkImage =
-                controller.user.value.profilePicture;
-            final image = networkImage.isNotEmpty
-                ? networkImage
-                : TImages.user;
+        child: Obx(
+          () {
+            final networkImage = controller.user.value.profilePicture;
+            final image = networkImage.isNotEmpty ? networkImage : TImages.user;
             return controller.imageUploading.value
                 ? const CircularProgressIndicator()
                 : TCircularImage(
-              isNetworkImage: networkImage.isNotEmpty,
-              image: image,
-            );
+                    isNetworkImage: networkImage.isNotEmpty,
+                    image: image,
+                  );
           },
         ),
       ),
-      title: Text(_user.fullName,
-        style: Theme.of(context)
-            .textTheme
-            .headlineSmall!
-            .apply(color: TColors.white),
+      title: Text(
+        _user.fullName,
+        style: Theme.of(context).textTheme.headlineSmall!.apply(color: TColors.white),
       ),
       subtitle: Text(
         _user.email,
-        style:
-            Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
+        style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
       ),
       trailing: IconButton(
         onPressed: actionButtonOnPressed,

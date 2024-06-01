@@ -15,9 +15,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
     return GestureDetector(
-      onTap: () => controller.unFocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(controller.unFocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => controller.unFocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(controller.unFocusNode) : FocusScope.of(context).unfocus(),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
@@ -41,9 +39,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: TSizes.spaceBtwSections),
 
                 /// Footer
-                const Hero(
-                    tag: 'auth-google',
-                    child: TSocialButtons()),
+                const Hero(tag: 'auth-google', child: TSocialButtons()),
               ],
             ),
           ),

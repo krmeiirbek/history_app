@@ -19,6 +19,5 @@ class UBTController extends GetxController {
     loading.value = true;
     ubt_subjects.value = await EducationRepository.instance.getUBTSubjects();
     loading.value = false;
-    print('ubt subject length ${ubt_subjects.length}');
   }
 }

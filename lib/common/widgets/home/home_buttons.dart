@@ -30,7 +30,7 @@ class HomeButtons extends StatelessWidget {
           color: dark ? Colors.grey[800] : Colors.white.withOpacity(0.9),
           boxShadow: [
             BoxShadow(
-              color: dark ? TColors.darkGrey.withOpacity(0.4) :Colors.grey,
+              color: dark ? TColors.darkGrey.withOpacity(0.4) : Colors.grey,
               offset: const Offset(1, 1),
             )
           ],
@@ -48,13 +48,8 @@ class HomeButtons extends StatelessWidget {
                   ),
                   child: CachedNetworkImage(
                     imageUrl: image,
-                    placeholder: (context, url) => const Center(
-                        child: SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: CircularProgressIndicator())),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    placeholder: (context, url) => const Center(child: SizedBox(height: 30, width: 30, child: CircularProgressIndicator())),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -69,9 +64,7 @@ class HomeButtons extends StatelessWidget {
                       width: TSizes.sizeBoxWidth,
                       child: Text(
                         title,
-                        style: const TextStyle(
-                            fontSize: TSizes.fontSizeLg,
-                            fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: TSizes.fontSizeLg, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
